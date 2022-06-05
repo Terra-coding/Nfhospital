@@ -501,3 +501,103 @@ a#find::before{
     margin: 0 11px;
     background-color: #999;
 }
+
+/* 네비게이션바 시작 */
+.gnbList {
+    height: 70px;
+    margin: 0px 292px;
+    text-align: center;
+    top: 35px;
+    position: absolute;
+    left: -80px;
+    width: 585.22px;
+}
+
+div.subList{
+	position: absolute;
+    top: 69px;
+    background-color: #fff;
+    left: -3px;
+    margin: 0;
+    width: 143px;
+    height: 257px;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    margin-right: 3px;
+    margin-left: 3px;
+    float: left;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+
+ div.subList a{
+	padding: 0px;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+div.subList .strongs{
+	font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+div.subList .weaks{
+	font-size: 16px;
+	font-weight: 100;
+	color: #888;
+}
+
+.pack, .strongs{
+	margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+ .top{
+	margin-top: 22px;
+} 
+
+/* #information3{
+	top: -78px!important;
+} */
+
+#information2, #information4{
+	height: 80px;
+} 
+
+#information2{
+	left: 145px;
+}
+
+#information3{
+	height: 200px;
+	left: 292px;
+}
+
+#information4{
+	left: 439px;
+}
+
+.selected{
+	border-bottom: 4px solid #2263bb!important;
+}
+
+.line::before{
+	    content: ' ';
+    position: absolute;
+    visibility: visible;
+    width: 73.609px;
+    top: -5px;
+    left: 34px;
+    height: 4px;
+    background-color: #2263bb;
+    pointer-events: none;
+}
+
+.gnbList > li{
+	width: 93.609px;
+}
+
+/* 네비게이션바 끝 */
