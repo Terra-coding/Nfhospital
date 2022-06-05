@@ -1054,6 +1054,105 @@
     white-space: nowrap;
 }  
     
+    /* 네비게이션바 시작 */
+.gnbList {
+    height: 70px;
+    margin: 0px 292px;
+    text-align: center;
+    top: 35px;
+    position: absolute;
+    left: -80px;
+    width: 585.22px;
+}
+
+div.subList{
+	position: absolute;
+    top: 69px;
+    background-color: #fff;
+    left: -3px;
+    margin: 0;
+    width: 143px;
+    height: 257px;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    margin-right: 3px;
+    margin-left: 3px;
+    float: left;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+
+ div.subList a{
+	padding: 0px;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+div.subList .strongs{
+	font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+div.subList .weaks{
+	font-size: 16px;
+	font-weight: 100;
+	color: #888;
+}
+
+.pack, .strongs{
+	margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+ .top{
+	margin-top: 22px;
+} 
+
+/* #information3{
+	top: -78px!important;
+} */
+
+#information2, #information4{
+	height: 80px;
+} 
+
+#information2{
+	left: 145px;
+}
+
+#information3{
+	height: 200px;
+	left: 292px;
+}
+
+#information4{
+	left: 439px;
+}
+
+.selected{
+	border-bottom: 4px solid #2263bb!important;
+}
+
+.line::before{
+	    content: ' ';
+    position: absolute;
+    visibility: visible;
+    width: 73.609px;
+    top: -5px;
+    left: 34px;
+    height: 4px;
+    background-color: #2263bb;
+    pointer-events: none;
+}
+
+.gnbList > li{
+	width: 93.609px;
+}
+
+/* 네비게이션바 끝 */
     </style>
 </head>
 <body>
@@ -1091,20 +1190,47 @@
                     <!-- 전체 메뉴 아이콘 집어넣어야함 -->
                     <button class="totMenuBtn hideTxt" type="button" aria-controls="totMenu">전체 메뉴 열기</button>
                     <ul class="gnbList clearFix">
-                        <li>
+                        <li id="first" class="set">
                             <a>진료안내</a>
+	                        <div class="subList first" id="information1">
+	                            <div class="strongs top">진료안내</div>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalInfo.jsp">진료예약</a>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalProcess.jsp">외래진료프로세스</a>
+	                            <c:if test="${empty name}">
+	                            <a class="strongs" href="${pageContext.request.contextPath}/MemberLogin.me">인터넷 진료예약</a>
+	                            </c:if>
+	                            <c:if test="${not empty name}">
+	                            <a class="strongs" href="${pageContext.request.contextPath}/reservation.jsp">인터넷 진료예약</a>
+	                            </c:if>
+	                            <div class="strongs">예약확인/취소</div>
+	                             <c:if test="${empty name}">
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/MemberLogin.me">진료예약확인</a>
+	                            </c:if>
+	                            <c:if test="${not empty name}">
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/newreservation.jsp">진료예약확인</a>
+	                       		</c:if>
+	                        </div>
                         </li>
-                        <li>
+                        <li id="second" class="set">
                             <a>이용안내</a>
+                            <div class="subList more second" id="information2">
+                            <a class="strongs top" href="${pageContext.request.contextPath}/allFAQ.jsp">FAQ(통합)</a>
+                        </div>
                         </li>
-                        <li>
-                            <a>건강정보</a>
-                        </li>
-                        <li>
+                        <li id="third" class="set">
                             <a>고객참여</a>
+                            <div class="subList more third" id="information3">
+                             <div class="strongs top">고객의 소리</div>
+                             <a class="weaks pack" href="${pageContext.request.contextPath}/clientSound.jsp">고객의 소리 등록</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/clientConsultation.jsp">고객상담실 업무안내</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/allThanksView.jsp">감사이야기</a>
+                        </div>
                         </li>
-                        <li>
+                        <li id="fourth" class="set">
                             <a>병원소개</a>
+                            <div class="subList more fourth" id="information4">
+                            <a class="strongs top" href="${pageContext.request.contextPath}/intro.jsp">병원개요</a>
+                        </div> 
                         </li>
                     </ul>
                 </nav>
@@ -1246,4 +1372,165 @@
         </footer>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+/* 네비게이션 바 JS시작 */
+
+$(".set").on("mouseover", function(){
+		$(this).addClass('up');
+		$(this).children('a').css("color", "#2263bb");
+		if($(this).attr('id').match('first')){
+			$(".second").removeClass('selected');
+			$(".second").css("visibility", "hidden");
+			$("#second").children('a').css("color", "#000");
+   		$("#second").removeClass('up')
+   		$(".second").removeClass('line')
+   		
+   		$(".third").removeClass('selected');
+   		$(".third").css("visibility", "hidden");
+   		$("#third").children('a').css("color", "#000");
+	    	$("#third").removeClass('up')
+   		$(".third").removeClass('line')
+	    	
+	    	$(".fourth").removeClass('selected');
+   		$(".fourth").css("visibility", "hidden");
+   		$("#fourth").children('a').css("color", "#000");
+	    	$("#fourth").removeClass('up')
+   		$(".fourth").removeClass('line')
+		
+	    	$(".first").addClass('selected');
+			$(".first").css("visibility", "visible");
+			$(".first").addClass('line');
+			
+		}else if($(this).attr('id').match('second')){
+			$(".first").removeClass('selected');
+			$(".first").css("visibility", "hidden");
+   		$("#first").children('a').css("color", "#000");
+   		$("#first").removeClass('up')
+   		$(".first").removeClass('line')
+   		
+   		$(".third").removeClass('selected');
+   		$(".third").css("visibility", "hidden");
+   		$("#third").children('a').css("color", "#000");
+	    	$("#third").removeClass('up')
+	    	$(".third").removeClass('line')
+	    	
+	    	$(".fourth").removeClass('selected');
+   		$(".fourth").css("visibility", "hidden");
+   		$("#fourth").children('a').css("color", "#000");
+	    	$("#fourth").removeClass('up')
+	    	$(".fourth").removeClass('line')
+			
+	    	$(".second").addClass('selected');
+			$(".second").css("visibility", "visible");
+			$(".second").addClass('line');
+			
+		}else if($(this).attr('id').match('third')){
+			$(".first").removeClass('selected');
+			$(".first").css("visibility", "hidden");
+   		$("#first").children('a').css("color", "#000");
+   		$("#first").removeClass('up')
+   		$(".first").removeClass('line')
+			
+   		$(".second").removeClass('selected');
+   		$(".second").css("visibility", "hidden");
+   		$("#second").children('a').css("color", "#000");
+	    	$("#second").removeClass('up')
+	    	$(".second").removeClass('line')
+			
+	    	$(".fourth").removeClass('selected');
+   		$(".fourth").css("visibility", "hidden");
+   		$("#fourth").children('a').css("color", "#000");
+	    	$("#fourth").removeClass('up')
+	    	$(".fourth").removeClass('line')
+			
+	    	$(".third").addClass('selected');
+			$(".third").css("visibility", "visible");
+			$(".third").addClass('line');
+
+		}else if($(this).attr('id').match('fourth')){
+			$(".first").removeClass('selected');
+			$(".first").css("visibility", "hidden");
+   		$("#first").children('a').css("color", "#000");
+   		$("#first").removeClass('up')
+   		$(".first").removeClass('line')
+			
+			$(".second").removeClass('selected');
+   		$(".second").css("visibility", "hidden");
+   		$("#second").children('a').css("color", "#000");
+	    	$("#second").removeClass('up')
+	    	$(".second").removeClass('line')
+	    	
+	    	$(".third").removeClass('selected');
+   		$(".third").css("visibility", "hidden");
+   		$("#third").children('a').css("color", "#000");
+	    	$("#third").removeClass('up')
+	    	$(".third").removeClass('line')
+			
+	    	$(".fourth").addClass('selected');
+			$(".fourth").css("visibility", "visible");
+			$(".fourth").addClass('line');
+
+		}
+		
+		
+});
+
+   $(".subList").mouseleave(function(){
+   		if($(this).attr('class').match('first')){
+   			$(".first").removeClass('selected');
+   			$(".first").css("visibility", "hidden");
+   			$(".first").removeClass("line")
+	    		$("#first").children('a').css("color", "#000");
+	    		$("#first").removeClass('up')
+   			
+   		}else if($(this).attr('class').match('second')){
+   			$(".second").removeClass('selected');
+   			$(".second").css("visibility", "hidden");
+   			$(".second").removeClass("line")
+   			$("#second").children('a').css("color", "#000");
+	    		$("#second").removeClass('up')
+	    		
+   		}else if($(this).attr('class').match('third')){
+   			$(".third").removeClass('selected');
+   			$(".third").css("visibility", "hidden");
+   			$(".third").removeClass("line")
+   			$("#third").children('a').css("color", "#000");
+	    		$("#third").removeClass('up')
+	    		
+   		}else if($(this).attr('class').match('fourth')){
+   			$(".fourth").removeClass('selected');
+   			$(".fourth").css("visibility", "hidden");
+   			$(".fourth").removeClass("line")
+   			$("#fourth").children('a').css("color", "#000");
+	    		$("#fourth").removeClass('up')
+   		}
+   })  
+   
+   $(".weaks").mouseover(function(){
+   	$(this).css('color', "#2263bb");
+   })
+
+   $(".weaks").mouseout(function(){
+   	$(this).css('color', "#888");
+   })
+   
+   $("a[class='strongs']").mouseover(function(){
+   	$(this).css('color', "#2263bb");
+   })
+   
+   $("a[class='strongs']").mouseout(function(){
+   	$(this).css('color', "#000");
+   })
+   
+	$("a[class='strongs top']").mouseover(function(){
+   	$(this).css('color', "#2263bb");
+   })
+   
+   $("a[class='strongs top']").mouseout(function(){
+   	$(this).css('color', "#000");
+   })
+  
+    /* 네비게이션 바 JS끝 */
+</script>
 </html>
