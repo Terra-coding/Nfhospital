@@ -37,15 +37,13 @@ public class MemberLoginOk implements Action {
 			session.setAttribute("name", name);
 			session.setAttribute("id", id);
 			session.setAttribute("list", memberInfoDAO.information(memberInfoMap));
-			actionInfo.setRedirect(false);
 			actionInfo.setPath("/mainpage.jsp");
 		}else {
 			//로그인 실패
-			session.invalidate();
-			actionInfo.setRedirect(false);
-			actionInfo.setPath("/login.jsp");
+			actionInfo.setPath("/MemberLogin.me");
 		}
 		
+		actionInfo.setRedirect(false);
 		return actionInfo;
 	}
 }
