@@ -144,6 +144,7 @@
             <!-- //innerWrap -->
         </div>
         <main id="content" class="loginContent bodyBg">
+        	<div class="logBoxWrap clearFix">
 				<div class="logBox">
 					<h3 class="regularTxt">로그인</h3>
 					<p class="colorPoint02" style="text-align: center; font-size: 20px">
@@ -162,16 +163,29 @@
 						<input type="button" id="loginBtn" class="btnType03 btnBig" value="로그인">
 	
 					</form>
-	
-	
 					<div class="telBox">
 						<div class="Box1">
 							<a href="regi1.jsp">회원가입</a> <a href="findid.jsp" id="find">아이디/비밀번호 찾기</a>
 						</div>
-	
-	
 					</div>
 				</div>
+				<div class="logBox">
+					<h3 class="regularTxt">의료진 로그인</h3>
+					<p class="colorPoint02" style="text-align: center; font-size: 20px">
+						서울병원 의료진 전용 코드로<br>로그인 후 이용하실 수 있습니다.
+					</p>
+					<form id="otherloginForm" action="employee01.jsp" method="post" name="otherloginForm" class="otherlogin">
+						<input id="retUrl" name="retUrl" type="hidden" value="">
+						<div>
+							<input id="id" name="employeeId" placeholder="의료진 번호"
+								class="inputText" type="text" value="" style="margin-top: 50px">
+						</div>
+						<input type="button" id="otherBtn" class="btnType03 btnBig" value="의료진 로그인">
+	
+					</form>
+					</div>
+				</div>
+			</div>
         </main>
 		<footer id="footer">
             <div class="ftMenuWrap">
@@ -240,179 +254,194 @@
 <script>
 
 
-let form = document.loginForm;
-
-$("input#loginBtn").on("click", function(){
-	if(!form.id.value){
-		alert("아이디를 입력해주세요.");
-		return;
-	}
-	if(!form.password.value){
-		alert("패스워드를 입력해주세요.");
-		return;
-	}
+	let form = document.loginForm;
 	
-	form.submit();
-});
-
-/* 네비게이션 바 JS시작 */
-
-$(".set").on("mouseover", function(){
-		$(this).addClass('up');
-		$(this).children('a').css("color", "#2263bb");
-		if($(this).attr('id').match('first')){
-			$(".second").removeClass('selected');
-			$(".second").css("visibility", "hidden");
-			$("#second").children('a').css("color", "#000");
-   		$("#second").removeClass('up')
-   		$(".second").removeClass('line')
-   		
-   		$(".third").removeClass('selected');
-   		$(".third").css("visibility", "hidden");
-   		$("#third").children('a').css("color", "#000");
-	    	$("#third").removeClass('up')
-   		$(".third").removeClass('line')
-	    	
-	    	$(".fourth").removeClass('selected');
-   		$(".fourth").css("visibility", "hidden");
-   		$("#fourth").children('a').css("color", "#000");
-	    	$("#fourth").removeClass('up')
-   		$(".fourth").removeClass('line')
-		
-	    	$(".first").addClass('selected');
-			$(".first").css("visibility", "visible");
-			$(".first").addClass('line');
-			
-		}else if($(this).attr('id').match('second')){
-			$(".first").removeClass('selected');
-			$(".first").css("visibility", "hidden");
-   		$("#first").children('a').css("color", "#000");
-   		$("#first").removeClass('up')
-   		$(".first").removeClass('line')
-   		
-   		$(".third").removeClass('selected');
-   		$(".third").css("visibility", "hidden");
-   		$("#third").children('a').css("color", "#000");
-	    	$("#third").removeClass('up')
-	    	$(".third").removeClass('line')
-	    	
-	    	$(".fourth").removeClass('selected');
-   		$(".fourth").css("visibility", "hidden");
-   		$("#fourth").children('a').css("color", "#000");
-	    	$("#fourth").removeClass('up')
-	    	$(".fourth").removeClass('line')
-			
-	    	$(".second").addClass('selected');
-			$(".second").css("visibility", "visible");
-			$(".second").addClass('line');
-			
-		}else if($(this).attr('id').match('third')){
-			$(".first").removeClass('selected');
-			$(".first").css("visibility", "hidden");
-   		$("#first").children('a').css("color", "#000");
-   		$("#first").removeClass('up')
-   		$(".first").removeClass('line')
-			
-   		$(".second").removeClass('selected');
-   		$(".second").css("visibility", "hidden");
-   		$("#second").children('a').css("color", "#000");
-	    	$("#second").removeClass('up')
-	    	$(".second").removeClass('line')
-			
-	    	$(".fourth").removeClass('selected');
-   		$(".fourth").css("visibility", "hidden");
-   		$("#fourth").children('a').css("color", "#000");
-	    	$("#fourth").removeClass('up')
-	    	$(".fourth").removeClass('line')
-			
-	    	$(".third").addClass('selected');
-			$(".third").css("visibility", "visible");
-			$(".third").addClass('line');
-
-		}else if($(this).attr('id').match('fourth')){
-			$(".first").removeClass('selected');
-			$(".first").css("visibility", "hidden");
-   		$("#first").children('a').css("color", "#000");
-   		$("#first").removeClass('up')
-   		$(".first").removeClass('line')
-			
-			$(".second").removeClass('selected');
-   		$(".second").css("visibility", "hidden");
-   		$("#second").children('a').css("color", "#000");
-	    	$("#second").removeClass('up')
-	    	$(".second").removeClass('line')
-	    	
-	    	$(".third").removeClass('selected');
-   		$(".third").css("visibility", "hidden");
-   		$("#third").children('a').css("color", "#000");
-	    	$("#third").removeClass('up')
-	    	$(".third").removeClass('line')
-			
-	    	$(".fourth").addClass('selected');
-			$(".fourth").css("visibility", "visible");
-			$(".fourth").addClass('line');
-
+	$("input#loginBtn").on("click", function(){
+		if(!form.id.value){
+			alert("아이디를 입력해주세요.");
+			return;
+		}
+		if(!form.password.value){
+			alert("패스워드를 입력해주세요.");
+			return;
 		}
 		
-		
-});
-
-   $(".subList").mouseleave(function(){
-   		if($(this).attr('class').match('first')){
-   			$(".first").removeClass('selected');
-   			$(".first").css("visibility", "hidden");
-   			$(".first").removeClass("line")
-	    		$("#first").children('a').css("color", "#000");
-	    		$("#first").removeClass('up')
-   			
-   		}else if($(this).attr('class').match('second')){
-   			$(".second").removeClass('selected');
-   			$(".second").css("visibility", "hidden");
-   			$(".second").removeClass("line")
-   			$("#second").children('a').css("color", "#000");
-	    		$("#second").removeClass('up')
-	    		
-   		}else if($(this).attr('class').match('third')){
-   			$(".third").removeClass('selected');
-   			$(".third").css("visibility", "hidden");
-   			$(".third").removeClass("line")
-   			$("#third").children('a').css("color", "#000");
-	    		$("#third").removeClass('up')
-	    		
-   		}else if($(this).attr('class').match('fourth')){
-   			$(".fourth").removeClass('selected');
-   			$(".fourth").css("visibility", "hidden");
-   			$(".fourth").removeClass("line")
-   			$("#fourth").children('a').css("color", "#000");
-	    		$("#fourth").removeClass('up')
-   		}
-   })  
-   
-   $(".weaks").mouseover(function(){
-   	$(this).css('color', "#2263bb");
-   })
-
-   $(".weaks").mouseout(function(){
-   	$(this).css('color', "#888");
-   })
-   
-   $("a[class='strongs']").mouseover(function(){
-   	$(this).css('color', "#2263bb");
-   })
-   
-   $("a[class='strongs']").mouseout(function(){
-   	$(this).css('color', "#000");
-   })
-   
-	$("a[class='strongs top']").mouseover(function(){
-   	$(this).css('color', "#2263bb");
-   })
-   
-   $("a[class='strongs top']").mouseout(function(){
-   	$(this).css('color', "#000");
-   })
-  
-    /* 네비게이션 바 JS끝 */
+		form.submit();
+	});
+	
+	/* 네비게이션 바 JS시작 */
+	
+	$(".set").on("mouseover", function(){
+			$(this).addClass('up');
+			$(this).children('a').css("color", "#2263bb");
+			if($(this).attr('id').match('first')){
+				$(".second").removeClass('selected');
+				$(".second").css("visibility", "hidden");
+				$("#second").children('a').css("color", "#000");
+	   		$("#second").removeClass('up')
+	   		$(".second").removeClass('line')
+	   		
+	   		$(".third").removeClass('selected');
+	   		$(".third").css("visibility", "hidden");
+	   		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+	   		$(".third").removeClass('line')
+		    	
+		    	$(".fourth").removeClass('selected');
+	   		$(".fourth").css("visibility", "hidden");
+	   		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+	   		$(".fourth").removeClass('line')
+			
+		    	$(".first").addClass('selected');
+				$(".first").css("visibility", "visible");
+				$(".first").addClass('line');
+				
+			}else if($(this).attr('id').match('second')){
+				$(".first").removeClass('selected');
+				$(".first").css("visibility", "hidden");
+	   		$("#first").children('a').css("color", "#000");
+	   		$("#first").removeClass('up')
+	   		$(".first").removeClass('line')
+	   		
+	   		$(".third").removeClass('selected');
+	   		$(".third").css("visibility", "hidden");
+	   		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+		    	$(".third").removeClass('line')
+		    	
+		    	$(".fourth").removeClass('selected');
+	   		$(".fourth").css("visibility", "hidden");
+	   		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+		    	$(".fourth").removeClass('line')
+				
+		    	$(".second").addClass('selected');
+				$(".second").css("visibility", "visible");
+				$(".second").addClass('line');
+				
+			}else if($(this).attr('id').match('third')){
+				$(".first").removeClass('selected');
+				$(".first").css("visibility", "hidden");
+	   		$("#first").children('a').css("color", "#000");
+	   		$("#first").removeClass('up')
+	   		$(".first").removeClass('line')
+				
+	   		$(".second").removeClass('selected');
+	   		$(".second").css("visibility", "hidden");
+	   		$("#second").children('a').css("color", "#000");
+		    	$("#second").removeClass('up')
+		    	$(".second").removeClass('line')
+				
+		    	$(".fourth").removeClass('selected');
+	   		$(".fourth").css("visibility", "hidden");
+	   		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+		    	$(".fourth").removeClass('line')
+				
+		    	$(".third").addClass('selected');
+				$(".third").css("visibility", "visible");
+				$(".third").addClass('line');
+	
+			}else if($(this).attr('id').match('fourth')){
+				$(".first").removeClass('selected');
+				$(".first").css("visibility", "hidden");
+	   		$("#first").children('a').css("color", "#000");
+	   		$("#first").removeClass('up')
+	   		$(".first").removeClass('line')
+				
+				$(".second").removeClass('selected');
+	   		$(".second").css("visibility", "hidden");
+	   		$("#second").children('a').css("color", "#000");
+		    	$("#second").removeClass('up')
+		    	$(".second").removeClass('line')
+		    	
+		    	$(".third").removeClass('selected');
+	   		$(".third").css("visibility", "hidden");
+	   		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+		    	$(".third").removeClass('line')
+				
+		    	$(".fourth").addClass('selected');
+				$(".fourth").css("visibility", "visible");
+				$(".fourth").addClass('line');
+	
+			}
+			
+			
+	});
+	
+	   $(".subList").mouseleave(function(){
+	   		if($(this).attr('class').match('first')){
+	   			$(".first").removeClass('selected');
+	   			$(".first").css("visibility", "hidden");
+	   			$(".first").removeClass("line")
+		    		$("#first").children('a').css("color", "#000");
+		    		$("#first").removeClass('up')
+	   			
+	   		}else if($(this).attr('class').match('second')){
+	   			$(".second").removeClass('selected');
+	   			$(".second").css("visibility", "hidden");
+	   			$(".second").removeClass("line")
+	   			$("#second").children('a').css("color", "#000");
+		    		$("#second").removeClass('up')
+		    		
+	   		}else if($(this).attr('class').match('third')){
+	   			$(".third").removeClass('selected');
+	   			$(".third").css("visibility", "hidden");
+	   			$(".third").removeClass("line")
+	   			$("#third").children('a').css("color", "#000");
+		    		$("#third").removeClass('up')
+		    		
+	   		}else if($(this).attr('class').match('fourth')){
+	   			$(".fourth").removeClass('selected');
+	   			$(".fourth").css("visibility", "hidden");
+	   			$(".fourth").removeClass("line")
+	   			$("#fourth").children('a').css("color", "#000");
+		    		$("#fourth").removeClass('up')
+	   		}
+	   })  
+	   
+	   $(".weaks").mouseover(function(){
+	   	$(this).css('color', "#2263bb");
+	   })
+	
+	   $(".weaks").mouseout(function(){
+	   	$(this).css('color', "#888");
+	   })
+	   
+	   $("a[class='strongs']").mouseover(function(){
+	   	$(this).css('color', "#2263bb");
+	   })
+	   
+	   $("a[class='strongs']").mouseout(function(){
+	   	$(this).css('color', "#000");
+	   })
+	   
+		$("a[class='strongs top']").mouseover(function(){
+	   	$(this).css('color', "#2263bb");
+	   })
+	   
+	   $("a[class='strongs top']").mouseout(function(){
+	   	$(this).css('color', "#000");
+	   })
+	  
+	    /* 네비게이션 바 JS끝 */
+	    
+	    const code = "ASDKLW123123";
+	   	 
+	     $("#otherBtn").click(function(){
+	   	 let otherinput = $("input[name='employeeId']").val();
+	    		 console.log(otherinput);
+	    	 if(otherinput != code){
+	    		 
+	    		 
+	    		 alert("올바른 의료진 번호를 입력하세요.")
+	    		 return false;
+	    	 }
+	    		 otherloginForm.submit();
+	     })
+	     
 
 </script>
 </html>

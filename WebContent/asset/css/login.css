@@ -403,7 +403,9 @@ p{
 	
 }
 .logBox {
-	height: 656px;
+	float: left;
+    width: 352px;
+    height: 656px;
     padding: 62px 93px 60px;
     border-top: 2px solid #2763ba;
     text-align: center;
@@ -425,25 +427,30 @@ input[type=id] {
 
 .inputText{
 	display: block;
-    width: 450px;
-    height: 12px;
-    margin-left: 23%;
-    padding: 20px;
-    line-height: 48px;
+    width: 318px;
+    height: 48px;
+    margin: 0 auto 10px;
+    padding-left: 20px;
     color: #000;
-    margin-bottom: 10px;
+    line-height: 48px;
     border: 1px solid #ccc;
 }
 .btnBig{
-	width: 490px;
 	border: 1px solid #2263bb;
     color: #fff;
     background-color: #2263bb;
 	height: 56px;
-    margin-top: 20px;
     font-size: 18px;
     letter-spacing: -1px;
     cursor: pointer;
+    display: block;
+    width: 350px;
+    margin: 17px auto 0;
+    padding: 0;
+}
+[class*=logBoxWrap] .logBox + .logBox {
+    margin-left: 21px;
+    border-top-color: #2ca48f;
 }
 
 button, input, select, textarea {
@@ -601,3 +608,24 @@ div.subList .weaks{
 }
 
 /* 네비게이션바 끝 */
+
+div.wrap {
+   background-color: #f3f3f3;
+   height: 950px;
+}
+
+.logBox + .logBox h3:before{
+	width: 34px;
+    height: 49px;
+    margin-bottom: 28px;
+    background-position: -305px 0;
+}
+
+#otherBtn{
+	background-color: #2ca48f;
+	    border: 1px solid #2ca48f;
+}
+
+#footer{
+	margin: 0!important;
+}
