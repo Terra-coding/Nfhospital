@@ -187,13 +187,13 @@
 								<div class="mainCol mainLoginWrap">
 										<ul class="mainTab feTab" data-pannel="1"
 											data-tab-group="feTab1Gr0">
-											<li class="current"><a href="login.jsp" role="tab"
-												aria-selected="true">로그인</a></li>
+											<li class="current"><a href="#" onclick="return false;" role="tab" aria-selected="true">로그인</a></li>
+											<li class="other"><a href="#" onclick="return false;" role="tab" aria-selected="false" style="color: #888888">의료진 로그인</a></li>
 										</ul>
 										<div id="login" class="feTabCont" role="tabpanel"
 											aria-hidden="false" data-tab-group="feTab1Gr0"
 											style="display: block;">
-											<form name="loginForm" id="loginForm" method="post" action="MemberLoginOk.me">
+											 <form name="loginForm" id="loginForm" method="post" action="MemberLoginOk.me">
 												<fieldset>
 													<input type="text" name="id" title="아이디/회원 번호"
 														placeholder="아이디/회원 번호"> <input type="password"
@@ -205,6 +205,13 @@
 															찾기</a>
 													</div>
 													<input type="button" class="btnType03" value="로그인">
+												</fieldset>
+											</form>
+											<form name="otherloginForm" id="otherloginForm" method="post" action="employee01.jsp" class="otherlogin">
+												<fieldset>
+													<input type="text" name="employeeId" title="의료진 번호"
+														placeholder="의료진 번호" value=""> 
+													<input type="button" id="otherBtn" value="의료진 로그인">
 												</fieldset>
 											</form>
 										</div>
@@ -597,5 +604,37 @@
 	   
 	     /* 네비게이션 바 jquery끝 */ 
 	    
+	     $(".other").click(function(){
+	    	 $(this).children("a").css("color", "#000");
+	    	 $(".current").children("a").css("color", "#888888");
+	    	 $("#otherloginForm").css("visibility", "visible");
+	    	 $("#login").css("visibility", "hidden");
+	    	 $(".mainLoginWrap").css("border", "1px solid #2ca48f");
+	     })
+	     
+	     $(".current").click(function(){
+	    	 $(this).children("a").css("color", "#000");
+	    	 $(".other").children("a").css("color", "#888888");
+	    	 $("#login").css("visibility", "visible");
+	    	 $("#otherloginForm").css("visibility", "hidden");
+	    	 $(".mainLoginWrap").css("border", "1px solid #2763ba");
+	     })
+	     
+	     
+	     const code = "ASDKLW123123";
+	   	 
+	     $("#otherBtn").click(function(){
+	   	 let otherinput = $("input[name='employeeId']").val();
+	    		 console.log(otherinput);
+	    	 if(otherinput != code){
+	    		 
+	    		 
+	    		 alert("올바른 의료진 번호를 입력하세요.")
+	    		 return false;
+	    	 }
+	    		 otherloginForm.submit();
+	     })
+	     
+	     
 </script>
 </html>

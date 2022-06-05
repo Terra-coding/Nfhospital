@@ -534,6 +534,16 @@ input[type=tel], input[type=text], input[type=email], input[type=number],
 	background-color: #2763ba;
 	color: white;
 }
+.mainLoginWrap #otherBtn {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 198px;
+	background-color: #2ca48f;
+	color: white;
+	height: 40px;
+	font-size: 16px;
+}
 
 a[class*=btnType] {
 	height: 38px;
@@ -547,6 +557,12 @@ a:link, a:visited, a:hover, a:active {
 	border: 1px solid #2263bb;
 	color: #fff;
 	background-color: #2263bb;
+}
+#otherBtn {
+	border: 1px solid #2ca48f;
+	color: #fff;
+	background-color: #2ca48f;
+	cursor: pointer;
 }
 
 [class*=btnType] {
@@ -1674,6 +1690,37 @@ p{
 
 fieldset{
 	    margin-top: 10px;
+}
+
+li.other{
+	float: left;
+    position: relative;
+    margin-left: 14px;
+    padding-left: 14px;
+}
+
+
+.mainTab li.other::before{
+	content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 1px;
+    height: 15px;
+    background-color: #ccc;
+}
+
+form.otherlogin fieldset input[type="text"]{
+	position: absolute;
+    top: 38px;
+}
+
+form.otherlogin fieldset #otherBtn{
+	    bottom: 25px;
+}
+
+form#otherloginForm{
+	visibility: hidden;
 }
 
 /* 네비게이션바 시작 */
