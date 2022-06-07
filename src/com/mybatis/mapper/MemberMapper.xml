@@ -50,4 +50,10 @@
    		where  id = #{id} and phoneNum = #{phoneNum} and name = #{name} and birth = #{birth}
    </select>
    
+   <!-- 회원정보 수정 -->
+   <update id="profileChange" parameterType="memberInfoVO">
+   		update tbl_member_info 
+   		set address = #{address}, email = #{email}, add_phone_num = #{addPhoneNum} 
+   		where id = #{id}
+   </update>
 </mapper>

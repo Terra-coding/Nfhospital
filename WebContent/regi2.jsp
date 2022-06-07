@@ -180,7 +180,6 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 			<input id="join_type" name="join_type" type="hidden" value="TG">
 			<input id="cert_type" name="cert_type" type="hidden" value="J">
 			<input id="pt_no" name="pt_no" type="hidden" value="17804457">
-			<input id="gender" name="gender" type="hidden" value="F"> 
 			<input type="hidden" id="mail" name="mail" value=""> 
 			<inputtype="hidden" id="dupKey" name="dupKey" value=""> 
 				<input type="hidden" id="birthday" name="birthday" value=""> 
