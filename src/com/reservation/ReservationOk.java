@@ -13,24 +13,26 @@ import com.reservation.domain.vo.ReservationVO;
 public class ReservationOk implements Action{
 	@Override
 	public ActionInfo execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		req.setCharacterEncoding("UTF-8");
 		ReservationVO reservationVO = new ReservationVO();
 		ReservationDAO reservationDAO = new ReservationDAO();
 		ActionInfo actionInfo = new ActionInfo();
 		
-		reservationVO.setDoctor(req.getParameter("reservationDoctor"));
-		reservationVO.setId(req.getParameter("reservationId"));
-		reservationVO.setName(req.getParameter("reservationName"));
-		reservationVO.setMedicalDate(req.getParameter("reservation.MedicalDate"));
-		reservationVO.setPhoneNum(req.getParameter("reservation.PhoneNum"));
-		reservationVO.setMedicalDept(req.getParameter("reservation.MedicalDept"));
-		reservationVO.setScheduleDate(req.getParameter("reservation.ScheduleDate"));
+		reservationVO.setId(req.getParameter("id"));
+		reservationVO.setName(req.getParameter("name"));
+		reservationVO.setPhoneNum(req.getParameter("phoneNum"));
+		reservationVO.setMedicalDept(req.getParameter("medicalDept"));
+		reservationVO.setDoctor(req.getParameter("doctor"));
+		reservationVO.setScheduleDate(req.getParameter("scheduleDate"));
+		reservationVO.setMedicalDate(req.getParameter("medicalDate"));
 		
-		reservationDAO.add(reservationVO);		
+		reservationDAO.reservation(reservationVO);		
 		
-		req.setAttribute("reservationName", reservationVO.getName());
+		req.setAttribute("medicalDept", reservationVO.getMedicalDept());
+		
 		
 		actionInfo.setRedirect(false);
-		actionInfo.setPath("/");
+		actionInfo.setPath("/newreservation.jsp");
 		
 		return actionInfo;
 	}
