@@ -1909,11 +1909,11 @@
 			return false;
 		}
 		
-		/*    if(!check){
+	    if(!check){
 			alert("휴대폰번호 인증을 해주세요.")
 			submitCheck = false;
 			return false;
-		}   */
+		}   
 		
 		if(!$("#ptnm").val()){
 			alert("이름을 입력해주세요.")
