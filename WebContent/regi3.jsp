@@ -1160,9 +1160,9 @@ div.subList .weaks{
      	<div id="wrap">
      	<header id="header">
             <div class="innerwrap">
-                <h1><a href="mainpage.jsp">서울 병원</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/MainPage.me">서울 병원</a></h1>
                 <div class="topLeftWrap">
-                    <a href="mainpage.jsp">
+                    <a href="${pageContext.request.contextPath}/MainPage.me">
 	                	<img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
                     </a>
                 </div>
@@ -1306,7 +1306,7 @@ div.subList .weaks{
                 <p>가입완료되었습니다 <span style="color: #2763ba"><%=request.getParameter("name")%></span>님 환영합니다!</p>
             </div>
             <div class="btnWrap02 alignC" style="padding-left: 497px; position: absolute;">
-                <a href="mainpage.jsp" id="confirmBtn" role="button" class="btnType03">확인</a>
+                <a href="${pageContext.request.contextPath}/MainPage.me" id="confirmBtn" role="button" class="btnType03">확인</a>
             </div>
             
        

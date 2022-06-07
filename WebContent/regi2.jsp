@@ -36,9 +36,9 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	
 	<header id="header">
             <div class="innerwrap">
-                <h1><a href="mainpage.jsp">서울 병원</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/MainPage.me">서울 병원</a></h1>
                 <div class="topLeftWrap">
-                    <a href="mainpage.jsp">
+                    <a href="${pageContext.request.contextPath}/MainPage.me">
 	                	<img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
                     </a>
                 </div>

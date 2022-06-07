@@ -55,5 +55,13 @@
    		update tbl_member_info 
    		set address = #{address}, email = #{email}, add_phone_num = #{addPhoneNum} 
    		where id = #{id}
-   </update>
+   	</update>
+   		
+   	<!-- 비밀번호 변경 -->
+   	<update id="passwordChange" parameterType="map">
+   		update tbl_member_info
+   		set password = #{newpassword}
+   		where password = #{password} and id = #{id}
+   	</update>
+   	
 </mapper>

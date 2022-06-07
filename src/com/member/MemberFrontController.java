@@ -59,15 +59,46 @@ public class MemberFrontController extends HttpServlet {
 			actionInfo = new MemberLogin().execute(req, resp);
 		
 		}else if(command.equals("ProfileChangeOk.me")) {
-			System.out.println("들어옴");
 			actionInfo = new ProfileChangeOk().execute(req, resp);
 		
+		}else if(command.equals("PasswordChangeOk.me")) {
+			actionInfo = new PasswordChangeOk().execute(req, resp);
+		
+		}else if(command.equals("Regi1.me")) { //regi1.jsp
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(false);
+			actionInfo.setPath("/regi1.jsp");
+			
+		}else if(command.equals("Regi2.me")) { //regi2.jsp
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(false);
+			actionInfo.setPath("/regi2.jsp");
+			
+		}else if(command.equals("Regi3.me")) { //regi3.jsp
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(false);
+			actionInfo.setPath("/regi3.jsp");
+			
+		}else if(command.equals("FindId.me")) { //findid.jsp
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(false);
+			actionInfo.setPath("/findid.jsp");
+			
+		}else if(command.equals("FindPw.me")) { //findpw.jsp
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(false);
+			actionInfo.setPath("/findpw.jsp");
+			
+		}else if(command.equals("MainPage.me")) { //mainpage.jsp
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(false);
+			actionInfo.setPath("/mainpage.jsp");
+			
 		}else {
 			// 404 일 때 출력할 에러 페이지 경로 작성
 
 		}
 
-		
 		
 		
 		if(actionInfo != null) {

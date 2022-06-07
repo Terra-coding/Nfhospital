@@ -20,9 +20,9 @@
 	<div id="wrap">
 		<header id="header" class="" style="position: fixed; top: 0px;">
             <div class="innerwrap">
-                 <h1><a href="mainpage.jsp">서울 병원</a></h1>
+                 <h1><a href="${pageContext.request.contextPath}/MainPage.me">서울 병원</a></h1>
                 <div class="topLeftWrap">
-                    <a href="mainpage.jsp">
+                    <a href="${pageContext.request.contextPath}/MainPage.me">
 	                	<img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
                     </a>
                 </div>
@@ -37,7 +37,7 @@
 					<c:if test="${not empty name}">
 						<li><a href="${pageContext.request.contextPath}/LogOutOk.me" style="color: #000;">로그아웃</a></li>
 					</c:if>
-						<li><a>마이페이지</a></li>
+						<li><a href="">마이페이지</a></li>
 						<li><a>Language</a></li>
 					</ul>
 				</div>
@@ -200,8 +200,8 @@
 														name="password" title="비밀번호" placeholder="비밀번호"
 														onkeydown="check();">
 													<div class="user">
-														<a href="regi1.jsp" style="font-size: 14px; color: inherit;">회원가입</a> <a
-															href="findid.jsp" style="font-size: 14px; color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아이디/비밀번호
+														<a href="${pageContext.request.contextPath}/Regi1.me" style="font-size: 14px; color: inherit;">회원가입</a> <a
+															href="${pageContext.request.contextPath}/FindId.me" style="font-size: 14px; color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아이디/비밀번호
 															찾기</a>
 													</div>
 													<input type="button" class="btnType03" value="로그인">

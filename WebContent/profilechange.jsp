@@ -28,9 +28,9 @@
         <a href="#content" class="skipToContent">본문으로 바로가기</a>
         <header id="header">
             <div class="innerwrap">
-                <h1><a href="mainpage.jsp">서울병원</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/MainPage.me">서울병원</a></h1>
                 <div class="topLeftWrap">
-                     <a href="mainpage.jsp">
+                     <a href="${pageContext.request.contextPath}/MainPage.me">
                         <img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
                     </a> 
                 </div>
@@ -105,7 +105,7 @@
                 <!-- breadcrumb -->
                 <div class="breadcrumb">
                     <strong class="hideEl">현재 위치: </strong>
-                    <a href="mainpage.jsp" class="bcHomeBtn hideTxt">HOME</a>
+                    <a href="${pageContext.request.contextPath}/MainPage.me" class="bcHomeBtn hideTxt">HOME</a>
                     <span class="hideEl">&gt;</span>
                     
                     <div class="">
