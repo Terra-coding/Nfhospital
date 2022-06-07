@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 가입</title>
 <link rel="stylesheet" href="asset/css/regi1.css">
 <link rel="stylesheet" href="asset/css/KDHfooter.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1848,7 +1848,7 @@
 		if(telValidator(phoneNum)){
 			alert("※ 인증번호를 전송했습니다. 3분 안에 입력해주세요.")
 				$.ajax({
-					url: "/Nfhospital/CheckCodeOk.me",
+					url: "/NfHospital/CheckCodeOk.me",
 					type: "get",
 					data: {phoneNum: phoneNums},
 					contentType: "application/json; charset=utf-8",
@@ -1909,11 +1909,11 @@
 			return false;
 		}
 		
-		/*    if(!check){
+		    if(!check){
 			alert("휴대폰번호 인증을 해주세요.")
 			submitCheck = false;
 			return false;
-		}   */
+		}   
 		
 		if(!$("#ptnm").val()){
 			alert("이름을 입력해주세요.")
@@ -1957,17 +1957,7 @@
 				return;
 			}
 			
-			if(!idNumCheck.test($(this).closest('form').find('[id=citizen1]').val())) {
-				alert("주민등록번호 앞자리는 숫자를 입력해주세요");
-				$(this).closest('form').find('[id=citizen1]').focus();
-				return;
-			}
 			
-			if(!idNumCheck.test($(this).closest('form').find('[id=citizen2]').val())) {
-				alert("주민등록번호 뒷자리는 숫자를 입력해주세요");
-				$(this).closest('form').find('[id=citizen2]').focus();
-				return;
-			}
 			
 		hForm.submit();
 		

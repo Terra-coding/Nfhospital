@@ -1,6 +1,7 @@
 package com.write.domain.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -17,28 +18,51 @@ public class WriteDAO {
 		sqlSession = sqlSessionFactory.openSession(true);
 	}
 	
+	//감사합니다 게시글 전체 목록
+	public List<ThankyouWriteVO> thankyouWriteList(Map<String, Integer> writeMap) {
+		return sqlSession.selectList("ThankyouWrite.thankyouWriteList", writeMap);
+	}
+	
+	//감사합니다 게시글 상세보기
+	public ThankyouWriteVO thankyouWriteSelect(int writeNum) {
+		return sqlSession.selectOne("ThankyouWrite.thankyouWriteSelect", writeNum);
+	}
+		
+	//게시글 전체 개수
+	public int getTotal() {
+		return sqlSession.selectOne("ThankyouWrite.getTotal");
+	}
+	
+	//최근 게시글 번호
+	public int getSeq() {
+		return sqlSession.selectOne("ThankyouWrite.getSeq");
+	}
+	
 	//내가 작성한 글 목록
-	public List<ThankyouWriteVO> writeList(){
-		return sqlSession.selectList("Write.writeList");				
+	public List<ThankyouWriteVO> myWriteList(Map<String, Integer> writeMap){
+		return sqlSession.selectList("ThankyouWrite.myWriteList");				
+	}
+		
+	//내가 작성한 게시글 상세보기
+	public ThankyouWriteVO myThankyouWriteSelect(int writeNum){
+		return sqlSession.selectOne("ThankyouWrite.myThankyouWriteSelect", writeNum);				
+	}
+		
+	//감사합니다 글 작성
+	public void ThankyouInsert(ThankyouWriteVO thankyouWrite) {
+		sqlSession.insert("ThankyouWrite.ThankyouInsert", thankyouWrite);
 	}
 	
-	//내가 작성한 글 선택 출력
-	public ThankyouWriteVO writeChoose(){
-		return sqlSession.selectOne("Write.writeChoose");				
+	//감사합니다 글 수정
+	public void ThankyouUpdate(ThankyouWriteVO thankyouWrite) {
+		sqlSession.update("ThankyouWrite.ThankyouUpdate", thankyouWrite);
+	}
+		
+	//감사합니다 글 삭제
+	public void ThankyouDelete(int writeNum) {
+		sqlSession.delete("ThankyouWrite.ThankyouDelete", writeNum);
 	}
 	
-	//글 작성
-	public void write(ThankyouWriteVO thankyouWriteVO) {
-		sqlSession.insert("ThankyouWrite.write", thankyouWriteVO);
-	}
 	
-	//글 수정
-	public void writeUpdate(ThankyouWriteVO thankyouWriteVO) {
-		sqlSession.update("ThankyouWrite.writeUpdate", thankyouWriteVO);
-	}
 	
-	//글 삭제
-	public void writeDelete(ThankyouWriteVO thankyouWriteVO) {
-		sqlSession.delete("ThankyouWrite.writeDelete", thankyouWriteVO);
-	}
 }

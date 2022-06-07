@@ -6,8 +6,6 @@ public class SuggestionsWriteVO {
 	private String content;
 	private String id;
 	private String time;
-	private String name;
-	private String phoneNum;
 	
 	public SuggestionsWriteVO() {;}
 	
@@ -60,25 +58,5 @@ public class SuggestionsWriteVO {
 		this.time = time;
 	}
 
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-	public String getPhoneNum() {
-		return phoneNum;
-	}
-
-
-	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
-	}
-	
 	
 }

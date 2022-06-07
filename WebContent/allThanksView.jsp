@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>감사합니다 | 서울대학교병원</title>
+    <title>감사합니다 | 서울병원</title>
     <link rel="stylesheet" href="asset/css/allThanksView.css">
     <link rel="stylesheet" href="asset/css/KDHfooter.css">
     <link rel="stylesheet" href="asset/css/aside.css">
@@ -15,6 +15,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
 <body>
+	<c:set var="thankyouList" value="${thankyouList}"/>
+	<c:set var="page" value="${page}"/>
+	<c:set var="startPage" value="${startPage}"/>
+	<c:set var="endPage" value="${endPage}"/>
+	<c:set var="realEndPage" value="${realEndPage}"/>
+	<c:set var="total" value="${total}"/>
+
     <div id="wrap">
         <header id="header">
             <div class="innerwrap">
@@ -31,9 +38,12 @@
                         </li>
                     </ul>
                     <ul class="topMenu">
-                        <li>
-                            <a href="mainpage.jsp">로그아웃</a>
-                        </li>
+                       <c:if test="${empty name}">
+		               <li><a href="${pageContext.request.contextPath}/MemberLogin.me" style="color: #000;">로그인</a></li>
+		               </c:if>
+		               <c:if test="${not empty name}">
+		               <li><a href="${pageContext.request.contextPath}/LogOutOk.me" style="color: #000;">로그아웃</a></li>
+		               </c:if>
                         <li>
                             <a href="mypage.jsp">마이페이지</a>
                         </li>
@@ -53,9 +63,6 @@
                         </li>
                         <li>
                             <a>이용안내</a>
-                        </li>
-                        <li>
-                            <a>건강정보</a>
                         </li>
                         <li>
                             <a>고객참여</a>
