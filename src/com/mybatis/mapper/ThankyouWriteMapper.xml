@@ -1,38 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="ThankyouWrite">
 
 	<!-- 감사합니다 게시글 전체 목록 -->
-	<select id="thankyouWriteList" resultType="thankyouWriteVO">		
+	<select id="thankyouWriteList" parameterType="map" resultType="thankyouWriteVO">		
 		select write_num, title, content, id, time
-		from thank_you_write order by write_num desc						
+		from TBL_thank_you_write t join TBL_member_info m 
+		on t.id = m.id
+		order by 1 desc limit #{startRow}, #{rowCount}						
 	</select>
 	
-	<!-- 감사합니다 게시글 선택 출력 -->
-	<select id="thankyouWriteChoose" resultType="thankyouWriteVO">		
-		select title, content, id, time
-		from thank_you_write		
+	<!-- 감사합니다 게시글 상세보기 -->
+	<select id="thankyouWriteSelect" parameterType="_int" resultType="thankyouWriteVO">		
+		select write_num, title, content, t.id, time
+		from TBL_thank_you_write t join TBL_member_info m 	
+		on t.id = m.id and write_num = #{writeNum}	
 	</select>
 	
+	<!-- 감사합니다 게시글 전체 개수  -->
+	<select id="getTotal" resultType="_int">
+		select count(write_number) from TBL_thank_you_write
+	</select>
+		
+	<!-- 최근 게시글 번호 -->
+	<select id="getSeq" resultType="_int">
+		select write_number from TBL_thank_you_write
+		order by 1 desc limit 0, 1
+	</select>
+	
+	<!-- 내가 작성한 게시글 목록 -->
+	<select id="myWriteList" parameterType="map" resultType="thankyouWriteVO">		
+		select write_num, title, content, id, time
+		from TBL_thank_you_write t join TBL_member_info m 
+		on t.id = m.id
+		order by 1 desc limit #{startRow}, #{rowCount}						
+	</select>
+	
+	<!-- 내가 작성한 게시글 상세보기 -->
+	<select id="myThankyouWriteSelect" parameterType="_int" resultType="thankyouWriteVO">		
+		select write_num, title, content, t.id, time
+		from TBL_thank_you_write t join TBL_member_info m 	
+		on t.id = m.id and write_num = #{writeNum}	
+	</select>
+		
 	<!--감사합니다 글 작성 -->
-   <insert id="thankyouWrite" parameterType="thankyouWriteVO">
-      insert into tbl_thank_you_write
-      (title, content, id, `time`, name, phone_num)
-      values(#{title}, #{content}, #{id}, #{time}, #{name}, #{phoneNum})
+   <insert id="ThankyouInsert" parameterType="thankyouWriteVO">
+      insert into TBL_thank_you_write
+      (title, content, id, `time`)
+      values(#{title}, #{content}, #{id}, now())
    </insert>
    
    <!--감사합니다 글 수정 -->
-   <update id="thankyouWriteUpdate" parameterType="thankyouWriteVO">
-      update tbl_write
-      set title = #{title}, content = #{content}, time = now()}
-      where id = #{id}
+   <update id="ThankyouUpdate" parameterType="thankyouWriteVO">
+      update TBL_thank_you_write
+      set title = #{title}, content = #{content}
+      where write_num = #{write_num}
    </update>
    
    <!--감사합니다 글 삭제 -->
-   <delete id="thankyouWriteDelete" parameterType="thankyouWriteVO">
-      delete from tbl_write
-      where where id = #{id}
+   <delete id="ThankyouDelete" parameterType="_int">
+      delete from TBL_thank_you_write
+      where write_num = #{write_num}
    </delete>
    
-</mapper>
+  </mapper>

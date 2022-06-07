@@ -20,8 +20,8 @@ public class ReservationCheckOk implements Action{
 	      ReservationDAO reservationDAO = new ReservationDAO();
 	      JSONObject resultJSON = new JSONObject(); 
 	      
-	      String reservationId = req.getParameter("reservationId");
-	      resultJSON.put("check", reservationDAO.checkID(reservationId));
+	      /*String reservationId = req.getParameter("reservationId");
+	      resultJSON.put("check", reservationDAO.checkID(reservationId));*/
 		
 	      out.print(resultJSON.toJSONString());
 	      out.close();

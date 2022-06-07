@@ -2,22 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Reservation">
    <!-- 예약하기 -->
-   <insert id="add" parameterType="reservationVO">
-      insert into reservation
-      (id, name, phoneNum, medicalDept, doctor, scheduleDate, medicalDate)
-      values(#{id}, #{name}, #{phoneNum}, #{medicalDept}, #{doctor}, #{scheduleDate}, #{medicalDate})
+   <insert id="reservation" parameterType="reservationVO">
+      insert into tbl_reservation
+      (name, medical_dept, doctor, schedule_date)
+      values( #{name}, #{medicalDept}, #{doctor}, #{scheduleDate})
    </insert>
+   <!-- <select id="reservation" parameterType="map" reseultType="">
+      select name, medical_dept, doctor, schedule_date
+      from tbl_reservation r join tbl_member_info m
+      on r.name = m.name
+   </select> -->
    
    <!-- 예약조회 -->
-   <select id="view" parameterType="reservationVO">
-      select name, phoneNum, medicalDept, doctor, scheduleDate, medicalDate
-      from reservation 
-      where id = #{id}
+   <select id="selectreservations" parameterType="reservationVO">
+      select r.name, medical_dept, doctor, schedule_date
+      from tbl_reservation r join tbl_member_info m
+      on r.name = m.name
    </select>
    
    <!-- 예약삭제 -->
-   <delete id="del" parameterType="reservationVO">
-   	delete from reservation
-   	where id = #{id} 
+   <delete id="reservationDelete" parameterType="_int">
+	   	delete from tbl_reservation where reservation_num = #{reservationNum}
    </delete>
+   
+   <!-- 예약수정 -->
+   <update id="reservationUpdate" parameterType="reservationVO">
+   		update tbl_reservation
+      	set medicalDept = #{medicalDept}, doctor = #{doctor},  scheduleDate = #{scheduleDate}}
+      	where reservation_num = #{reservationNum}
+   </update>
 </mapper>
