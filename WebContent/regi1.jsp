@@ -1857,10 +1857,7 @@
 						passCode = result.code; 					
 					},
 					error: function(request, status, error){
-						console.log("실패..");
-						console.log(request);
-						console.log(status);
-						console.log(error);
+						console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					}
 				});
 			check = true;
