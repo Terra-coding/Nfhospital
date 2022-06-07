@@ -40,6 +40,7 @@ public class MemberFrontController extends HttpServlet {
       } else if (command.equals("CheckIdOk.me")) { //아이디 중복 체크
          new CheckIdOk().execute(req, resp);
 
+<<<<<<< HEAD
       } else if(command.equals("MemberLoginOk.me")) { //로그인
          actionInfo = new MemberLoginOk().execute(req, resp);
          
@@ -64,6 +65,32 @@ public class MemberFrontController extends HttpServlet {
       
       }else {
          // 404 일 때 출력할 에러 페이지 경로 작성
+=======
+		} else if(command.equals("MemberLoginOk.me")) { //로그인
+			actionInfo = new MemberLoginOk().execute(req, resp);
+			
+		} else if(command.equals("CheckCodeOk.me")) {// 휴대폰 인증
+			new CheckCodeOk().execute(req, resp);
+		
+		} else if(command.equals("FindIdOk.me")) {
+			new FindIdOk().execute(req, resp);
+		
+		} else if(command.equals("FindPwOk.me")){
+			new FindPwOk().execute(req, resp);
+	
+		} else if(command.equals("LogOutOk.me")) {
+			actionInfo = new LogOutOk().execute(req, resp);
+		
+		} else if(command.equals("MemberLogin.me")) {
+			actionInfo = new MemberLogin().execute(req, resp);
+		
+		}else if(command.equals("ProfileChangeOk.me")) {
+			System.out.println("들어옴");
+			actionInfo = new ProfileChangeOk().execute(req, resp);
+		
+		}else {
+			// 404 일 때 출력할 에러 페이지 경로 작성
+>>>>>>> 014644f8742253f3b3f8d4242319bc913198e40c
 
       }
 

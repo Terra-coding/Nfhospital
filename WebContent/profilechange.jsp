@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +16,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="asset/css/profilechange.css">
     <link rel="stylesheet" href="asset/css/KDHfooter.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+	crossorigin="anonymous"></script>
     <title>회원정보수정</title>
 </head>
 <body>
@@ -34,9 +41,7 @@
                         </li>
                     </ul>
                     <ul class="topMenu">
-                        <li>
-                            <a>로그아웃</a>
-                        </li>
+                        <li><a href="${pageContext.request.contextPath}/LogOutOk.me" style="color: #000;">로그아웃</a></li>
                         <li>
                             <a href="mainpage.html">마이페이지</a>
                         </li>
@@ -49,20 +54,47 @@
 
                     <button class="totMenuBtn hideTxt" type="button" aria-controls="totMenu">전체 메뉴 열기</button>
                     <ul class="gnbList clearFix">
-                        <li>
-                            <a href="medicalInfo.jsp">진료안내</a>
+                        <li id="first" class="set">
+                            <a>진료안내</a>
+	                        <div class="subList first" id="information1">
+	                            <div class="strongs top">진료안내</div>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalInfo.jsp">진료예약</a>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalProcess.jsp">외래진료프로세스</a>
+	                            <c:if test="${empty name}">
+	                            <a class="strongs" href="${pageContext.request.contextPath}/MemberLogin.me">인터넷 진료예약</a>
+	                            </c:if>
+	                            <c:if test="${not empty name}">
+	                            <a class="strongs" href="${pageContext.request.contextPath}/reservation.jsp">인터넷 진료예약</a>
+	                            </c:if>
+	                            <div class="strongs">예약확인/취소</div>
+	                             <c:if test="${empty name}">
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/MemberLogin.me">진료예약확인</a>
+	                            </c:if>
+	                            <c:if test="${not empty name}">
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/newreservation.jsp">진료예약확인</a>
+	                       		</c:if>
+	                        </div>
                         </li>
-                        <li>
-                            <a href="allFAQ.jsp">이용안내</a>
+                        <li id="second" class="set">
+                            <a>이용안내</a>
+                            <div class="subList more second" id="information2">
+                            <a class="strongs top" href="${pageContext.request.contextPath}/allFAQ.jsp">FAQ(통합)</a>
+                        </div>
                         </li>
-                        <li>
-                            <a href="">건강정보</a>
+                        <li id="third" class="set">
+                            <a>고객참여</a>
+                            <div class="subList more third" id="information3">
+                             <div class="strongs top">고객의 소리</div>
+                             <a class="weaks pack" href="${pageContext.request.contextPath}/clientSound.jsp">고객의 소리 등록</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/clientConsultation.jsp">고객상담실 업무안내</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/allThanksView.jsp">감사이야기</a>
+                        </div>
                         </li>
-                        <li>
-                            <a href="clientSound.jsp">고객참여</a>
-                        </li>
-                        <li>
-                            <a href="intro.jsp">병원소개</a>
+                        <li id="fourth" class="set">
+                            <a>병원소개</a>
+                            <div class="subList more fourth" id="information4">
+                            <a class="strongs top" href="${pageContext.request.contextPath}/intro.jsp">병원개요</a>
+                        </div> 
                         </li>
                     </ul>
                 </nav>
@@ -96,8 +128,8 @@
                         <ul class="bcLinkLayer" role="region" aria-hidden="true" aria-expanded="false" style="display: none;" tabindex="0">
 					
                             <li><a href="mypage.jsp">마이페이지</a></li>
-                            <li><a href="allFAQ.jsp">예약확인/취소</a></li>
-                            <li><a href="clientSound.jsp">개인정보수정</a></li>
+                            <li><a href="newreservation.jsp">예약확인/취소</a></li>
+                            <li><a href="profilechange.jsp">개인정보수정</a></li>
                             <li><a href="intro.jsp">회원탈퇴</a></li>
                             
                         </ul>
@@ -132,8 +164,8 @@
                         </li>
                     </ul>
                 </div>
-                <form id="memberInfo" name="form" action="/mypage/info/change/changInfo.do" method="post">
-                    <input id="id" name="id" type="hidden" value="ghdwhd0302">
+                <form id="memberInfochange" name="memberInfochange" action="${pageContext.request.contextPath}/ProfileChangeOk.me" method="post">
+                    <input id="id" name="id" type="hidden" value="${sessionScope.list.getId()}">
                     <fieldset style="padding-top: 65px; border: 0 solid black;">
                         <legend>개인정보</legend>
                         <div class="boardTypeForm">
@@ -146,16 +178,16 @@
                                 <tbody>
                                     <tr>
                                         <th scope="row">이름</th>
-                                        <td>이순신</td>
+                                        <td><c:out value="${sessionScope.list.getName()}"/></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">아이디</th>
-                                        <td>ghdwhd0302</td>
+                                        <td><c:out value="${sessionScope.list.getId()}"/></td>
                                     </tr>
-                                    <tr>
+                                  <!--   <tr>
                                         <th scope="row">환자번호</th>
                                         <td>00000000</td>
-                                    </tr>
+                                    </tr> -->
                                     <tr>
                                         <th scope="row">회원유형</th>
                                         <td>진료회원</td>
@@ -165,16 +197,16 @@
                                             <span class="required">*</span>
                                             이메일
                                         </th>
-                                        <input id="email" name="email" type="hidden" value="ghdwhd0302@naver.com">
                                         <td>
-                                            <input type="text" name="email1" id="email1" value="ghdwhd0302" class="inputText" title="이메일아이디">
+                                            <input type="text" name="email1" id="email1" value="" class="inputText" title="이메일아이디">
                                             <span class="txtWrap">@</span>
-                                            <input type="text" name="email1" id="email2" value="naver.com" class="inputText" title="도메인주소">
+                                            <input type="text" name="email2" id="email2" value="" class="inputText" title="도메인주소">
                                             <label class="feForm feFoSelect emailSelect" for="feFoSelectIdx1">
-                                                <span>직접입력</span>
+                                                <span id="emaildomain">직접입력</span>
                                                 <span style="left: 133px; top: -1px; position: absolute;">
                                                     <img src="https://www.snubh.org/front/images/member/img_select.gif">
                                                 </span>
+		                                        <input id="email" name="email" type="hidden" value="">
                                                 <select class="selectTypeE" title="이메일 도메인" id="feFoSelectIdx1" data-fe-idx="feFoSelectIdx1" style="opacity: 0;">
                                                     <option value="default">직접입력</option>
                                                     <option value="hanmail.net">hanmail.net</option>
@@ -190,12 +222,9 @@
                                             주소
                                         </th>
                                         <td>
-                                            <input id="zipcode" name="zipcode" title="우편번호" onclick="addrSearch();" class="inputText" readonly="readonly" type="text" value="00000">
-                                            <button type="button" class="btnType01" onclick="addrSearch();">주소찾기</button>
+                                            <input id="sample6_address" name="address" title="기본주소" class="inputAddress"  type="text" value="${sessionScope.list.getAddress()}">
+                                            <button type="button" class="btnType01" id="findaddress" onclick="">주소찾기</button>
                                             <br>
-                                            <input id="addr1" name="addr1" title="기본주소" class="inputAddress" readonly="readonly" type="text" value="경기도 OO시 OO로OO번길 OOO">
-                                            <br>
-                                            <input id="addr2" name="addr2" title="상세주소" class="inputAddress" readonly="readonly" type="text" value="OOOOOOO">
                                         </td>
                                     </tr>
                                     <tr>
@@ -206,33 +235,18 @@
                                         <td>
                                             <div class="innerRow">
                                                 <em style="font-style: normal;">휴대전화</em>
-                                                <input id="hp_no" name="hp_no" type="hidden" value="010-0000-0000">
-                                                <label class="feForm feFoSelect selectSmall" for="hp1">
-                                                    <span>010</span>
-                                                    <span style="left: 77px; top: -1px; position: absolute;">
-                                                        <img src="https://www.snubh.org/front/images/member/img_select.gif">
-                                                    </span>
-                                                    <select name="hp1" id="hp1" title="휴대전화 첫번째 자리" style="opacity: 0;" class data-fe-idx="feFoSelectIdx2">
-                                                        <img src="file/icon/downicon.png">
-                                                        <option value>선택</option>
-                                                        <option value="010">010</option>
-                                                        <option value="011">011</option>
-                                                    </select>
-                                                </label>
-                                                <span class="txtWrap">-</span>
-                                                <input type="tel" id="hp2" name="hp2" class="inputTextSamll" title="휴대전화 두번째 자리" value="0000" maxlength="4" required>
-                                                <span class="txtWrap">-</span>
-                                                <input type="tel" id="hp3" name="hp3" class="inputTextSamll" title="휴대전화 세번째 자리" value="0000" maxlength="4" required>
+                                                <span>${sessionScope.list.getPhoneNum()}</span>
                                             </div>
                                             <div class="innerRow" style="margin-top: 10px; margin-bottom: 10px;">
                                                 <em style="font-style: normal;">추가연락처</em>
-                                                <input id="tel_no" name="tel_no" type="hidden" value>
+                                                <input id="tel_no" name="tel_no" type="hidden" value="${sessionScope.list.getAddPhoneNum()}">
                                                 <label class="feForm feFoSelect selectSamll" for="tell">
-                                                    <span>선택</span>
+                                                    <span id="te1span">선택</span>
                                                     <span style="left: 77px; top: -1px; position: absolute;">
                                                         <img src="https://www.snubh.org/front/images/member/img_select.gif">
                                                     </span>
-                                                    <select name="tel1" id="tel1" title="추가연락처 첫번째 자리" style="opacity: 0;" class data-fe-idx="feFoSelectIdx3">
+                                                    <input id="tel1input" name="addphone1" type="hidden" value="">
+                                                    <select id="tel1" title="추가연락처 첫번째 자리" style="opacity: 0;" class data-fe-idx="feFoSelectIdx3">
                                                         <option value>선택</option>
                                                         <option value="02">02</option>
                                                         <option value="031">031</option>
@@ -240,41 +254,23 @@
                                                     </select>
                                                 </label>
                                                 <span class="txtWrap">-</span>
-                                                <input type="tel" id="tel2" name="tel2" class="inputTextSamll"title="추가연락처 두번째 자리" maxlength="4" >
+                                                <input type="tel" id="tel2" name="addphone2" class="inputTextSamll"title="추가연락처 두번째 자리" maxlength="4" >
                                                 <span class="txtWrap">-</span>
-                                                <input type="tel" id="tel3" name="tel3" class="inputTextSamll" title="추가연락처 세번째 자리"maxlength="4">
+                                                <input type="tel" id="tel3" name="addphone3" class="inputTextSamll" title="추가연락처 세번째 자리"maxlength="4">
                                             </div>
                                         </td>
                                     </tr>
-                                    <!-- <tr>
-                                        <th scope="row" class="verTop colorpoint" style="font-size: 18px;">정보수신동의</th>
-                                        <td>
-                                            <div class="supOption">
-                                                <div>
-                                                    <label class="feForm feFoCheck" for="mail_yn1">
-                                                        <input id="mail_yn1" name="mail_yn" title="건강소식 이메일 수신" type="checkbox" value="Y" data-fe-idx="feFoCheckIdx2" style="opacity:0;">
-                                                    </label>
-                                                    <input type="hidden" name="_mail_yn" value="on">
-                                                    <label for="mail_yn1">건강소식 이메일 수신</label>
-                                                </div>
-                                                <div>
-                                                    <label class="feForm feFoCheck" for="sms_yn1">
-                                                        <input id="sms_yn1" name="sms_yn1" title="홈페이지 회원 SMS 정보수신" type="checkbox" value="Y" data-fe-idx="feFoCheckIdx3" style="opacity:0;">
-                                                    </label>
-                                                    <input type="hidden" name="sms_yn1" value="on">
-                                                    <label for="mail_yn1">홈페이지 회원 SMS 정보수신</label>
-                                                </div>
-                                                <p class="desc">예약 정보 및 중요 정보 안내의 경우는 동의 없이 메일과 문자가 발송됩니다.</p>
-                                            </div>
-                                        </td>
-                                    </tr> -->
                                     <tr>
                                         <th scope="row">생년월일</th>
-                                        <td>0000-00-00</td>
+                                        <td><c:out value="${sessionScope.list.getBirth()}"/></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">성별</th>
-                                        <td>여자</td>
+                                        <c:set var="gender" value="${sessionScope.list.getGender()}"/>
+                                        <td>
+                                        	<c:if test="${gender eq 'M'}">남자</c:if>
+                                        	<c:if test="${gender eq 'W'}">여자</c:if>
+                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">국적</th>
@@ -284,7 +280,7 @@
                             </table>
                         </div>
                         <div class="btnWrap" style="padding-bottom: 86px;">
-                            <a href="" id="confirmBtn" role="button" class="btnType03">저장</a>
+                            <a id="confirmBtn" role="button" class="btnType03">저장</a>
                         </div>
                     </fieldset>
                 </form>
@@ -353,4 +349,266 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="asset/js/allFAQ.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	let AddphoneNum = "${sessionScope.list.getAddPhoneNum()}";
+	let pn1 = AddphoneNum.substring(0, AddphoneNum.indexOf("-"));
+	let pn2 = AddphoneNum.substring(AddphoneNum.indexOf("-") + 1, AddphoneNum.lastIndexOf("-"));
+	let pn3 = AddphoneNum.substring(AddphoneNum.lastIndexOf("-") + 1);
+	
+	$("#te1span").text(pn1);
+	$("#tel1input").val(pn1);
+	$("#tel2").val(pn2);
+	$("#tel3").val(pn3);
+	
+	
+	console.log(AddphoneNum);
+	let Email = "${sessionScope.list.getEmail()}";
+	
+	let Email1 = Email.substring(0, Email.indexOf("@"));
+	let Email2 = Email.substring(Email.indexOf("@") + 1);
+	
+	$("#email1").val(Email1);
+	$("#email2").val(Email2);
+	
+	
+	$("#tel1").on('change', function(){
+		$(this).val($("#tel1 option:checked").text());
+		$("#tel1input").val($("#tel1 option:checked").text());
+		$("#te1span").text($("#tel1 option:checked").text());
+	})
+	
+	
+	$(".selectTypeE").on('change', function(){
+		$("#emaildomain").text($(".selectTypeE option:checked").text());
+		$("#email2").val($(".selectTypeE option:checked").text());
+			
+		
+	})
+	
+	$("#email2").on('keyup', function(){
+	 	if($("#emaildomain").text("")){
+			$("#emaildomain").text("직접입력");
+		}		
+	})
+	 
+	
+	function addressmake() {
+		let text =
+				$("#sample6_address").val() 
+
+		$("#add")
+				.html(
+						"<input type='text' id='address' name='address' value='"+text+"'>")
+	}
+	
+	window.onload = function(){
+	    document.getElementById("findaddress").addEventListener("click", function(){ //주소입력칸을 클릭하면
+	        //카카오 지도 발생
+	        new daum.Postcode({
+	            oncomplete: function(data) { //선택시 입력값 세팅
+	                document.getElementById("sample6_address").value = data.address; // 주소 넣기
+	            }
+	        }).open();
+	    });
+	}
+	
+	function addrSearch() {
+		var pop = window.open("./addrPopup.do", "pop","width=570,height=420, scrollbars=yes, resizable=yes");
+	}
+
+	new daum.Postcode({
+	    onclose: function(state) {
+	        //state는 우편번호 찾기 화면이 어떻게 닫혔는지에 대한 상태 변수 이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
+	        if(state === 'FORCE_CLOSE'){
+	            //사용자가 브라우저 닫기 버튼을 통해 팝업창을 닫았을 경우, 실행될 코드를 작성하는 부분입니다.
+
+	        } else if(state === 'COMPLETE_CLOSE'){
+	            //사용자가 검색결과를 선택하여 팝업창이 닫혔을 경우, 실행될 코드를 작성하는 부분입니다.
+	            //oncomplete 콜백 함수가 실행 완료된 후에 실행됩니다.
+	        }
+	    }
+	});
+
+	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn
+			, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo){
+		document.form.addr1.value = roadAddrPart1 + roadAddrPart2;
+		document.form.addr2.value = addrDetail;
+		document.form.zipcode.value = zipNo;
+		document.form.dorocode.value = rnMgtSn;
+		document.form.sanyn.value = mtYn;
+		document.form.mainjibun.value = lnbrMnnm;
+		document.form.subjibun.value = lnbrSlno;
+		document.form.buildingno.value = bdMgtSn;
+		document.form.admcd.value = admCd;
+	}
+	
+	
+	$("#confirmBtn").click(function(){
+		alert("회원정보가 변경되었습니다. 다시 로그인 해주세요.")
+		memberInfochange.submit();
+		
+	})
+	
+	 /* 네비게이션 바 jquery시작 */
+   
+     $(".set").on("mouseover", function(){
+    		$(this).addClass('up');
+    		$(this).children('a').css("color", "#2263bb");
+    		if($(this).attr('id').match('first')){
+    			$(".second").removeClass('selected');
+    			$(".second").css("visibility", "hidden");
+    			$("#second").children('a').css("color", "#000");
+	    		$("#second").removeClass('up')
+	    		$(".second").removeClass('line')
+	    		
+	    		$(".third").removeClass('selected');
+	    		$(".third").css("visibility", "hidden");
+	    		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+	    		$(".third").removeClass('line')
+		    	
+		    	$(".fourth").removeClass('selected');
+	    		$(".fourth").css("visibility", "hidden");
+	    		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+	    		$(".fourth").removeClass('line')
+    		
+		    	$(".first").addClass('selected');
+    			$(".first").css("visibility", "visible");
+    			$(".first").addClass('line');
+    			
+    		}else if($(this).attr('id').match('second')){
+    			$(".first").removeClass('selected');
+    			$(".first").css("visibility", "hidden");
+	    		$("#first").children('a').css("color", "#000");
+	    		$("#first").removeClass('up')
+	    		$(".first").removeClass('line')
+	    		
+	    		$(".third").removeClass('selected');
+	    		$(".third").css("visibility", "hidden");
+	    		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+		    	$(".third").removeClass('line')
+		    	
+		    	$(".fourth").removeClass('selected');
+	    		$(".fourth").css("visibility", "hidden");
+	    		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+		    	$(".fourth").removeClass('line')
+    			
+		    	$(".second").addClass('selected');
+    			$(".second").css("visibility", "visible");
+    			$(".second").addClass('line');
+    			
+    		}else if($(this).attr('id').match('third')){
+    			$(".first").removeClass('selected');
+    			$(".first").css("visibility", "hidden");
+	    		$("#first").children('a').css("color", "#000");
+	    		$("#first").removeClass('up')
+	    		$(".first").removeClass('line')
+    			
+	    		$(".second").removeClass('selected');
+	    		$(".second").css("visibility", "hidden");
+	    		$("#second").children('a').css("color", "#000");
+		    	$("#second").removeClass('up')
+		    	$(".second").removeClass('line')
+    			
+		    	$(".fourth").removeClass('selected');
+	    		$(".fourth").css("visibility", "hidden");
+	    		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+		    	$(".fourth").removeClass('line')
+    			
+		    	$(".third").addClass('selected');
+    			$(".third").css("visibility", "visible");
+    			$(".third").addClass('line');
+
+    		}else if($(this).attr('id').match('fourth')){
+    			$(".first").removeClass('selected');
+    			$(".first").css("visibility", "hidden");
+	    		$("#first").children('a').css("color", "#000");
+	    		$("#first").removeClass('up')
+	    		$(".first").removeClass('line')
+    			
+    			$(".second").removeClass('selected');
+	    		$(".second").css("visibility", "hidden");
+	    		$("#second").children('a').css("color", "#000");
+		    	$("#second").removeClass('up')
+		    	$(".second").removeClass('line')
+		    	
+		    	$(".third").removeClass('selected');
+	    		$(".third").css("visibility", "hidden");
+	    		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+		    	$(".third").removeClass('line')
+    			
+		    	$(".fourth").addClass('selected');
+    			$(".fourth").css("visibility", "visible");
+    			$(".fourth").addClass('line');
+
+    		}
+    		
+    		
+    });
+    
+	    $(".subList").mouseleave(function(){
+	    		if($(this).attr('class').match('first')){
+	    			$(".first").removeClass('selected');
+	    			$(".first").css("visibility", "hidden");
+	    			$(".first").removeClass("line")
+		    		$("#first").children('a').css("color", "#000");
+		    		$("#first").removeClass('up')
+	    			
+	    		}else if($(this).attr('class').match('second')){
+	    			$(".second").removeClass('selected');
+	    			$(".second").css("visibility", "hidden");
+	    			$(".second").removeClass("line")
+	    			$("#second").children('a').css("color", "#000");
+		    		$("#second").removeClass('up')
+		    		
+	    		}else if($(this).attr('class').match('third')){
+	    			$(".third").removeClass('selected');
+	    			$(".third").css("visibility", "hidden");
+	    			$(".third").removeClass("line")
+	    			$("#third").children('a').css("color", "#000");
+		    		$("#third").removeClass('up')
+		    		
+	    		}else if($(this).attr('class').match('fourth')){
+	    			$(".fourth").removeClass('selected');
+	    			$(".fourth").css("visibility", "hidden");
+	    			$(".fourth").removeClass("line")
+	    			$("#fourth").children('a').css("color", "#000");
+		    		$("#fourth").removeClass('up')
+	    		}
+	    })  
+	    
+	    $(".weaks").mouseover(function(){
+	    	$(this).css('color', "#2263bb");
+	    })
+
+	    $(".weaks").mouseout(function(){
+	    	$(this).css('color', "#888");
+	    })
+	    
+	    $("a[class='strongs']").mouseover(function(){
+	    	$(this).css('color', "#2263bb");
+	    })
+	    
+	    $("a[class='strongs']").mouseout(function(){
+	    	$(this).css('color', "#000");
+	    })
+	    
+		$("a[class='strongs top']").mouseover(function(){
+	    	$(this).css('color', "#2263bb");
+	    })
+	    
+	    $("a[class='strongs top']").mouseout(function(){
+	    	$(this).css('color', "#000");
+	    })
+	   
+	     /* 네비게이션 바 jquery끝 */ 
+	
+</script>
 </html>

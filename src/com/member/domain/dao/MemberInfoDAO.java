@@ -55,7 +55,10 @@ public class MemberInfoDAO {
 		return sqlSession.selectOne("Member.phoneNumFindPw", memberInfoMap);
 	}
 	
-	
+	//회원정보 수정
+	public void profileChange(MemberInfoVO memberInfoVO) {
+		sqlSession.insert("Member.profileChange" ,memberInfoVO);
+	}
 	
 	
 }
