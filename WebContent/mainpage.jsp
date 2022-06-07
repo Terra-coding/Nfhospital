@@ -9,881 +9,89 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-	rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
-	rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="asset/css/mainpage.css">
+<link rel="stylesheet" href="asset/css/KDHfooter.css">
 <title>인터넷 진료 예약</title>
-<style>
-* {
-	font-family: 'Noto Sans KR Regular', 'Noto Sans CJK KR', 'Noto Sans KR',
-		'맑은 고딕', sans-serif;
-}
-
-#wrap {
-	overflow: hidden;
-	position: relative;
-	min-width: 1120px;
-	background-color: #fff;
-}
-
-#header {
-	left: 0;
-	z-index: 105;
-	width: 100%;
-	height: 129px;
-	border-bottom: 1px solid #fff;
-	background-color: #fff;
-	position: fixed;
-	top: 0px;
-}
-
-#header:before, #header>.b {
-	content: '';
-	position: absolute;
-	top: 59px;
-	right: 0;
-	left: 0;
-	height: 1px;
-	background-color: #ebebeb;
-}
-
-#header h1 {
-	display: block;
-	position: relative;
-	top: 18px;
-	width: 239px;
-	height: 25px;
-	margin: auto;
-}
-
-.innerwrap {
-	padding: 0 10px;
-	position: relative;
-	width: 1100px;
-	margin: auto;
-}
-
-#header .topLeftWrap {
-	position: absolute;
-	top: 18px;
-	left: 9px;
-	z-index: 100;
-}
-
-#header .topLeftWrap a {
-	display: block;
-	position: relative;
-	width: 160px;
-	height: 25px;
-	margin: auto;
-}
-
-.topMenuWrap {
-	position: absolute;
-	top: 18px;
-	right: 9px;
-	z-index: 100;
-}
-
-.topMenuWrap ul, .topMenuWrap li {
-	float: left;
-	padding: 0;
-	margin: 0;
-}
-
-.utilMenu {
-	margin: 2px 20px 0 0;
-}
-
-.utilMenu a, .utilMenu label {
-	color: #000;
-	font-size: 14px;
-}
-
-.topMenuWrap li {
-	list-style: none;
-}
-
-.topMenu li {
-	margin-right: 13px;
-}
-
-#gnb {
-	position: relative;
-	width: 1100px;
-	margin: auto;
-}
-
-.gnbList {
-	height: 70px;
-	margin: 0 100px;
-	text-align: center;
-	top: 20px;
-	position: absolute;
-	left: 28px;
-}
-
-.gnbList>li {
-	display: inline-block;
-	margin: 10px 25px;
-	font-family: 'Noto Sans KR', sans-serif;
-	font-weight: 700;
-}
-
-.gnbList * {
-	text-align: left;
-}
-
-.gnbList>li>a {
-	display: inline-block;
-	padding: 10px;
-	font-size: 20px;
-	transition: .2s color;
-}
-
-.breadcrumb {
-	float: left;
-}
-
-.contUtilMenuWrap {
-	overflow: hidden;
-	position: relative;
-	z-index: 1;
-	width: 800px;
-	height: 30px;
-	margin: 264px auto 0;
-}
-
-#content {
-	min-height: 800px;
-	word-spacing: 0;
-	letter-spacing: -.5px;
-	/* width: 1090px; */
-	margin: auto;
-}
-
-#content.replaceUtilMenu {
-	margin-top: -48px;
-	padding-top: 0;
-}
-
-.contHeadingWrap {
-	overflow: hidden;
-	margin: -12px 0 9px;
-	top: 248px;
-}
-
-.contHeadingWrap>:first-child {
-	float: left;
-	font-size: 40px;
-	letter-spacing: -2px;
-}
-
-/* footer */
-#footer {
-	margin-top: 100px;
-	background-color: #31354e;
-	font-weight: 700;
-}
-
-.footerLink {
-	position: relative;
-	left: -18px;
-	height: 59px;
-	margin: auto;
-}
-
-.innerWrap {
-	padding: 0 10px;
-	position: relative;
-	width: 1100px;
-	margin: auto;
-}
-
-#footer .colorPoint04 {
-	color: #a4e1ff !important;
-}
-
-.footerLink a {
-	display: block;
-	padding: 18px 9px 9px 14px;
-	white-space: nowrap;
-	text-decoration: none;
-	color: #ccc;
-}
-
-.footerInfo {
-	padding: 64px 0 60px;
-	border-top: 1px solid #22263b;
-}
-
-.footerInfo address {
-	display: block;
-}
-
-.footerInfo address p {
-	float: left;
-}
-
-.footerInfo address p {
-	color: #999;
-	font-size: 14px;
-}
-
-.footerInfo address p+p {
-	margin: 0 0 0 15px;
-}
-
-.footerInfo address a {
-	color: #999;
-}
-
-.copyright {
-	margin-top: 6px;
-	letter-spacing: 0;
-}
-
-.copyright {
-	color: #999;
-	font-size: 14px;
-}
-
-.awardList {
-	position: absolute;
-	top: 4px;
-	right: 10px;
-}
-
-#footer li {
-	float: left;
-	list-style: none;
-}
-
-.awardList .item05 a {
-	width: 144px;
-	background-position: -124px -176px;
-}
-
-.awardList a {
-	display: block;
-	width: 133px;
-	height: 32px;
-}
-
-.awardList li+li {
-	margin-left: 30px;
-}
-
-.awardList .item04 a {
-	width: 129px;
-	background-position: -337px -160px;
-}
-
-.awardList a {
-	display: block;
-	height: 32px;
-}
-
-/* 중간 */
-.mainContent #content {
-	width: 100%;
-	margin-top: 140px;
-	padding: 0;
-}
-
-#content {
-	word-spacing: 0;
-	letter-spacing: -.5px;
-	min-height: 800px;
-	margin: auto;
-}
-
-.hideEl, .pagination [class*=Btn] span {
-	overflow: hidden;
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	border: none;
-	clip: rect(1px, 1px, 1px, 1px);
-}
-
-.bgColor00 {
-	background-color: #f3f3f3;
-	margin-top: 74px;
-}
-
-.mainVisualWrap {
-	position: relative;
-	min-height: 40px;
-}
-
-.mainVisual {
-	position: relative;
-	height: 410px;
-	padding-bottom: 50px;
-}
-
-.mainVisual .feSlNavi {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 1100px;
-	margin-left: -550px;
-}
-
-.mainVisual .feSlNavi .btnPrev {
-	left: 0;
-	background-position: 0 0;
-}
-
-.mainVisual .feSlNavi [class*=btn] {
-	overflow: hidden;
-	position: absolute;
-	top: 0;
-	width: 20px;
-	height: 39px;
-	margin-top: -20px;
-	color: transparent;
-	font-size: 1px;
-	background-image: url(/asset/img/main/spr_slideVisualBtn.png);
-	background-repeat: no-repeat;
-}
-
-.mainVisual button {
-	text-indent: 100%;
-	white-space: nowrap;
-	vertical-align: top;
-}
-
-.mainRow:first-child {
-	margin-top: 0;
-}
-
-.mainRow {
-	overflow: hidden;
-}
-
-[class*=mainCol]:first-child {
-	margin-left: 0;
-}
-
-.bgColor01 {
-	background-color: #008ace;
-}
-
-.mainCol01 {
-	width: 200px;
-}
-
-[class*=mainCol] {
-	float: left;
-	position: relative;
-	height: 205px;
-	margin-left: 20px;
-	padding: 25px 30px 30px;
-	background-color: #fff;
-}
-
-[class*=mainCol] h3 {
-	margin-bottom: 27px;
-	font-size: 20px;
-}
-
-p {
-	color: #333;
-	word-break: keep-all;
-	line-height: 1.63;
-}
-
-[class*=mainCol][class*=bgColor] * {
-	color: #fff;
-}
-
-[class*=mainCol] .btnWrap {
-	overflow: hidden;
-	position: absolute;
-	bottom: 30px;
-	left: 30px;
-	width: 200px;
-	margin: 0;
-}
-
-[class*=mainCol] .btnWrap.col02 a {
-	width: 49%;
-	padding: 0;
-}
-
-[class*=mainCol] .btnWrap a {
-	float: left;
-	height: 38px;
-	margin-right: -1px;
-	border: 1px solid #fff;
-	font-size: 14px;
-	text-align: center;
-	line-height: 38px;
-}
-
-.bgColor02 {
-	background-color: #2763ba;
-}
-
-.mainCol01 {
-	width: 200px;
-}
-
-p {
-	word-break: keep-all;
-	line-height: 1.63;
-}
-
-.bgColor03 {
-	background-color: #2ca48f;
-}
-
-[class*=mainCol] p strong {
-	margin-left: 5px;
-	font-size: 20px;
-}
-
-[class*=mainCol] .btnWrap.col02 a {
-	width: 49%;
-	padding: 0;
-}
-
-[class*=mainCol] {
-	float: left;
-	position: relative;
-	margin-left: 20px;
-	padding: 25px 30px 30px;
-}
-
-.mainTab {
-	overflow: hidden;
-	margin-bottom: 16px;
-	list-style: none;
-	padding: 0;
-	margin-top: 0;
-}
-
-.mainTab li:first-child {
-	margin-left: 0;
-	padding-left: 0;
-}
-
-.mainTab li {
-	float: left;
-	position: relative;
-}
-
-.mainTab .current a {
-	color: #000;
-}
-
-.mainTab a {
-	font-family: 'Noto Sans KR Bold', 'Noto Sans CJK KR', 'Noto Sans KR',
-		'맑은 고딕', sans-serif;
-	font-size: 20px;
-	font-weight: 700;
-}
-
-.mainLoginWrap .feTabCont {
-	position: relative;
-	height: 119px;
-	padding-bottom: 40px;
-}
-
-[class*=mainCol] h3 {
-	margin-bottom: 27px;
-	font-size: 20px;
-}
-
-a img, fieldset, img {
-	border: none;
-	padding: 0;
-	margin: 0;
-}
-
-.mainLoginWrap input[type=text], .mainLoginWrap input[type=password] {
-	width: 175px;
-}
-
-.mdBrowser input[type=tel], .mdBrowser input[type=text], .mdBrowser input[type=email],
-	.mdBrowser input[type=number], .mdBrowser input[type=password] {
-	line-height: inherit;
-}
-
-input[type=tel], input[type=text], input[type=email], input[type=number],
-	input[type=password] {
-	height: 38px;
-	padding-right: 10px;
-	padding-left: 10px;
-	border: 1px solid #ccc;
-	color: #666;
-	font-size: 16px;
-	line-height: 38px;
-}
-
-.mainLoginWrap .phTxt, .mainLoginWrap input[title=비밀번호], .mainLoginWrap input[type=password]
-	{
-	margin-top: -1px;
-}
-
-.mainLoginWrap input[type=text], .mainLoginWrap input[type=password] {
-	width: 175px;
-}
-
-.mainLoginWrap .user {
-	overflow: hidden;
-	margin-top: 6px;
-}
-
-.mainLoginWrap .btnType03 {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 198px;
-	background-color: #2763ba;
-	color: white;
-}
-
-a[class*=btnType] {
-	height: 38px;
-}
-
-a:link, a:visited, a:hover, a:active {
-	text-decoration: none;
-}
-
-.btnType03 {
-	border: 1px solid #2263bb;
-	color: #fff;
-	background-color: #2263bb;
-}
-
-[class*=btnType] {
-	overflow: visible;
-	vertical-align: top;
-	height: 40px;
-	padding: 0 20px;
-	color: #000;
-	font-size: 16px;
-	text-align: center;
-	line-height: 38px;
-	background-color: #fff;
-	cursor: pointer;
-}
-
-.mainHealth {
-	text-align: center;
-}
-
-.mainInner {
-	width: 1100px;
-	margin: 0 auto;
-	padding: 50px 0;
-}
-
-.mainInner>h3 {
-	margin: -10px 0 18px;
-}
-
-.mainInner>h3, .mainInner>p {
-	text-align: center;
-}
-
-.mainInner>h3+p {
-	font-size: 18px;
-}
-
-.mainInner>h3, .mainInner>p {
-	text-align: center;
-}
-
-.mainHealth .mainRow {
-	margin-top: 45px;
-}
-
-.mainRow {
-	overflow: hidden;
-}
-
-.mainHealth [class*=mainCol] {
-	height: 295px;
-	text-align: center;
-}
-
-[class*=mainCol]:first-child {
-	margin-left: 0;
-}
-
-.mainHealth [class*=mainCol] strong {
-	display: block;
-	position: relative;
-	margin: 18px 0 14px;
-	padding-bottom: 18px;
-	font-size: 20px;
-}
-
-.mainHealth [class*=mainCol] strong {
-	color: #fff;
-	position: absolute;
-}
-
-.mainHealth [class*=mainCol] p {
-	color: #fff;
-	position: absolute;
-}
-
-.mainHealth [class*=mainCol] strong:before, .mainHealth [class*=mainCol] strong>.b
-	{
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	width: 30px;
-	height: 2px;
-	margin-left: -15px;
-	background-color: #fff;
-}
-
-.mainHealth [class*=mainCol] .btnWrap {
-	overflow: visible;
-}
-
-[class*=mainCol] .btnWrap {
-	overflow: hidden;
-	position: absolute;
-	bottom: 30px;
-	left: 30px;
-	width: 200px;
-	margin: 0;
-}
-
-.mainHealth .mainRow>div a {
-	display: block;
-	float: none;
-	margin-top: -1px;
-	color: #fff;
-}
-
-[class*=mainCol] .btnWrap a {
-	float: left;
-	height: 38px;
-	margin-right: -1px;
-	padding: 0 12px;
-	border: 1px solid #fff;
-	font-size: 14px;
-	text-align: center;
-	line-height: 38px;
-}
-
-.bgColor00 {
-	background-color: #f3f3f3;
-}
-
-.mainInner {
-	width: 1100px;
-	margin: 0 auto;
-	padding: 50px 0;
-}
-
-.mainInner>h3 {
-	margin: -10px 0 18px;
-	font-size: 30px;
-}
-
-.mainInner>h3 {
-	margin: -10px 0 18px;
-	font-size: 30px;
-}
-
-.mainInner>h3+p {
-	font-size: 18px;
-}
-
-.mainInner>h3, .mainInner>p {
-	text-align: center;
-}
-
-.mainWay {
-	overflow: hidden;
-	width: 760px;
-	margin: 45px auto 35px;
-}
-
-.mainWay li:first-child {
-	margin-left: 0;
-}
-
-.mainWay li {
-	float: left;
-	width: 115px;
-	margin-left: 94px;
-	text-align: center;
-}
-
-.mainWay a {
-	display: inline-block;
-	font-size: 20px;
-}
-
-.bgColor01 {
-	background-color: #008ace;
-}
-
-.mainLoginWrap {
-	width: 198px;
-	height: 203px;
-	border: 1px solid #2763ba;
-}
-
-.bgColor05 {
-	background-color: #627ad0;
-}
-
-.bgColor04 {
-	background-color: #3298b7;
-}
-
-[class*=mainCol] .btnWrap {
-	overflow: hidden;
-	position: absolute;
-	bottom: 30px;
-	left: 30px;
-	width: 200px;
-	margin: 0;
-}
-
-section.container {
-    margin: 0 auto;
-    width: 90vw;
-    overflow: hidden;
-    height: fit-content;
-    position: relative;
-}
-
-div.banner {
-    width: 450vw;
-    /* transform: translate(-90vw); */
-    transition: transform 0.5s;
-}
-
-div.img {
-    width: 90vw;
-    float: left;
-}
-
-div.img img {
-    width: 100%;
-    display: block;
-}
-
-div.arrow {
-    position: absolute;
-    font-size: 2rem;
-    z-index: 1;
-    width: 35px;
-    height: 100%;
-    text-align: center;
-    cursor: pointer;
-    line-height: 40vh;
-    color: #00000070;
-    background-color: #00000021;
-    padding-top: 10vh;
-}
-
-div.next {
-    right: 0;
-}
-
-div.btns {
-    position: absolute;
-    text-align: center;
-    bottom: 10px;
-    width: 90vw;
-}
-
-.mainLoginWrap .userName{
-	display: block;
-	margin-bottom: 19px;
-	font-size: 20px;
-	font-weight: 700;
-}
-
-.mainLoginWrap p strong{
-	font-size: 20px;
-}
-
-.mainLoginWrap p{
-	line-height: 1.4;
-}
-
-.mainLoginWrap [class*=btnWrap] [class*=btnType]{
-	margin-left: 0;
-	border-color: #2763ba;
-}
-
-.mainLoginWrap .logout{
-	position: absolute;
-	top: 25px;
-	right: 30px;
-	color: #000;
-}
-
-
 </style>
 </head>
 <body>
 
 	<div id="wrap">
-		<header id="header">
-			<div class="innerwrap">
-				<div class="topLeftWrap">
-					<a class="hideTxt"> <img
-						src="https://www.snuh.org/asset/img/common/outcomesbook_bt.png">
-					</a>
-				</div>
-				<div class="topMidWrap">
-					<ul class="utilMenu" style="list-style: none">
-
-						<li><a href="mainpage.jsp" style="font-size: 30px;margin-left: 20vw;margin-bottom: 10px;color:#2763ba"><strong>서울 병원</strong></a></li>
-					</ul>
-				</div>
-				<div class="topMenuWrap">
+		<header id="header" class="" style="position: fixed; top: 0px;">
+            <div class="innerwrap">
+                 <h1><a href="mainpage.jsp">서울 병원</a></h1>
+                <div class="topLeftWrap">
+                    <a href="mainpage.jsp">
+	                	<img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
+                    </a>
+                </div>
+                <div class="topMenuWrap">
 					<ul class="utilMenu">
 						<li><a style="margin-right: 16px;">원격</a></li>
 					</ul>
 					<ul class="topMenu">
 					<c:if test="${empty name}">
-						<li><a>로그인</a></li>
+						<li><a href="${pageContext.request.contextPath}/MemberLogin.me" style="color: #000;">로그인</a></li>
 					</c:if>
 					<c:if test="${not empty name}">
-						<li><a>로그아웃</a></li>
+						<li><a href="${pageContext.request.contextPath}/LogOutOk.me" style="color: #000;">로그아웃</a></li>
 					</c:if>
 						<li><a>마이페이지</a></li>
 						<li><a>Language</a></li>
 					</ul>
 				</div>
-				<nav id="gnb" >
-					<!--                     <button class="totMenuBtn hideTxt" type="button" aria-controls="totMenu">
+                <nav id="gnb" class>
+<!--                     <button class="totMenuBtn hideTxt" type="button" aria-controls="totMenu">
                     </button> -->
-					<!-- 전체 메뉴 아이콘 집어넣어야함 -->
-					<ul class="gnbList clearFix">
-						<li><a>진료안내</a></li>
-						<li><a>이용안내</a></li>
-						<li><a>건강정보</a></li>
-						<li><a>고객참여</a></li>
-						<li><a>병원소개</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
+                    <!-- 전체 메뉴 아이콘 집어넣어야함 -->
+                    <ul class="gnbList clearFix">
+                        <li id="first" class="set">
+                            <a>진료안내</a>
+	                        <div class="subList first" id="information1">
+	                            <div class="strongs top">진료안내</div>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalInfo.jsp">진료예약</a>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalProcess.jsp">외래진료프로세스</a>
+	                            <c:if test="${empty name}">
+	                            <a class="strongs" href="${pageContext.request.contextPath}/MemberLogin.me">인터넷 진료예약</a>
+	                            </c:if>
+	                            <c:if test="${not empty name}">
+	                            <a class="strongs" href="${pageContext.request.contextPath}/reservation.jsp">인터넷 진료예약</a>
+	                            </c:if>
+	                            <div class="strongs">예약확인/취소</div>
+	                             <c:if test="${empty name}">
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/MemberLogin.me">진료예약확인</a>
+	                            </c:if>
+	                            <c:if test="${not empty name}">
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/newreservation.jsp">진료예약확인</a>
+	                       		</c:if>
+	                        </div>
+                        </li>
+                        <li id="second" class="set">
+                            <a>이용안내</a>
+                            <div class="subList more second" id="information2">
+                            <a class="strongs top" href="${pageContext.request.contextPath}/allFAQ.jsp">FAQ(통합)</a>
+                        </div>
+                        </li>
+                        <li id="third" class="set">
+                            <a>고객참여</a>
+                            <div class="subList more third" id="information3">
+                             <div class="strongs top">고객의 소리</div>
+                             <a class="weaks pack" href="${pageContext.request.contextPath}/clientSound.jsp">고객의 소리 등록</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/clientConsultation.jsp">고객상담실 업무안내</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/allThanksView.jsp">감사이야기</a>
+                        </div>
+                        </li>
+                        <li id="fourth" class="set">
+                            <a>병원소개</a>
+                            <div class="subList more fourth" id="information4">
+                            <a class="strongs top" href="${pageContext.request.contextPath}/intro.jsp">병원개요</a>
+                        </div> 
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 		<main id="content" class="mainContent">
 		<div class="bgColor00">
 			<section class="container">
@@ -917,21 +125,21 @@ div.btns {
 
 				</div>
 				<div class="arrow next">&gt;</div>
-				<div class="btns">
-					<button class="btn" type="button" style="list-style-type: none;"></button>
-					<button class="btn" type="button" style="list-style-type: none;"></button>
-					<button class="btn" type="button" style="list-style-type: none;"></button>
-					<button class="btn" type="button" style="list-style-type: none;"></button>
-					<button class="btn" type="button" style="list-style-type: none;"></button>
-					
-				</div>
+				<ul class="btns">
+					<li>
+						<button class="btn" type="button" style="list-style-type: none;"></button>
+					</li>
+					<li>
+						<button class="btn" type="button" style="list-style-type: none;"></button>
+					</li>
+					<li>
+						<button class="btn" type="button" style="list-style-type: none;"></button>
+					</li>
+					<li>
+						<button class="btn" type="button" style="list-style-type: none;"></button>
+					</li>
+				</ul>
 			</section>
-			
-			
-			
-			
-			
-			
 			<div class="mainInner">
 				<div class="mainRow">
 					<div class="mainCol01 bgColor01">
@@ -941,42 +149,52 @@ div.btns {
 								빠르게 쉽게 진료예약을 <br> 하실 수 있습니다
 							</p>
 						</a>
-						<!-- <div class="btnwrap col02">
-                                <a href="" role="button">진료예약</a>
-                                <a href="" role="button" onclick="goFirstReserve();">첫예약상담</a>
-                            </div> -->
-					</div>
-					<div class="mainCol01 bgColor02">
-						<a href="" style="cursor: pointer;">
-							<h3>진료과/센터</h3>
-							<p>
-								병원의 진료과 / 센터를 <br> 상세히 확인할 수 있습니다
-							</p>
-						</a>
-						<!-- <div class="btnwrap">
-                                <a href="" role="button">본원</a>
-                            </div> -->
+						<div class="btnWrap col02">
+							<c:if test="${not empty name}">
+							<a href="${pageContext.request.contextPath}/reservation.jsp" role="button">진료예약</a>
+							<a href="${pageContext.request.contextPath}/newreservation.jsp" role="button" >예약확인</a>
+							</c:if>
+							<c:if test="${empty name}">
+							<a href="${pageContext.request.contextPath}/MemberLogin.me" role="button">진료예약</a>
+							<a href="${pageContext.request.contextPath}/MemberLogin.me" role="button" >예약확인</a>
+							</c:if>
+						</div>
 					</div>
 					<div class="mainCol01 bgColor03">
 						<h3>진료안내</h3>
 						<p>
 							대표전화 <strong>1588-5700</strong>
 						</p>
+						<div class="btnWrap col02">
+							<a href="${pageContext.request.contextPath}/medicalInfo.jsp" role="button">진료예약안내</a>
+							<a href="${pageContext.request.contextPath}/medicalProcess.jsp" role="button" >진료프로세스</a>
+						</div>
+					</div>
+					<div class="mainCol01 bgColor02">
+						<a href="" style="cursor: pointer;">
+							<h3>이용안내</h3>
+							<p>
+								병원의 이용안내를 <br> 상세히 확인할 수 있습니다
+							</p>
+						</a>
+						<div class="btnWrap col02">
+						<a href="${pageContext.request.contextPath}/allFAQ.jsp" role="button" >자주묻는 질문</a>
+						<a href="${pageContext.request.contextPath}/clientConsultation.jsp" role="button" >고객상담실</a>
+						</div>
 					</div>
 						 <!-- 로그인 안한 상태 -->
 						 	<c:if test="${empty name}">
 								<div class="mainCol mainLoginWrap">
 										<ul class="mainTab feTab" data-pannel="1"
 											data-tab-group="feTab1Gr0">
-											<li class="current"><a href="login.jsp" role="tab"
-												aria-selected="true">로그인</a></li>
+											<li class="current"><a href="#" onclick="return false;" role="tab" aria-selected="true">로그인</a></li>
+											<li class="other"><a href="#" onclick="return false;" role="tab" aria-selected="false" style="color: #888888">의료진 로그인</a></li>
 										</ul>
 										<div id="login" class="feTabCont" role="tabpanel"
 											aria-hidden="false" data-tab-group="feTab1Gr0"
 											style="display: block;">
-											<form name="loginForm" id="loginForm" method="post" action="MemberLoginOk.me">
+											 <form name="loginForm" id="loginForm" method="post" action="MemberLoginOk.me">
 												<fieldset>
-													<legend>로그인</legend>
 													<input type="text" name="id" title="아이디/회원 번호"
 														placeholder="아이디/회원 번호"> <input type="password"
 														name="password" title="비밀번호" placeholder="비밀번호"
@@ -987,6 +205,13 @@ div.btns {
 															찾기</a>
 													</div>
 													<input type="button" class="btnType03" value="로그인">
+												</fieldset>
+											</form>
+											<form name="otherloginForm" id="otherloginForm" method="post" action="employee01.jsp" class="otherlogin">
+												<fieldset>
+													<input type="text" name="employeeId" title="의료진 번호"
+														placeholder="의료진 번호" value=""> 
+													<input type="button" id="otherBtn" value="의료진 로그인">
 												</fieldset>
 											</form>
 										</div>
@@ -1004,8 +229,9 @@ div.btns {
 								<a href="newreservation.jsp" role="button" class="btnType04">예약확인/취소</a>
 								
 								<a href="prereservation.jsp" role="button" class="btnType04">진료이력조회</a>
+								
 								</div>
-								<a href="mainpage.jsp" class="logout">로그아웃</a>
+								<a href="${pageContext.request.contextPath}/LogOutOk.me" class="logout">로그아웃</a>
 								</div>
 							</c:if>
 				</div>
@@ -1080,7 +306,7 @@ div.btns {
 		</div>
 		<div class="mainInner">
 			<h3>오시는길</h3>
-			<p>서울대학교병원으로 오시는 길을 알려드립니다.</p>
+			<p>서울병원으로 오시는 길을 알려드립니다.</p>
 			<ul class="mainWay" style="padding: 0; list-style: none;">
 				<li class="no01"><a href="https://www.snuh.org/content/M002001001.do" style="color: inherit;"> <img
 						src="asset/img/location001.png"
@@ -1102,34 +328,64 @@ div.btns {
 		</div>
 		</main>
 		<footer id="footer">
-			<ul class="innerWrap footerLink">
-				<li><a href="" class="colorPoint04" target="_blank">
-						비급여진료비용 </a></li>
-				<li><a href="" target="_blank"> 환자권리장전 </a></li>
-				<li><a href="" target="_blank"> 이용약관 </a></li>
-				<li><a href="" class="colorPoint04" target="_blank"> 개인정보
-						처리방침 </a></li>
-				<li><a href="" target="_blank"> 정보공개 </a></li>
-				<li><a href="" data-layer="layerEmail" class="layerBtn">
-						정보무단수집거부공개 </a></li>
-				<li><a href="" data-layer="layerDown" class="layerBtn"> 뷰어
-						다운로드 </a></li>
-				<li><a href="" target="_blank"> 진료협력센터 </a></li>
-				<li><a href="" target="_blank"> 장례식장 </a></li>
-			</ul>
-			<div class="footerInfo">
-				<div class="innerWrap">
-					<div>
-						<address class="clearFix">
-							<p style="font-style: normal; margin-top: -32px;">
-								주소 : 03080 서울특별시 종로구 대학로 101(연건동 28)&nbsp;&nbsp;대표전화 :
-								1588-5700&nbsp;&nbsp;홈페이지 의견접수 <br> COPYRIGHT 2010 SEOUL
-								NATIONAL UNIVERSITY HOSPITAL. ALL RIGHTS RESERVED
-							</p>
-						</address>
-					</div>
-				</div>
-		</footer>
+            <div class="ftMenuWrap">
+                <div class="footerMenu">
+                    <div class="innerWrap clearFix">
+                        <ul class="ftMenuList01">
+                            <li><a href="//child.snuh.org/main.do" target="_blank">어린이병원</a></li>
+                            <li><a href="//cancer.snuh.org/main.do" target="_blank">암병원</a></li>
+                            <li><a href="//www.snubh.org/" target="_blank">분당서울대병원</a></li>
+                            <li><a href="//www.brmh.org/" target="_blank">보라매병원</a></li>
+                            <li><a href="//healthcare.snuh.org/" target="_blank">강남센터</a></li>
+                            <li><a href="http://medicine.snu.ac.kr" target="_blank">서울대학교의과대학</a></li>
+                        </ul>
+                        <ul class="ftMenuList02">
+                            <li><a href="#ftMenuCol01" class="" title="진료과 메뉴 레이어 열기">진료과</a></li>
+                            <li><a href="#ftMenuCol02" class="" title="주요센터 메뉴 레이어 열기">주요센터</a></li>
+                            <li><a href="#ftMenuCol03" class="" title="주요부서 메뉴 레이어 열기">주요부서</a></li>
+                            <li><a href="#ftMenuCol04" class="" title="주요서비스 메뉴 레이어 열기">주요서비스</a></li>
+                            <li><a href="#ftMenuCol05" class="" title="패밀리사이트 메뉴 레이어 열기">패밀리사이트</a></li>
+                        </ul>
+                        <div class="ftMenuLayer clearFix" role="region" aria-hidden="true" aria-expanded="false" style="display: none; visibility: visible;"></div>
+                    </div>
+                </div>
+            </div>
+            <ul class="innerWrap footerLink">
+                <li><a href="/reservation/unPaid/list.do" class="colorPoint04" target="_blank">비급여진료비용</a></li>
+                <li><a href="/content/M004005.do" target="_blank">환자권리장전</a></li>
+                <li><a href="/footer/service.do" target="_blank">이용약관</a></li>
+                <li><a href="/footer/privacy.do" class="colorPoint04" target="_blank">개인정보 처리방침</a></li>
+                <li><a href="/content/M004006002.do" target="_blank">정보공개</a></li>
+                <li><a href="/" data-layer="layerEmail" class="layerBtn">정보무단수집거부공개</a></li>
+                <li><a href="/" data-layer="layerDown" class="layerBtn">뷰어 다운로드</a></li>
+                <li><a href="//nrefer.snuh.org" target="_blank">진료협력센터</a></li>
+                <li><a href="//funeral.snuh.org/main.do" target="_blank">장례식장</a></li>
+            </ul>
+            <div class="footerInfo">
+                <div class="innerWrap">
+                    <address class="clearfix">
+                        <p>주소 : 03080 서울특별시 종로구 대학로 101(연건동 28)</p>
+                        <p>대표전화 : <a href="tel:1588-5700">1588-5700</a></p>
+                        <p>
+                            <a href="/login.do?retUrl=/content/M005009.do">홈페이지 의견접수</a>
+                        </p>
+                    </address>
+                    <p class="copyright">COPYRIGHT 2010 SEOUL NATIONAL UNIVERSITY HOSPITAL. ALL RIGHTS RESERVED</p>
+                    <ul class="awardList">
+                        <li class="item05 hideTxt"><a href="/board/B003/view.do?viewType=true&ampbbs_no=5224">전자의무기록시스템</a></li>
+                        <li class="item01 hideTxt"><a href="/board/B003/view.do?bbs_no=1509">보건복지부 제 1호</a></li>
+                        <li class="item04 hideTxt" name="ismsTxt"><a href="#ismsTxt" class="ismsTxtBtn">서울대학교병원 정보보호 관리체계(ISMS) 인증
+                            [유효기간] 2021.02.17 ~ 2024.02.16 
+                            [인증범위] 의료정보시스템(EMR,OCS),홈페이지 및 모바일 애플리케이션  운영</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ftIsmsTxt">
+                <p>서울대학교병원 정보보호 관리체계(ISMS) 인증<br>
+                    [유효기간] 2021.02.17 ~ 2024.02.16<br> 
+                    [인증범위] 의료정보시스템(EMR,OCS),홈페이지 및 모바일 애플리케이션 운영</p>
+            </div>   
+        </footer>	
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -1176,9 +432,7 @@ div.btns {
     
     
     let form = document.loginForm;
-
     $(".btnType03").on("click", function(){
-    	console.log("들어옴");
     	if(!form.id.value){
     		alert("아이디를 입력해주세요.");
     		return;
@@ -1190,5 +444,197 @@ div.btns {
     	
     	form.submit();
     });
+ 	
+     /* 네비게이션 바 jquery시작 */
+   
+     $(".set").on("mouseover", function(){
+    		$(this).addClass('up');
+    		$(this).children('a').css("color", "#2263bb");
+    		if($(this).attr('id').match('first')){
+    			$(".second").removeClass('selected');
+    			$(".second").css("visibility", "hidden");
+    			$("#second").children('a').css("color", "#000");
+	    		$("#second").removeClass('up')
+	    		$(".second").removeClass('line')
+	    		
+	    		$(".third").removeClass('selected');
+	    		$(".third").css("visibility", "hidden");
+	    		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+	    		$(".third").removeClass('line')
+		    	
+		    	$(".fourth").removeClass('selected');
+	    		$(".fourth").css("visibility", "hidden");
+	    		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+	    		$(".fourth").removeClass('line')
+    		
+		    	$(".first").addClass('selected');
+    			$(".first").css("visibility", "visible");
+    			$(".first").addClass('line');
+    			
+    		}else if($(this).attr('id').match('second')){
+    			$(".first").removeClass('selected');
+    			$(".first").css("visibility", "hidden");
+	    		$("#first").children('a').css("color", "#000");
+	    		$("#first").removeClass('up')
+	    		$(".first").removeClass('line')
+	    		
+	    		$(".third").removeClass('selected');
+	    		$(".third").css("visibility", "hidden");
+	    		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+		    	$(".third").removeClass('line')
+		    	
+		    	$(".fourth").removeClass('selected');
+	    		$(".fourth").css("visibility", "hidden");
+	    		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+		    	$(".fourth").removeClass('line')
+    			
+		    	$(".second").addClass('selected');
+    			$(".second").css("visibility", "visible");
+    			$(".second").addClass('line');
+    			
+    		}else if($(this).attr('id').match('third')){
+    			$(".first").removeClass('selected');
+    			$(".first").css("visibility", "hidden");
+	    		$("#first").children('a').css("color", "#000");
+	    		$("#first").removeClass('up')
+	    		$(".first").removeClass('line')
+    			
+	    		$(".second").removeClass('selected');
+	    		$(".second").css("visibility", "hidden");
+	    		$("#second").children('a').css("color", "#000");
+		    	$("#second").removeClass('up')
+		    	$(".second").removeClass('line')
+    			
+		    	$(".fourth").removeClass('selected');
+	    		$(".fourth").css("visibility", "hidden");
+	    		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+		    	$(".fourth").removeClass('line')
+    			
+		    	$(".third").addClass('selected');
+    			$(".third").css("visibility", "visible");
+    			$(".third").addClass('line');
+
+    		}else if($(this).attr('id').match('fourth')){
+    			$(".first").removeClass('selected');
+    			$(".first").css("visibility", "hidden");
+	    		$("#first").children('a').css("color", "#000");
+	    		$("#first").removeClass('up')
+	    		$(".first").removeClass('line')
+    			
+    			$(".second").removeClass('selected');
+	    		$(".second").css("visibility", "hidden");
+	    		$("#second").children('a').css("color", "#000");
+		    	$("#second").removeClass('up')
+		    	$(".second").removeClass('line')
+		    	
+		    	$(".third").removeClass('selected');
+	    		$(".third").css("visibility", "hidden");
+	    		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+		    	$(".third").removeClass('line')
+    			
+		    	$(".fourth").addClass('selected');
+    			$(".fourth").css("visibility", "visible");
+    			$(".fourth").addClass('line');
+
+    		}
+    		
+    		
+    });
+    
+	    $(".subList").mouseleave(function(){
+	    		if($(this).attr('class').match('first')){
+	    			$(".first").removeClass('selected');
+	    			$(".first").css("visibility", "hidden");
+	    			$(".first").removeClass("line")
+		    		$("#first").children('a').css("color", "#000");
+		    		$("#first").removeClass('up')
+	    			
+	    		}else if($(this).attr('class').match('second')){
+	    			$(".second").removeClass('selected');
+	    			$(".second").css("visibility", "hidden");
+	    			$(".second").removeClass("line")
+	    			$("#second").children('a').css("color", "#000");
+		    		$("#second").removeClass('up')
+		    		
+	    		}else if($(this).attr('class').match('third')){
+	    			$(".third").removeClass('selected');
+	    			$(".third").css("visibility", "hidden");
+	    			$(".third").removeClass("line")
+	    			$("#third").children('a').css("color", "#000");
+		    		$("#third").removeClass('up')
+		    		
+	    		}else if($(this).attr('class').match('fourth')){
+	    			$(".fourth").removeClass('selected');
+	    			$(".fourth").css("visibility", "hidden");
+	    			$(".fourth").removeClass("line")
+	    			$("#fourth").children('a').css("color", "#000");
+		    		$("#fourth").removeClass('up')
+	    		}
+	    })  
+	    
+	    $(".weaks").mouseover(function(){
+	    	$(this).css('color', "#2263bb");
+	    })
+
+	    $(".weaks").mouseout(function(){
+	    	$(this).css('color', "#888");
+	    })
+	    
+	    $("a[class='strongs']").mouseover(function(){
+	    	$(this).css('color', "#2263bb");
+	    })
+	    
+	    $("a[class='strongs']").mouseout(function(){
+	    	$(this).css('color', "#000");
+	    })
+	    
+		$("a[class='strongs top']").mouseover(function(){
+	    	$(this).css('color', "#2263bb");
+	    })
+	    
+	    $("a[class='strongs top']").mouseout(function(){
+	    	$(this).css('color', "#000");
+	    })
+	   
+	     /* 네비게이션 바 jquery끝 */ 
+	    
+	     $(".other").click(function(){
+	    	 $(this).children("a").css("color", "#000");
+	    	 $(".current").children("a").css("color", "#888888");
+	    	 $("#otherloginForm").css("visibility", "visible");
+	    	 $("#login").css("visibility", "hidden");
+	    	 $(".mainLoginWrap").css("border", "1px solid #2ca48f");
+	     })
+	     
+	     $(".current").click(function(){
+	    	 $(this).children("a").css("color", "#000");
+	    	 $(".other").children("a").css("color", "#888888");
+	    	 $("#login").css("visibility", "visible");
+	    	 $("#otherloginForm").css("visibility", "hidden");
+	    	 $(".mainLoginWrap").css("border", "1px solid #2763ba");
+	     })
+	     
+	     
+	     const code = "ASDKLW123123";
+	   	 
+	     $("#otherBtn").click(function(){
+	   	 let otherinput = $("input[name='employeeId']").val();
+	    		 console.log(otherinput);
+	    	 if(otherinput != code){
+	    		 
+	    		 
+	    		 alert("올바른 의료진 번호를 입력하세요.")
+	    		 return false;
+	    	 }
+	    		 otherloginForm.submit();
+	     })
+	     
+	     
 </script>
 </html>

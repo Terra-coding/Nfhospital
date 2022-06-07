@@ -1,0 +1,23 @@
+diff a/src/com/mybatis/config/config.xml b/src/com/mybatis/config/config.xml	(rejected hunks)
+@@ -6,21 +6,10 @@
+    </settings>
+ 	<typeAliases>
+ 		<typeAlias type="com.member.domain.vo.MemberInfoVO" alias="memberInfoVO"/>
+-<<<<<<< HEAD
+-<<<<<<< HEAD
+-		<typeAlias type="com.member.domain.vo.PatientListVO" alias="patientListVO"/>
+-		<typeAlias type="com.member.domain.vo.ReservationVO" alias="reservationVO"/>
+-=======
+-=======
+->>>>>>> 5ed397fe73a123a8525bf8af4597aa7e6cb85427
+ 		<typeAlias type="com.patient.domain.vo.PatientListVO" alias="patientListVO"/>
+ 		<typeAlias type="com.reservation.domain.vo.ReservationVO" alias="reservationVO"/>
+ 		<typeAlias type="com.write.domain.vo.ThankyouWriteVO" alias="thankyouWriteVO"/>
+ 		<typeAlias type="com.write.domain.vo.SuggestionsWriteVO" alias="suggestionsWriteVO"/>
+-<<<<<<< HEAD
+->>>>>>> 5ed397fe73a123a8525bf8af4597aa7e6cb85427
+-=======
+->>>>>>> 5ed397fe73a123a8525bf8af4597aa7e6cb85427
+ 	</typeAliases>
+ 
+ 	<environments default="mysql">

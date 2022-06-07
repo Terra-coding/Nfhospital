@@ -1,22 +1,16 @@
-package com.member.domain.vo;
+package com.write.domain.vo;
 
-public class WriteVO {
-	private int writeNum;
+public class ThankyouWriteVO {
+
 	private String title;
 	private String content;
 	private String id;
 	private String time;
+	private String name;
+	private String phoneNum;
 	
-	public WriteVO() {;}
-
-	public int getWriteNum() {
-		return writeNum;
-	}
-
-	public void setWriteNum(int writeNum) {
-		this.writeNum = writeNum;
-	}
-
+	public ThankyouWriteVO() {;}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -49,5 +43,20 @@ public class WriteVO {
 		this.time = time;
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getPhoneNum() {
+		return phoneNum;
+	}
+	
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
 	
 }

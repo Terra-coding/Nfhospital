@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SuggestionsWrite">
+
+	
+	
+	<!--건의합니다 글 작성 -->
+   <insert id="suggestionsWrite" parameterType="suggestionsWriteVO">
+      insert into tbl_thank_you_write
+      (title, content, id, `time`, name, phone_num)
+      values(#{title}, #{content}, #{id}, #{time}, #{name}, #{phoneNum})
+   </insert>
+   
+   <!--건의합니다 글 수정 -->
+   <update id="suggestionsWriteUpdate" parameterType="suggestionsWriteVO">
+      update tbl_write
+      set title = #{title}, content = #{content}, time = now()}
+      where id = #{id}
+   </update>
+   
+   <!--건의합니다 글 삭제 -->
+   <delete id="suggestionsWriteDelete" parameterType="suggestionsWriteVO">
+      delete from tbl_write
+      where where id = #{id}
+   </delete>
+   
+</mapper>

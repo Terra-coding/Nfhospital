@@ -1,4 +1,4 @@
-package com.member;
+package com.write;
 
 import java.io.IOException;
 
@@ -24,16 +24,16 @@ public class WriteFrontController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String requestURL = req.getRequestURI();
-		String command = requestURL.substring(requestURL.lastIndexOf("/") + 1);
+		String command = requestURL.substring(req.getContextPath().length());
 		ActionInfo actionInfo = null;
 
-		if (command.equals("WriteOk.wr")) {
-			actionInfo = new WriteOk().execute(req, resp);
+		if (command.equals("/write/ThankyouWriteOk.wr")) {
+			actionInfo = new ThankyouWriteOk().execute(req, resp);
 
-		} else if (command.equals("Write.wr")) {
+		} else if (command.equals("/write/ThankyouWrite.wr")) {
 			actionInfo = new ActionInfo();
 			actionInfo.setRedirect(true);
-			actionInfo.setPath(req.getContextPath() + "/write.jsp");
+			actionInfo.setPath(req.getContextPath() + "/thankyouwrite.jsp");
 		} else {
 			// 404 일 때 출력할 에러 페이지 경로 작성
 		}

@@ -68,3 +68,40 @@
 	text-align: center;
 	letter-spacing: -1.3px;
 }
+
+[class*=btnType] {
+    overflow: visible;
+    height: 40px;
+    padding: 0 20px;
+    color: #000;
+    font-size: 16px;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+input.inputText{
+	border: 1px solid #ccc;
+	padding-right: 10px;
+    padding-left: 10px;
+}
+
+.btnType03{
+	border: 1px solid #2263bb;
+    color: #fff;
+    background-color: #2263bb;
+    text-decoration: none;
+}
+
+.layerContent{
+	margin-top: 35px;
+}
+
+.tb {
+	border-collapse: separate;
+	border-spacing: 0 3px;
+}
+
+legend{
+	color: #2263bb;
+}

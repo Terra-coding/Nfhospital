@@ -165,6 +165,11 @@ $button.on('click', function(){
         alert("[제목] 입력하신 정보를 다시 확인 해 주시기 바랍니다.");
         return;
     }
+    
+//확인버튼 클릭 시
+    function send(){
+    	writeForm.submit();
+    }
 
 })
 

@@ -8,10 +8,28 @@
 	color: #ccc;
 	font-size: 22px;
 }
-
+*{
+     box-sizing: content-box!important;
+}
+.hideTxt{
+    overflow: hidden;
+    color: transparent;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+}
 #content.memJoinContent {
-	width: 70%;
-	padding-right: 0;
+	width: 1100px;
+    padding-right: 0;
+    height: 1200px;
+    margin-top: 180px;
+}
+
+h1{
+	font-size: 2em!important;
+	line-height: normal;
 }
 
 #content {
@@ -27,6 +45,299 @@
 	
 }
 
+#content {
+    word-spacing: 0;
+    letter-spacing: -.5px;
+}
+#header {
+    left: 0;
+    z-index: 105;
+    width: 100%;
+    height: 129px;
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+    position: fixed;
+    top: 0px;
+}
+
+#header:before, #header > .b {
+    content: '';
+    position: absolute;
+    top: 59px;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background-color: #ebebeb;
+}
+
+#header h1 {
+    display: block;
+    position: relative;
+    top: 18px;
+    width: 239px;
+    height: 25px;
+    margin: auto;
+}
+
+.innerwrap{
+    padding: 0 10px;
+    position: relative;
+    width: 1100px;
+    height: 130px;
+    margin: auto;
+}
+
+#header h1 a{
+    display: block;
+    position: relative;
+    top: -12px;
+    right: -10px;
+    width: 239px;
+    height: 25px;
+    margin: auto;
+     font-weight: 700;
+    color: #2763ba;
+}
+
+#header .topLeftWrap {
+    position: absolute;
+    top: 18px;
+    left: 9px;
+    z-index: 100;
+}
+
+
+
+#header .topLeftWrap a {
+    display: block;
+    position: relative;
+    width: 160px;
+    height: 25px;
+    margin: auto;
+}
+
+.topMenuWrap {
+    position: absolute;
+    top: 18px;
+    right: 9px;
+    z-index: 100;
+}
+
+.topMenuWrap ul, .topMenuWrap li {
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+.utilMenu {
+    margin: 2px 20px 0 0;
+}
+
+.utilMenu a, .utilMenu label {
+    color: #000;
+    font-size: 14px;
+}
+
+.topMenuWrap li{
+    list-style: none;
+}
+
+.topMenu li {
+    margin-right: 13px;
+}
+
+#gnb{
+    position: relative;
+    width: 1100px;
+    margin: auto;
+}
+
+#gnb > button[class*=tot]{
+    position: absolute;
+    top: 70px;
+    border: 0;
+    background-color: transparent;
+}
+
+.totMenuBtn{
+    left: 0;
+    width: 30px;
+    height: 22px;
+    margin-top: -11px;
+    background: url("http://www.snuh.org/asset/img/common/spr_common.png") no-repeat 0 -27px;
+}
+
+.gnbList {
+    height: 70px;
+    margin: 0 100px;
+    text-align: center;
+    top: 35px;
+    position: absolute;
+    left: 97px;
+}
+
+
+.gnbList > li {
+    display: inline-block;
+    margin: 10px 25px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+}
+
+.gnbList * {
+    text-align: left;
+}
+
+.gnbList > li > a {
+    display: inline-block;
+    padding: 10px;
+    font-size: 20px;
+    transition: .2s color;
+    font-weight: 700;
+}
+/* hearder끝 */
+
+/* TopBar 시작*/
+.contTopBar{
+    z-index: 99;
+    width: 100%;
+    height: 50px;
+    background-color: #2763ba;
+}
+
+.clearFix:before, .clearFix:after, .clearFix > .b, .clearFix > .a{
+    content: ' ';
+    display: table;
+}
+
+.breadcrumb{
+    float: left;
+}
+
+.hideEl, .pagination [class*=Btn] span{
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    border: none;
+    clip: rect(1px,1px,1px,1px);
+}
+
+.bcHomeBtn{
+    position: relative;
+    width: 48px;
+    border: 1px solid #5d8acb;
+    border-width: 0 1px;
+}
+
+.bcHomeBtn, .breadcrumb > div{
+    float: left;
+    height: 50px;
+    line-height: 50px;
+}
+
+.bcHomeBtn:before, .bcHomeBtn > .b{
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 16px;
+    margin: -9px 0 0 -8px;
+    background: url("http://www.snuh.org/asset/img/common/spr_common.png") no-repeat -110px -73px;
+}
+
+.breadcrumb > div{
+    position: relative;
+    min-width: 188px;
+    max-width: 250px;
+    max-width: 300px;
+    border-right: 1px solid #5d8acb;
+}
+
+.breadcrumb em{
+    display: block;
+    padding: 0 51px 0 20px;
+    color: #fff;
+    font-style: normal;
+}
+
+.ellipsisTxt, .breadcrumb em, .bcLinkLayer a, .newsPaperImg em, .ellipsisTit[class*=boardTypeImg] em, .boardTypeTbl td a{
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+.bcLinkLayerBtn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.bcLinkLayer{
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: -1px;
+    left: -1px;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.breadcrumb > div:after, .breadcrumb > div > .a{
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 11px;
+    height: 6px;
+    margin-top: -3px;
+    background: url("http://www.snuh.org/asset/img/common/spr_common.png") no-repeat -65px -27px;
+}
+
+.bcLinkLayer a{
+    display: block;
+    height: 48px;
+    padding: 0 20px;
+    border: 1px solid #ccc;
+    border-top: 0;
+    line-height: 48px;
+    transition: .3s color;
+}
+
+.bcQuickMenu{
+    float: right!important;
+    width: 220px!important;
+    margin-right: -18px!important;
+    padding: 0 18px!important;
+    text-align: center!important;
+    background: url("http://www.snuh.org/asset/img/common/bg_bcQuickMenu.png") no-repeat 0 0!important;
+}
+
+.bcQuickMenu li{
+    float: left;
+    position: relative;
+    width: 50%;
+}
+
+.bcQuickMenu a{
+    display: block;
+    height: 50px;
+    color: #fff;
+    line-height: 50px;
+    background-color: transparent;
+}
+
+/* TopBar끝 */
 
 main {
 	display: block;
@@ -54,9 +365,15 @@ li {
 }
 
 * {
-	font-family: 'Noto Sans KR Regular', 'Noto Sans CJK KR', 'Noto Sans KR',
-		'맑은 고딕', sans-serif;
-	font-weight: 400;
+	vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    text-size-adjust: none;
+    list-style: none;
+    font-weight: 400;
+    font-family: 'Noto Sans KR', sans-serif;
+    outline: 0!important;
 }
 .boardTypeForm th {
     vertical-align: middle;
@@ -86,9 +403,10 @@ div {
 }
 body {
 	color: #000;
-	font-size: 16px;
-	word-spacing: -0.5px;
-	letter-spacing: -1px;
+    font-size: 16px;
+    word-spacing: -0.5px;
+    letter-spacing: -1px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .activeJS {
@@ -102,8 +420,9 @@ body {
 
 .contHeadingWrap {
 	overflow: hidden;
-	position: relative;
-	margin: -12px 0 43px;
+    position: relative;
+    margin: -12px 0 43px;
+    font-size: 27px;
 }
 
 span.required{
@@ -114,6 +433,8 @@ h2 {
 	font-family: 'Noto Sans KR Bold', 'Noto Sans CJK KR', 'Noto Sans KR',
 		'맑은 고딕', sans-serif;
 	font-weight: 700;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .stepWrap li:first-child {
@@ -122,7 +443,7 @@ h2 {
 
 .stepWrap li {
 	float: left;
-	width: 26%;
+	width: 30%;
 	/* padding: 20px 0 18px 30px; */
 	border: 1px solid #ccc;
 	color: #ccc;
@@ -278,7 +599,7 @@ img {
 }
 .autoJoin .img img {
     display: inline-block;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 [class*=feFo] {
@@ -351,4 +672,325 @@ input[type=tel], input[type=text], input[type=email], input[type=number], input[
 	background-position: -169px -53px;
 }
 
+ * {
+    font-family: 'Noto Sans KR Regular','Noto Sans CJK KR','Noto Sans KR','맑은 고딕',sans-serif;
+}
 
+#wrap {
+    overflow: hidden;
+    position: relative;
+    min-width: 1120px;
+    background-color: #fff;
+}
+
+#header {
+    left: 0;
+    z-index: 105;
+    width: 100%;
+    height: 129px;
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+    position: fixed;
+    top: 0px;
+}
+
+#header:before, #header > .b {
+    content: '';
+    position: absolute;
+    top: 59px;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background-color: #ebebeb;
+}
+
+#header h1 {
+    display: block;
+    position: relative;
+    top: 18px;
+    width: 239px;
+    height: 25px;
+    margin: auto;
+}
+
+.innerwrap{
+    padding: 0 10px;
+    position: relative;
+    width: 1100px;
+    margin: auto;
+}
+
+#header .topLeftWrap {
+    position: absolute;
+    top: 18px;
+    left: 9px;
+    z-index: 100;
+}
+
+#header .topLeftWrap a {
+    display: block;
+    position: relative;
+    width: 160px;
+    height: 25px;
+    margin: auto;
+}
+
+.topMenuWrap {
+    position: absolute;
+    top: 18px;
+    right: 9px;
+    z-index: 100;
+}
+
+.topMenuWrap ul, .topMenuWrap li {
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+.utilMenu {
+    margin: 2px 20px 0 0;
+}
+
+.utilMenu a, .utilMenu label {
+    color: #000;
+    font-size: 14px;
+}
+
+.topMenuWrap li{
+    list-style: none;
+}
+
+.topMenu li {
+    margin-right: 13px;
+}
+
+#gnb{
+    position: relative;
+    width: 1100px;
+    margin: auto;
+}
+
+
+
+.gnbList > li {
+    display: inline-block;
+    margin: 10px 25px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+}
+
+.gnbList * {
+    text-align: left;
+}
+
+.gnbList > li > a {
+    display: inline-block;
+    padding: 10px;
+    font-size: 20px;
+    transition: .2s color;
+}
+
+.contTopBar {
+    position: fixed;
+    top: 130px;
+    z-index: 99;
+    width: 100%;
+    height: 50px;
+    background-color: #2763ba;
+}
+
+.breadcrumb {
+    float: left;
+    padding: 0!important;
+    margin: 0!important;
+    background-color: #2763ba!important;
+}
+
+.contUtilMenuWrap {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: 800px;
+    height: 30px;
+    margin: 264px auto 0;
+}
+
+#content{
+    min-height: 800px;
+    word-spacing: 0;
+    letter-spacing: -.5px;
+    width: 1090px;
+    margin: auto;
+}
+
+#content.replaceUtilMenu {
+    margin-top: -48px;
+    padding-top: 0;
+}
+
+.contHeadingWrap > :first-child {
+    font-size: 41px;
+    letter-spacing: -2px;
+    font-weight: 700;
+}
+
+[class*=tabType] {
+    position: relative;
+    margin: 50px 0 40px;
+}
+
+[class*=tabType] ul {
+    position: relative;
+    width: 100%;
+}
+
+.tabTypeCol2 li {
+    width: 47%;
+}
+
+[class*=tabType] li {
+    float: left;
+    position: absolute;
+}
+
+[class*=tabType] .current a {
+    border-color: #2263bb;
+    color: #fff;
+    background-color: #2263bb;
+}
+
+[class*=tabType] li:first-child a {
+    margin-left: 0;
+}
+
+[class*=tabType] a {
+    display: block;
+    height: 48px;
+    margin-left: -1px;
+    border: 1px solid #ccc;
+    border-bottom-color: transparent;
+    color: #666;
+    text-align: center;
+    line-height: 48px;
+}
+
+.topMenu a {
+    cursor:pointer; 
+    text-decoration:none; 
+    color: inherit;
+}
+
+.gnbList a {
+    cursor:pointer; 
+    text-decoration:none; 
+    color: inherit;
+}
+
+ul, address{
+	margin-bottom: 0px!important;
+}
+
+p{
+	margin: 0px!important;
+}
+
+/* 네비게이션바 시작 */
+.gnbList {
+    height: 70px;
+    margin: 0px 292px;
+    text-align: center;
+    top: 35px;
+    position: absolute;
+    left: -80px;
+    width: 585.22px;
+}
+
+div.subList{
+	position: absolute;
+    top: 69px;
+    background-color: #fff;
+    left: -3px;
+    margin: 0;
+    width: 143px;
+    height: 257px;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    margin-right: 3px;
+    margin-left: 3px;
+    float: left;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+
+ div.subList a{
+	padding: 0px;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+div.subList .strongs{
+	font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+div.subList .weaks{
+	font-size: 16px;
+	font-weight: 100;
+	color: #888;
+}
+
+.pack, .strongs{
+	margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+ .top{
+	margin-top: 22px;
+} 
+
+/* #information3{
+	top: -78px!important;
+} */
+
+#information2, #information4{
+	height: 80px;
+} 
+
+#information2{
+	left: 145px;
+}
+
+#information3{
+	height: 200px;
+	left: 292px;
+}
+
+#information4{
+	left: 439px;
+}
+
+.selected{
+	border-bottom: 4px solid #2263bb!important;
+}
+
+.line::before{
+	    content: ' ';
+    position: absolute;
+    visibility: visible;
+    width: 73.609px;
+    top: -5px;
+    left: 34px;
+    height: 4px;
+    background-color: #2263bb;
+    pointer-events: none;
+}
+
+.gnbList > li{
+	width: 93.609px;
+}
+
+/* 네비게이션바 끝 */

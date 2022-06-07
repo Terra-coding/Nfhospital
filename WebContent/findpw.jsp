@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link
@@ -21,69 +18,338 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 
 <link rel="stylesheet" href="asset/css/findid.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="asset/css/KDHfooter.css">
+<style>
+</style>
 </head>
 <body>
 		
-<jsp:include page="header.jsp" />
-<script type="text/javascript">
-
-	function outcomesFnc(e) {
-
-		var now = new Date();
-		var dday = new Date("2021", "11", "17","11","59","59");
-
-		if(now != dday) {
-			alert("콘텐츠 준비중입니다.");
-			e.preventDefault();
-			return false;
-		}else {
-			window.open('https://dept.snuh.org/dept/OC/index.do');
-		}
-
-	}
-</script>
+<div id="wrap">
+	<header id="header">
+            <div class="innerwrap">
+                <h1><a href="mainpage.jsp">서울 병원</a></h1>
+                <div class="topLeftWrap">
+                    <a href="mainpage.jsp">
+	                	<img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
+                    </a>
+                </div>
+                <div class="topMenuWrap">
+                    <ul class="utilMenu">
+                        <li>
+                            <a style="margin-right: 16px;">원격</a>
+                        </li>
+                    </ul>
+                    <ul class="topMenu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/MemberLogin.me">로그인</a>
+                        </li>
+                        <li>
+                            <a href="mypage.jsp">마이페이지</a>
+                        </li>
+                        <li>
+                            <a>Language</a>
+                        </li>
+                    </ul>
+                </div>
+                <nav id="gnb" class>
+<!--                     <button class="totMenuBtn hideTxt" type="button" aria-controls="totMenu">
+                    </button> -->
+                    <!-- 전체 메뉴 아이콘 집어넣어야함 -->
+                    <button class="totMenuBtn hideTxt" type="button" aria-controls="totMenu">전체 메뉴 열기</button>
+                    <ul class="gnbList clearFix">
+                        <li id="first" class="set">
+                            <a>진료안내</a>
+	                        <div class="subList first" id="information1">
+	                            <div class="strongs top">진료안내</div>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalInfo.jsp">진료예약</a>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalProcess.jsp">외래진료프로세스</a>
+	                            <c:if test="${empty name}">
+	                            <a class="strongs" href="${pageContext.request.contextPath}/MemberLogin.me">인터넷 진료예약</a>
+	                            </c:if>
+	                            <c:if test="${not empty name}">
+	                            <a class="strongs" href="${pageContext.request.contextPath}/reservation.jsp">인터넷 진료예약</a>
+	                            </c:if>
+	                            <div class="strongs">예약확인/취소</div>
+	                             <c:if test="${empty name}">
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/MemberLogin.me">진료예약확인</a>
+	                            </c:if>
+	                            <c:if test="${not empty name}">
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/newreservation.jsp">진료예약확인</a>
+	                       		</c:if>
+	                        </div>
+                        </li>
+                        <li id="second" class="set">
+                            <a>이용안내</a>
+                            <div class="subList more second" id="information2">
+                            <a class="strongs top" href="${pageContext.request.contextPath}/allFAQ.jsp">FAQ(통합)</a>
+                        </div>
+                        </li>
+                        <li id="third" class="set">
+                            <a>고객참여</a>
+                            <div class="subList more third" id="information3">
+                             <div class="strongs top">고객의 소리</div>
+                             <a class="weaks pack" href="${pageContext.request.contextPath}/clientSound.jsp">고객의 소리 등록</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/clientConsultation.jsp">고객상담실 업무안내</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/allThanksView.jsp">감사이야기</a>
+                        </div>
+                        </li>
+                        <li id="fourth" class="set">
+                            <a>병원소개</a>
+                            <div class="subList more fourth" id="information4">
+                            <a class="strongs top" href="${pageContext.request.contextPath}/intro.jsp">병원개요</a>
+                        </div> 
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="contTopBar" style="position: fixed; top: 130px;">
+            <!-- innerWrap -->
+            <div class="innerWrap clearFix">
+                <!-- breadcrumb -->
+                <div class="breadcrumb">
+                    <strong class="hideEl">현재 위치: </strong>
+                    <a href="/" class="bcHomeBtn hideTxt">HOME</a>
+                    <span class="hideEl">&gt;</span>
+                    
+                    <!-- <div class="">
+                        <em>이용안내</em>
+                        <button type="button" class="bcLinkLayerBtn hideTxt">주 메뉴 목록 열기</button>
+                        bcLinkLayer
+                        <ul class="bcLinkLayer" role="region" aria-hidden="true" aria-expanded="false" style="display: none;">
+                                
+                            <li><a href="/reservation/meddept/main.do">진료안내</a></li>
+                            <li><a href="/content/M002001001.do">이용안내</a></li>
+                            <li><a href="/join/client.do">고객참여</a></li>
+                            <li><a href="/content/M005001.do">병원소개</a></li>
+                                
+                        </ul>
+                        //bcLinkLayer
+                    </div> -->
+                    <span class="hideEl">&gt;</span>
+                    <!-- <div class="">
+                        <em>FAQ(통합)</em>
+                        <button type="button" class="bcLinkLayerBtn hideTxt">서브 메뉴 목록 열기</button>
+                        bcLinkLayer
+                        <ul class="bcLinkLayer" role="region" aria-hidden="true" aria-expanded="false" style="display: none;" tabindex="0">
+					
+                            <li><a href="/board/B005/list.do">FAQ(통합)</a></li>
+                            
+                        </ul>
+                        //bcLinkLayer
+                    </div> -->
+                    <span class="hideEl">&gt;</span>
+                </div>
+                <!-- //breadcrumb -->
+                <!-- bcQuickMenu -->
+                <ul class="bcQuickMenu">
+                    <li class=""><a href="reservation.jsp">진료예약</a></li>
+                    <li><a href="newreservation.jsp">예약조회</a></li>
+                </ul>
+                <!-- //bcQuickMenu -->
+            </div>
+            <!-- //innerWrap -->
+        </div>		
+<!-- content -->
+	<main id="content" class="findContent">
+		<div class="contHeadingWrap">
+			<h2>아이디/비밀번호 찾기</h2>
+		</div>
+		<!-- tabType -->
+		<div class="tabTypeCol2">
+			<ul class="clearFix">
+				<li style="width: 50%;float:left;background-color: white;"><a href="findid.jsp">아이디 찾기</a></li>
+				<li class="current"><a href="#">비밀번호 찾기</a></li>
+			</ul>
+		</div>
+		<!-- //tabType -->
+		
 	
-
-<script type="text/javascript">
-
-		var locationInfo = {
-			cate0: $(".viewTitle h3").text(),
-			cate1: $(".breadcrumb em:eq(2)").text(),
-			cate2: $(".breadcrumb em:eq(1)").text(),
-			cate3: $(".breadcrumb em:eq(0)").text()
-		}
-</script>
-
-
-		<!-- //contTopBar -->
-
-		<!-- content -->
+		<!-- layerWrap -->
 		
-
-
-
-
-
-
+		<section class="layerWrap layerMail" >
+			<h1 style="color: #2263bb;">비밀번호 찾기</h1>
+			<!-- layerContent -->
+			<div class="layerContent">
+				<form id="mForm" name="mForm" action="FindPwOk.me" method="post">
+					<fieldset>
+						<legend>이메일확인</legend>
+						<div class="boardTypeForm">
+							<table class="tb">
+								<caption>이메일확인(이름, 이메일주소, 생년월일)</caption>
+								<colgroup>
+									<col style="width: 135px;">
+									<col style="width: auto;">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row">아이디</th>
+										<td><input id="id" name="id" title="아이디" class="inputText" type="text" value="" maxlength="20"></td>
+									</tr>
+									<tr>
+										<th scope="row">이름</th>
+										<td><input id="name" name="name" title="이름" class="inputText" type="text" value="" maxlength="20"></td>
+									</tr>
+									<tr>
+										<th scope="row">이메일주소</th>
+										<td><input id="email" name="email" title="이메일주소" class="inputText" type="text" value="" maxlength="40"></td>
+									</tr>
+									<tr>
+										<th scope="row">생년월일</th>
+										<td><input id="birth" name="birth" title="생년원일" class="inputText" type="text" value="" maxlength="10"><p class="desc">예)1970-01-01</p></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="femail" id="eresult" style="display: none;">
+								<div class="confirmWrap findConfirmWrap">
+									<p>비밀번호 찾기가 완료 되었습니다.</p>
+									<p>가입된 비밀번호는 아래와 같습니다.</p>
+								</div>
+								<div class="compTxt">
+								<!--//*2109-07-10 ##ID/PW찾기  -->
+								
+									<label for="memberInfo01">
+										<span style="color: #2263bb">▶</span>  회원님의 비밀번호는<span class="colorPoint ecolorPoint"></span> 입니다.
+									</label><br>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+				<div class="btnWrap alignC">
+					<button type="button" class="btnType03" id="confirmMailBtn">확인하기</button>
+					<button class="logInBtn"  onclick="location.href='passwordchange.jsp' ">비밀번호 변경</button>
+				</div>
+			</div>
+	
+		</section>
+		<section class="layerWrap layerHp" >
+			<!-- layerContent -->
+			<div class="layerContent">
+				<form id="hForm" name="hForm" action="FindPwOk.me" method="post">
+					<fieldset>
+						<legend>휴대전화번호 확인</legend>
+						<div class="boardTypeForm">
+							<table  class="tb">
+								<caption>휴대전화번호 (이름, 휴대전화번호, 생년월일)</caption>
+								<colgroup>
+									<col style="width: 135px;">
+									<col style="width: auto;">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row">아이디</th>
+										<td><input id="id" name="id" title="아이디" class="inputText" type="text" value="" maxlength="20"></td>
+									</tr>
+									<tr>
+										<th scope="row">이름</th>
+										<td><input id="name" name="name" title="이름" class="inputText" type="text" value="" maxlength="20"></td>
+									</tr>
+									<tr>
+										<th scope="row">휴대전화번호</th>
+										<td><input id="hp_no" name="phoneNum" title="휴대전화번호" class="inputText" type="text" value="" maxlength="40"></td>
+									</tr>
+									<tr>
+										<th scope="row">생년월일</th>
+										<td><input id="birth" name="birth" title="생년원일" class="inputText" type="text" value="" maxlength="10"><p class="desc">예)1970-01-01</p></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="fphone" id="presult" style="display: none;">
+								<div class="confirmWrap findConfirmWrap">
+									<p>비밀번호 찾기가 완료 되었습니다.</p>
+									<p>가입된 비밀번호는 아래와 같습니다.</p>
+								</div>
+								<div class="compTxt">
+								<!--//*2109-07-10 ##ID/PW찾기  -->
+								
+									<label for="memberInfo01">
+										<span style="color: #2263bb">▶</span>  회원님의 비밀번호는<span class="colorPoint fcolorPoint"></span> 입니다.
+									</label><br>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+				<div class="btnWrap alignC">
+					<button type="button" class="btnType03" id="confirmHpBtn">확인하기</button>
+					<button class="logInBtn" onclick="location.href='passwordchange.jsp' ">비밀번호 변경</button>
+				</div>
+			</div>
+			
+		</section>
+		<!-- //layerWrap -->
+	</main>
+	<footer id="footer">
+            <div class="ftMenuWrap">
+                <div class="footerMenu">
+                    <div class="innerWrap clearFix">
+                        <ul class="ftMenuList01">
+                            <li><a href="//child.snuh.org/main.do" target="_blank">어린이병원</a></li>
+                            <li><a href="//cancer.snuh.org/main.do" target="_blank">암병원</a></li>
+                            <li><a href="//www.snubh.org/" target="_blank">분당서울대병원</a></li>
+                            <li><a href="//www.brmh.org/" target="_blank">보라매병원</a></li>
+                            <li><a href="//healthcare.snuh.org/" target="_blank">강남센터</a></li>
+                            <li><a href="http://medicine.snu.ac.kr" target="_blank">서울대학교의과대학</a></li>
+                        </ul>
+                        <ul class="ftMenuList02">
+                            <li><a href="#ftMenuCol01" class="" title="진료과 메뉴 레이어 열기">진료과</a></li>
+                            <li><a href="#ftMenuCol02" class="" title="주요센터 메뉴 레이어 열기">주요센터</a></li>
+                            <li><a href="#ftMenuCol03" class="" title="주요부서 메뉴 레이어 열기">주요부서</a></li>
+                            <li><a href="#ftMenuCol04" class="" title="주요서비스 메뉴 레이어 열기">주요서비스</a></li>
+                            <li><a href="#ftMenuCol05" class="" title="패밀리사이트 메뉴 레이어 열기">패밀리사이트</a></li>
+                        </ul>
+                        <div class="ftMenuLayer clearFix" role="region" aria-hidden="true" aria-expanded="false" style="display: none; visibility: visible;"></div>
+                    </div>
+                </div>
+            </div>
+            <ul class="innerWrap footerLink">
+                <li><a href="/reservation/unPaid/list.do" class="colorPoint04" target="_blank">비급여진료비용</a></li>
+                <li><a href="/content/M004005.do" target="_blank">환자권리장전</a></li>
+                <li><a href="/footer/service.do" target="_blank">이용약관</a></li>
+                <li><a href="/footer/privacy.do" class="colorPoint04" target="_blank">개인정보 처리방침</a></li>
+                <li><a href="/content/M004006002.do" target="_blank">정보공개</a></li>
+                <li><a href="/" data-layer="layerEmail" class="layerBtn">정보무단수집거부공개</a></li>
+                <li><a href="/" data-layer="layerDown" class="layerBtn">뷰어 다운로드</a></li>
+                <li><a href="//nrefer.snuh.org" target="_blank">진료협력센터</a></li>
+                <li><a href="//funeral.snuh.org/main.do" target="_blank">장례식장</a></li>
+            </ul>
+            <div class="footerInfo">
+                <div class="innerWrap">
+                    <address class="clearfix">
+                        <p>주소 : 03080 서울특별시 종로구 대학로 101(연건동 28)</p>
+                        <p>대표전화 : <a href="tel:1588-5700">1588-5700</a></p>
+                        <p>
+                            <a href="/login.do?retUrl=/content/M005009.do">홈페이지 의견접수</a>
+                        </p>
+                    </address>
+                    <p class="copyright">COPYRIGHT 2010 SEOUL NATIONAL UNIVERSITY HOSPITAL. ALL RIGHTS RESERVED</p>
+                    <ul class="awardList">
+                        <li class="item05 hideTxt"><a href="/board/B003/view.do?viewType=true&ampbbs_no=5224">전자의무기록시스템</a></li>
+                        <li class="item01 hideTxt"><a href="/board/B003/view.do?bbs_no=1509">보건복지부 제 1호</a></li>
+                        <li class="item04 hideTxt" name="ismsTxt"><a href="#ismsTxt" class="ismsTxtBtn">서울대학교병원 정보보호 관리체계(ISMS) 인증
+                            [유효기간] 2021.02.17 ~ 2024.02.16 
+                            [인증범위] 의료정보시스템(EMR,OCS),홈페이지 및 모바일 애플리케이션  운영</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ftIsmsTxt">
+                <p>서울대학교병원 정보보호 관리체계(ISMS) 인증<br>
+                    [유효기간] 2021.02.17 ~ 2024.02.16<br> 
+                    [인증범위] 의료정보시스템(EMR,OCS),홈페이지 및 모바일 애플리케이션 운영</p>
+            </div>   
+        </footer>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+let contextPath = "${pageContext.request.contextPath}";
 	var birthNumCheck=/^[0-9]*$/ ;
-	$(function() {
-
-		$('#mBtn').click(function() {
-			var PCC_window =window.open('', 'PCCV3Window', 'width=430, height=560, resizable=1, scrollbars=no, status=0, titlebar=0, toolbar=0, left=300, top=200' );
-			PCC_window.focus();
-			document.reqPCCForm.action = 'https://pcc.siren24.com/pcc_V3/jsp/pcc_V3_j10.jsp';
-			document.reqPCCForm.target="PCCV3Window";
-			document.reqPCCForm.submit();
-		});
-		
-		$('#ipinBtn').click(function() {
-			var IPIN_window =window.open('', 'IPINWindow', 'width=450, height=500, resizable=0, scrollbars=no, status=0, titlebar=0, toolbar=0, left=300, top=200' );
-			IPIN_window.focus();
-			document.reqCBAForm.action = 'https://ipin.siren24.com/i-PIN/jsp/ipin_j10.jsp';
-			document.reqCBAForm.target="IPINWindow";
-			document.reqCBAForm.submit();
-		});
 		
 		$('#confirmMailBtn').click(function() {
 			
@@ -98,17 +364,34 @@
 					$('#mForm').find('[id=birth]').focus();
 					return false;
 				}
+				
+				if(!$('#mForm').find('[id=birth]').val().match("-")){
+					alert("생년월일에" + " '-' " + "를 포함시켜 입력해주세요. ")
+					return false;
+				}
+				
 				$.ajax({
-					async : false,
-					type : "get",
-					url : "./passMailCheck.do",
-					data : {"id" : $('#mForm').find('[id=id]').val(), "name" : $('#mForm').find('[id=name]').val(), "email" : $('#mForm').find('[id=email]').val(), "birth" : $('#mForm').find('[id=birth]').val()},
-					success : function(data) {
-						if(!data) {
-							alert("정보가 확인되지 않습니다. \n입력정보를 한번 더 확인해 주십시오.");
-						} else {
-							$('#mForm').submit();
+					url: contextPath + "/Nfhospital/FindPwOk.me",
+					type: "get",
+					data: {id: mForm.id.value, name: mForm.name.value, email: mForm.email.value, birth: mForm.birth.value},
+					contentType: "application/json; charset=utf-8",
+					dataType: "json",
+					success: function(result){
+						console.log(result.find);
+						if(result.find != null){
+							$("#eresult").css("display", "block");
+							$(".ecolorPoint").text(result.find);
+						}else{
+							alert("가입되어 있지 않습니다.")
 						}
+						
+						
+					},
+					error: function(request, status, error){
+						console.log("실패..");
+						console.log(request);
+						console.log(status);
+						console.log(error);
 					}
 				});
 			}
@@ -128,149 +411,202 @@
 					$('#hForm').find('[id=birth]').focus();
 					return false;
 				}	
+				
+				if(!$('#hForm').find('[id=birth]').val().match("-")){
+					alert("생년월일에" + " '-' " + "를 포함시켜 입력해주세요. ")
+					return false;
+				}
+				
+				if(!$('#hForm').find('[id=hp_no]').val().match("-")){
+					alert("휴대폰 번호에" + " '-' " + "를 포함시켜 입력해주세요. ")
+					return false;
+				}
+				
 				$.ajax({
-					async : false,
-					type : "get",
-					url : "./passHpCheck.do",
-					data : {"id" : $('#hForm').find('[id=id]').val(), "name" : $('#hForm').find('[id=name]').val(), "hp_no" : $('#hForm').find('[id=hp_no]').val(), "birth" : $('#hForm').find('[id=birth]').val()},
-					success : function(data) {
-						if(!data) {
-							alert("정보가 확인되지 않습니다. \n입력정보를 한번 더 확인해 주십시오.");
-						} else {
-							$('#hForm').submit();
+					url: contextPath + "/Nfhospital/FindPwOk.me",
+					type: "get",
+					data: {id: hForm.id.value, name: hForm.name.value, phoneNum: hForm.phoneNum.value, birth: hForm.birth.value},
+					contentType: "application/json; charset=utf-8",
+					dataType: "json",
+					success: function(result){
+						console.log(result.find);
+						if(result.find != null){
+							$("#presult").css("display", "block");
+							$(".fcolorPoint").text(result.find);
+						}else{
+							alert("가입되어 있지 않습니다.")
 						}
+						
+						
+					},
+					error: function(request, status, error){
+						console.log("실패..");
+						console.log(request);
+						console.log(status);
+						console.log(error);
 					}
 				});
 			}
 		});
-	});
-</script>
-<div id="wrap">
-			
-<!-- content -->
-<main id="content" class="findContent">
-	<div class="contHeadingWrap">
-		<h2>아이디/비밀번호 찾기</h2>
-	</div>
-	<!-- tabType -->
-	<div class="tabTypeCol2">
-		<ul class="clearFix">
-			<li style="width: 50%;float:left;background-color: white;"><a href="findid.jsp">아이디 찾기</a></li>
-			<li class="current"><a href="#">비밀번호 찾기</a></li>
-		</ul>
-	</div>
-	<!-- //tabType -->
-	<div class="confirmWrap pwConfirmWrap">
-		<p>비밀번호를 잊으셨습니까?</p>
-		<p>가입하신 당시 인증 방법 중 한가지를 선택하여 찾으실 수 있습니다.</p>
-	</div>
-	<div class="memType03 clearFix">
-		<a href="/" class="layerBtn" data-layer="layerMail"  style="width:50%;float:left;height: 120px;"><span class="mEMail">가입정보</span>이메일 이용하기<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1emQe9ZHGyS9LwS6lzkyBrw51Xsgeg4ca1Q&usqp=CAU" style="height: auto;max-width: 100px"></a>
-		<a href="javascript:void(0);" id="mBtn" style="width:50%;height: 120px;"><span class="mPhone">휴대전화</span>본인 인증하기<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAaVBMVEX///8AAAA1NTXAwMD09PSdnZ3W1tZycnL4+Pg5OTkVFRWTk5OysrLFxcWgoKBBQUFhYWFYWFh9fX3q6urb29t3d3e4uLgoKCjLy8sXFxfDw8MhISFcXFwfHx83NzfT09OqqqqKiooODg5yHwEDAAADQElEQVR4nO3Y63aaQBiFYUfxjKJijIlpc7j/i2yMq20qrAaHvYcs1vv+z+c8kYGRwaBFs+N6WiyCs0UxXR9nbRbZgpdvrLbPbQ5Zet/ylMx37scy8ReZJ+VdyhP6sqcOgO/XarJLtRx2AgxhWKYBZt675/9apPkWf3YGDGGeArjrEBjCzg987hQYwrNduG22kMVhcluHt2aDt27gvuG/ev+NJt9W010YMbrhZPdObLgMozBm9A1Nmi7j9ebRy6ajJwbX35qfR+fT2yoaT/aeT7t9GF7ybsSGzwpr3udF82vJV2EVzrvmBffZtKvfTZ8bIkSIsPNSCe/W45St75ILV9bPqbZKLhxZP6faCKEohL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL4QqkLoC6EqhL76L3xMLjzMspTNDsmF3YUQIcLuQ4jQKbwfH8tZeVze91T4kP8Zkz/0UViUn+aURf+E1+vSTfouwvJqUtk34bgyatwv4SKrjMreeiXc1Mza9Er4UjPr5VsK55GreqyZ9fj1n9U2twpjH2OrmlmryFmFVbiNXFXdW53R139W29Yq3EWu6rVm1mvkrJ1VmEeuqu7Kir3i85pZuiaRqwqTyqhn3Shpscuqbp7YLR28wOiNGF6uBsU+Dc3bcDDYxy7s6nYaeyMNYW8Wxl9c/xy+o4/d5mfFuegbxPsNdXQ5f2ejFr9/zfeZc9E78b3T0265ezq1mODehR/Fnk0Vec+kv8sWnQEfqj8zLZVdvTUdXr8KsZXF/nht1ybRN/hRHvsKokXe82ilWcsX17d2Ws7SAs/GQ7prdXNI77sgj+tp4b2zLorp+tiK9wsJGEAUSb81awAAAABJRU5ErkJggg==" style="max-width: 100px;height: auto;"></a>
-	</div>
-	<p class="referenMark"><span>※&nbsp;</span>회원정보가 변경되어 본인 확인이 불가할 경우 02-2072-0596 으로 연락주십시오.</p>
-
-	<form name="reqPCCForm" method="post" action="">
-		<input type="hidden" name="reqInfo" value="609A87FA9B2B786D2E352288893788CF6562FE275E7FEAB63A4E372C5F755A4DB7295D2304368F3DCBCE35F4A446736E0F126204F08EB6AD1E5629F133B195CE9B21283AC4A38C1728994476938C1054409F56D8ECB27E538F3F1DB7EA21F21E9A44939308920657E30AD5DAC19FC40C83C07ACBCB6DF3F590D6A1F5C530197259110E0986CDEE857CCDE3586A9F73BD3303B82A5B130517BF67A9116AAC12DCAC53C4FE07561EBC4A9FAA9F181F54856F28C4C5F969F79A7CEA25E20FBD89199C4DA94AF62538EE00976CB77F60B887D6D6C5FE0E998665EFB25A6B71D40842">
-		<input type="hidden" name="retUrl" value="32https://www.snuh.org/member/phoneAuthResponse.do?authKind=findPassword">
-	</form>
-	
-	<form name="reqCBAForm" method="post" action="">
-		<input type="hidden" name="reqInfo" value="5816AA2186DF11A14BC7E1688F88D091C1D2A454109ABC8227D8F1392817B7F3AB675CD9A9643AD68ADFC35B465C0D176AC0D0C5C3B096892653241F04FCEBB51119CDAB6CE85178F34D1ACCA3FFE4BE890D6923DE5A4E787E68EAE75E42228D2C95FCFADBFCF6A7EFCE5311A06D771F8767808B12DE4E3C6550C88A01E0852DA4D83147C6A69DCE524FF896D32980ECDE18FE10E70182450907A91078D7FE04CD0E5340EFB92E6D8E7A0A8C2B821491981285156FEAB5D63F68CA5B03029112">
-		<input type="hidden" name="retUrl" value="23https://www.snuh.org/member/ipinAuthResponse.do?authKind=findPassword&amp;join_type=null">
-	</form>
-	<!-- layerWrap -->
-	
-	<section class="layerWrap layerMail" >
-		<h1>회원정보 이메일 확인</h1>
-		<!-- layerContent -->
-		<div class="layerContent">
-			<form id="mForm" name="mForm" action="./findPassMailResult.do" method="post">
-				<fieldset>
-					<legend>이메일확인</legend>
-					<div class="boardTypeForm">
-						<table>
-							<caption>이메일확인(이름, 이메일주소, 생년월일)</caption>
-							<colgroup>
-								<col style="width: 135px;">
-								<col style="width: auto;">
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">아이디</th>
-									<td><input id="id" name="id" title="아이디" class="inputText" type="text" value="" maxlength="20"></td>
-								</tr>
-								<tr>
-									<th scope="row">이름</th>
-									<td><input id="name" name="name" title="이름" class="inputText" type="text" value="" maxlength="20"></td>
-								</tr>
-								<tr>
-									<th scope="row">이메일주소</th>
-									<td><input id="email" name="email" title="이메일주소" class="inputText" type="text" value="" maxlength="40"></td>
-								</tr>
-								<tr>
-									<th scope="row">생년월일</th>
-									<td><input id="birth" name="birth" title="생년원일" class="inputText" type="text" value="" maxlength="10"><p class="desc">예)1970-01-01</p></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</fieldset>
-			</form>
-			<div class="btnWrap alignC">
-				<button type="button" class="btnType03" id="confirmMailBtn">확인하기</button>
-			</div>
-		</div>
-
-	</section>
-	<section class="layerWrap layerHp" >
-		<h1>회원정보 휴대전화번호 확인</h1>
-		<!-- layerContent -->
-		<div class="layerContent">
-			<form id="hForm" name="hForm" action="./findPassHpResult.do" method="post">
-				<fieldset>
-					<legend>휴대전화번호 확인</legend>
-					<div class="boardTypeForm">
-						<table>
-							<caption>휴대전화번호 (이름, 휴대전화번호, 생년월일)</caption>
-							<colgroup>
-								<col style="width: 135px;">
-								<col style="width: auto;">
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">아이디</th>
-									<td><input id="id" name="id" title="아이디" class="inputText" type="text" value="" maxlength="20"></td>
-								</tr>
-								<tr>
-									<th scope="row">이름</th>
-									<td><input id="name" name="name" title="이름" class="inputText" type="text" value="" maxlength="20"></td>
-								</tr>
-								<tr>
-									<th scope="row">휴대전화번호</th>
-									<td><input id="hp_no" name="hp_no" title="휴대전화번호" class="inputText" type="text" value="" maxlength="40"></td>
-								</tr>
-								<tr>
-									<th scope="row">생년월일</th>
-									<td><input id="birth" name="birth" title="생년원일" class="inputText" type="text" value="" maxlength="10"><p class="desc">예)1970-01-01</p></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</fieldset>
-			</form>
-			<div class="btnWrap alignC">
-				<button type="button" class="btnType03" id="confirmHpBtn">확인하기</button>
-			</div>
-		</div>
 		
-	</section>
-	<!-- //layerWrap -->
-</main>
+		
+		/* 네비게이션 바 JS시작 */
 
+		$(".set").on("mouseover", function(){
+				$(this).addClass('up');
+				$(this).children('a').css("color", "#2263bb");
+				if($(this).attr('id').match('first')){
+					$(".second").removeClass('selected');
+					$(".second").css("visibility", "hidden");
+					$("#second").children('a').css("color", "#000");
+		   		$("#second").removeClass('up')
+		   		$(".second").removeClass('line')
+		   		
+		   		$(".third").removeClass('selected');
+		   		$(".third").css("visibility", "hidden");
+		   		$("#third").children('a').css("color", "#000");
+			    	$("#third").removeClass('up')
+		   		$(".third").removeClass('line')
+			    	
+			    	$(".fourth").removeClass('selected');
+		   		$(".fourth").css("visibility", "hidden");
+		   		$("#fourth").children('a').css("color", "#000");
+			    	$("#fourth").removeClass('up')
+		   		$(".fourth").removeClass('line')
+				
+			    	$(".first").addClass('selected');
+					$(".first").css("visibility", "visible");
+					$(".first").addClass('line');
+					
+				}else if($(this).attr('id').match('second')){
+					$(".first").removeClass('selected');
+					$(".first").css("visibility", "hidden");
+		   		$("#first").children('a').css("color", "#000");
+		   		$("#first").removeClass('up')
+		   		$(".first").removeClass('line')
+		   		
+		   		$(".third").removeClass('selected');
+		   		$(".third").css("visibility", "hidden");
+		   		$("#third").children('a').css("color", "#000");
+			    	$("#third").removeClass('up')
+			    	$(".third").removeClass('line')
+			    	
+			    	$(".fourth").removeClass('selected');
+		   		$(".fourth").css("visibility", "hidden");
+		   		$("#fourth").children('a').css("color", "#000");
+			    	$("#fourth").removeClass('up')
+			    	$(".fourth").removeClass('line')
+					
+			    	$(".second").addClass('selected');
+					$(".second").css("visibility", "visible");
+					$(".second").addClass('line');
+					
+				}else if($(this).attr('id').match('third')){
+					$(".first").removeClass('selected');
+					$(".first").css("visibility", "hidden");
+		   		$("#first").children('a').css("color", "#000");
+		   		$("#first").removeClass('up')
+		   		$(".first").removeClass('line')
+					
+		   		$(".second").removeClass('selected');
+		   		$(".second").css("visibility", "hidden");
+		   		$("#second").children('a').css("color", "#000");
+			    	$("#second").removeClass('up')
+			    	$(".second").removeClass('line')
+					
+			    	$(".fourth").removeClass('selected');
+		   		$(".fourth").css("visibility", "hidden");
+		   		$("#fourth").children('a').css("color", "#000");
+			    	$("#fourth").removeClass('up')
+			    	$(".fourth").removeClass('line')
+					
+			    	$(".third").addClass('selected');
+					$(".third").css("visibility", "visible");
+					$(".third").addClass('line');
 
-<jsp:include page="footer.jsp" />
-</div>
-</body>
+				}else if($(this).attr('id').match('fourth')){
+					$(".first").removeClass('selected');
+					$(".first").css("visibility", "hidden");
+		   		$("#first").children('a').css("color", "#000");
+		   		$("#first").removeClass('up')
+		   		$(".first").removeClass('line')
+					
+					$(".second").removeClass('selected');
+		   		$(".second").css("visibility", "hidden");
+		   		$("#second").children('a').css("color", "#000");
+			    	$("#second").removeClass('up')
+			    	$(".second").removeClass('line')
+			    	
+			    	$(".third").removeClass('selected');
+		   		$(".third").css("visibility", "hidden");
+		   		$("#third").children('a').css("color", "#000");
+			    	$("#third").removeClass('up')
+			    	$(".third").removeClass('line')
+					
+			    	$(".fourth").addClass('selected');
+					$(".fourth").css("visibility", "visible");
+					$(".fourth").addClass('line');
 
+				}
+				
+				
+		});
+
+		   $(".subList").mouseleave(function(){
+		   		if($(this).attr('class').match('first')){
+		   			$(".first").removeClass('selected');
+		   			$(".first").css("visibility", "hidden");
+		   			$(".first").removeClass("line")
+			    		$("#first").children('a').css("color", "#000");
+			    		$("#first").removeClass('up')
+		   			
+		   		}else if($(this).attr('class').match('second')){
+		   			$(".second").removeClass('selected');
+		   			$(".second").css("visibility", "hidden");
+		   			$(".second").removeClass("line")
+		   			$("#second").children('a').css("color", "#000");
+			    		$("#second").removeClass('up')
+			    		
+		   		}else if($(this).attr('class').match('third')){
+		   			$(".third").removeClass('selected');
+		   			$(".third").css("visibility", "hidden");
+		   			$(".third").removeClass("line")
+		   			$("#third").children('a').css("color", "#000");
+			    		$("#third").removeClass('up')
+			    		
+		   		}else if($(this).attr('class').match('fourth')){
+		   			$(".fourth").removeClass('selected');
+		   			$(".fourth").css("visibility", "hidden");
+		   			$(".fourth").removeClass("line")
+		   			$("#fourth").children('a').css("color", "#000");
+			    		$("#fourth").removeClass('up')
+		   		}
+		   })  
+		   
+		   $(".weaks").mouseover(function(){
+		   	$(this).css('color', "#2263bb");
+		   })
+
+		   $(".weaks").mouseout(function(){
+		   	$(this).css('color', "#888");
+		   })
+		   
+		   $("a[class='strongs']").mouseover(function(){
+		   	$(this).css('color', "#2263bb");
+		   })
+		   
+		   $("a[class='strongs']").mouseout(function(){
+		   	$(this).css('color', "#000");
+		   })
+		   
+			$("a[class='strongs top']").mouseover(function(){
+		   	$(this).css('color', "#2263bb");
+		   })
+		   
+		   $("a[class='strongs top']").mouseout(function(){
+		   	$(this).css('color', "#000");
+		   })
+		  
+		    /* 네비게이션 바 JS끝 */
+</script>
 </html>

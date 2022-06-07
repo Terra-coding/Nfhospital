@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="asset/css/thankyouwrite.css">
-    <link rel="stylesheet" href="asset/css/KDHfooter.css">
-    <link rel="stylesheet" href="asset/css/aside.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/thankyouwrite.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/KDHfooter.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/aside.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <title>감사합니다 | 서울대학교병원</title>
+    <title>감사합니다 | 서울병원</title>
 </head>
 <body>
     <div id="wrap">
@@ -22,7 +23,7 @@
                 <h1><a href="mainpage.jsp">서울 병원</a></h1>
                 <div class="topLeftWrap">
                     <a href="mainpage.jsp">
-	                	<img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
+	                	<img src="${pageContext.request.contextPath}/asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
                     </a>
                 </div>
                 <div class="topMenuWrap">
@@ -170,7 +171,7 @@
                     </p>
                 </div>
             </div>
-            <form id="joinClientVo" action="" method="post" enctype="multipart/form-data">
+            <form id="joinClientVo" name="writeForm" action="${pageContext.request.contextPath }/write/ThankyouWriteOk.wr" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <legend>감사합니다 등록</legend>
                     <div class="persInforWrap">
@@ -205,104 +206,104 @@
                                 <col style="width: 140px;">
                                 <col style="width: auto;">
                             </colgroup>
-                            <tbody>
-
-                                <tr>
-                                    <th scope="row">환자성함</th>
-                                    <td><input id="ptname" name="ptname" title="환자성함" type="text" class="inputText validate-require" value="김대훈" maxlength="16"></td>
-                                    <th scope="row">환자등록정보</th>
-                                    <td><input id="ptcd" name="ptcd" title="환자등록정보 성함" type="text" class="inputText validate-require" value="57045179" maxlength="8"></td>
-                                </tr>
-        
-        
-                                <tr>
-                                    <th scope="row">작성자 성함</th>
-                                    <td colspan="3">
-                                        <input id="wrtname" name="wrtname" title="작성자 성함" type="text" class="inputText validate-require" value="" maxlength="16">
-                                        <span class="txtWrap">
-                                            <label class="feForm feFoCheck" for="checkbox01"><input id="checkbox01" type="checkbox" title="글 작성자와 환자가 동일" data-fe-idx="feFoCheckIdx2" style="opacity: 0;"></label><label for="checkbox01">글 작성자와 환자가 동일</label>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="verTop">휴대폰번호</th>
-                                    <td colspan="3">
-                                        <label class="feForm feFoSelect selectSmall" for="tel1"><span>010</span><select id="tel1" title="휴대전화 첫번째 자리" class="selectTypeM validate-require" data-fe-idx="feFoSelectIdx1" style="opacity: 0;"><option value="010">010</option><option value="011">011</option><option value="016">016</option><option value="017">017</option><option value="018">018</option><option value="019">019</option></select></label>
-                                        <span class="txtWrap">-</span>
-                                        <input id="tel2" type="tel" class="inputTextSmall validate-require" title="휴대전화 두번째 자리" maxlength="4"><span class="txtWrap">-</span><input id="tel3" type="tel" class="inputTextSmall validate-require" title="휴대전화 세번째 자리" maxlength="4">
-                                        <p class="desc">
-                                            연락가능한 전화번호를 입력 해 주시기 바랍니다.
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">환자와의 관계</th>
-                                    <td colspan="3">
-                                <span class="txtWrap">환자의</span>
-                                        <label class="feForm feFoRadio" for="radio01"><input type="radio" id="radio01" name="ptrelation" value="1" data-fe-idx="feFoRadioIdx1" style="opacity: 0;"></label>
-                                        <label for="radio01" class="lblTxt">본인</label>
-                                        <label class="feForm feFoRadio" for="radio02"><input type="radio" id="radio02" name="ptrelation" value="2" data-fe-idx="feFoRadioIdx2" style="opacity: 0;"></label>
-                                        <label for="radio02" class="lblTxt">배우자</label>
-                                        <label class="feForm feFoRadio" for="radio03"><input type="radio" id="radio03" name="ptrelation" value="3" data-fe-idx="feFoRadioIdx3" style="opacity: 0;"></label>
-                                        <label for="radio03" class="lblTxt">부모</label>
-                                        <label class="feForm feFoRadio" for="radio04"><input type="radio" id="radio04" name="ptrelation" value="4" data-fe-idx="feFoRadioIdx4" style="opacity: 0;"></label>
-                                        <label for="radio04" class="lblTxt">자녀</label>
-                                        <label class="feForm feFoRadio" for="radio05"><input type="radio" id="radio05" name="ptrelation" value="5" data-fe-idx="feFoRadioIdx5" style="opacity: 0;"></label>
-                                        <label for="radio05" class="lblTxt">친척</label>
-                                        <label class="feForm feFoRadio" for="radio06"><input type="radio" id="radio06" name="ptrelation" value="6" data-fe-idx="feFoRadioIdx6" style="opacity: 0;"></label>
-                                        <label for="radio06" class="lblTxt">지인</label><br><br>
-                                        <label class="feForm feFoRadio checked0" for="radio07"><input type="radio" id="radio07" name="ptrelation" value="7" checked="checked" data-fe-idx="feFoRadioIdx7" style="opacity: 0;"></label>
-                                        <label for="radio07" class="lblTxt">기타</label>
-                                        <input id="ptrelationetc" name="ptrelationetc" title="기타" type="text" class="inputTextSmall" value="" maxlength="10">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">제목</th>
-                                    <td colspan="3">
-                                        <input id="title" name="title" title="제목" style="width:475px;" type="text" class="inputTextLarge validate-require" wrap="hard" value="" maxlength="50">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="verTop">내용</th>
-                                    <td colspan="3">
-                                        <textarea id="txtContent" name="content" title="내용" placeholder="한글 4000자 입력 가능합니다." rows="50" cols="20"></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="verTop">첨부파일</th>
-                                    <td colspan="3"><div class="feFoFileWrap"><input type="text" title="선택된 파일" class="feFoFileInpTxt" readonly=""><label class="feForm feFoFile fileWrap" for="uploadFile"><input id="uploadFile" name="uploadFile" title="첨부파일" data-fe-label="첨부파일" type="file" accept=".png, .jpg" value="" data-fe-idx="feFoFileIdx1" tabindex="-1" style="opacity: 0;"><button type="button" class="feFoFileBtn">첨부파일</button></label></div><p class="desc">JPG, PNG 파일만 첨부 가능합니다. (5MB 이하) 파일이름은 영문으로 작성해 주시기 바랍니다.</p></td>
-                                </tr>
-                               <!--  <tr>
-                                    <th scope="row" class="verTop"><span class="required">*</span> 자동가입방지</th>
-                                    <td colspan="3">
-                                        <div class="autoJoin">
-                                            <div class="img">
-                                                <img src="http://www.snuh.org/asset/img/member/img_mem3.png" alt="3">
-                                                <img src="http://www.snuh.org/asset/img/member/img_mem4.png" alt="4">
-                                                <img src="http://www.snuh.org/asset/img/member/img_mem2.png" alt="2">
-                                                <img src="http://www.snuh.org/asset/img/member/img_mem4.png" alt="4">
-                                                <img src="http://www.snuh.org/asset/img/member/img_mem1.png" alt="1">
-                                                <img src="http://www.snuh.org/asset/img/member/img_mem6.png" alt="6">
-                                                <img src="http://www.snuh.org/asset/img/member/img_mem2.png" alt="2">
-                                                <img src="http://www.snuh.org/asset/img/member/img_mem2.png" alt="2">
-        
-                                            </div>
-                                            <div class="info">
-                                                <p>
-                                                    자동가입을 방지하기 위해 보안절차를 거치고 있습니다.<br>
-                                                    왼쪽 이미지를 보이는 대로 입력해주세요.
-                                                </p>
-                                                <input type="text" name="prevent" id="prevent" title="자동가입 방지" maxlength="8">
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr> -->
-                            </tbody>
+                            
+	                            <tbody>
+									<tr>
+	                                    <th scope="row">환자성함</th>
+	                                    <td><input id="ptname" name="name" title="환자성함" type="text" class="inputText validate-require" maxlength="16"></td>
+	                                    <th scope="row">환자등록정보</th>
+	                                    <td><input id="ptcd" name="nameCheck" title="환자등록정보 성함" type="text" class="inputText validate-require" maxlength="8"></td>
+	                                </tr>
+	        
+	        
+	                                <tr>
+	                                    <th scope="row">작성자 성함</th>
+	                                    <td colspan="3">
+	                                        <input id="wrtname" name="wrtname" title="작성자 성함" type="text" class="inputText validate-require" maxlength="16">
+	                                        <span class="txtWrap">
+	                                            <label class="feForm feFoCheck" for="checkbox01"><input id="checkbox01" type="checkbox" title="글 작성자와 환자가 동일" data-fe-idx="feFoCheckIdx2" style="opacity: 0;"></label><label for="checkbox01">글 작성자와 환자가 동일</label>
+	                                        </span>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row" class="verTop">휴대폰번호</th>
+	                                    <td colspan="3">
+	                                        <label class="feForm feFoSelect selectSmall" for="tel1"><span>010</span><select id="tel1" name="tel1" title="휴대전화 첫번째 자리" class="selectTypeM validate-require" data-fe-idx="feFoSelectIdx1" style="opacity: 0;"><option value="010">010</option><option value="011">011</option><option value="016">016</option><option value="017">017</option><option value="018">018</option><option value="019">019</option></select></label>
+	                                        <span class="txtWrap">-</span>
+	                                        <input id="tel2" name="tel2" type="tel" class="inputTextSmall validate-require" title="휴대전화 두번째 자리" maxlength="4"><span class="txtWrap">-</span><input id="tel3" name="tel3" type="tel" class="inputTextSmall validate-require" title="휴대전화 세번째 자리" maxlength="4">
+	                                        <p class="desc">
+	                                            연락가능한 전화번호를 입력 해 주시기 바랍니다.
+	                                        </p>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row">환자와의 관계</th>
+	                                    <td colspan="3">
+	                                <span class="txtWrap">환자의</span>
+	                                        <label class="feForm feFoRadio" for="radio01"><input type="radio" id="radio01" name="ptrelation" value="1" data-fe-idx="feFoRadioIdx1" style="opacity: 0;"></label>
+	                                        <label for="radio01" class="lblTxt">본인</label>
+	                                        <label class="feForm feFoRadio" for="radio02"><input type="radio" id="radio02" name="ptrelation" value="2" data-fe-idx="feFoRadioIdx2" style="opacity: 0;"></label>
+	                                        <label for="radio02" class="lblTxt">배우자</label>
+	                                        <label class="feForm feFoRadio" for="radio03"><input type="radio" id="radio03" name="ptrelation" value="3" data-fe-idx="feFoRadioIdx3" style="opacity: 0;"></label>
+	                                        <label for="radio03" class="lblTxt">부모</label>
+	                                        <label class="feForm feFoRadio" for="radio04"><input type="radio" id="radio04" name="ptrelation" value="4" data-fe-idx="feFoRadioIdx4" style="opacity: 0;"></label>
+	                                        <label for="radio04" class="lblTxt">자녀</label>
+	                                        <label class="feForm feFoRadio" for="radio05"><input type="radio" id="radio05" name="ptrelation" value="5" data-fe-idx="feFoRadioIdx5" style="opacity: 0;"></label>
+	                                        <label for="radio05" class="lblTxt">친척</label>
+	                                        <label class="feForm feFoRadio" for="radio06"><input type="radio" id="radio06" name="ptrelation" value="6" data-fe-idx="feFoRadioIdx6" style="opacity: 0;"></label>
+	                                        <label for="radio06" class="lblTxt">지인</label><br><br>
+	                                        <label class="feForm feFoRadio checked0" for="radio07"><input type="radio" id="radio07" name="ptrelation" value="7" checked="checked" data-fe-idx="feFoRadioIdx7" style="opacity: 0;"></label>
+	                                        <label for="radio07" class="lblTxt">기타</label>
+	                                        <input id="ptrelationetc" name="ptrelationetc" title="기타" type="text" class="inputTextSmall" value="" maxlength="10">
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row">제목</th>
+	                                    <td colspan="3">
+	                                        <input id="title" name="title" title="제목" style="width:475px;" type="text" class="inputTextLarge validate-require" wrap="hard" value="" maxlength="50">
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row" class="verTop">내용</th>
+	                                    <td colspan="3">
+	                                        <textarea id="txtContent" name="content" title="내용" placeholder="한글 4000자 입력 가능합니다." rows="50" cols="20"></textarea>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row" class="verTop">첨부파일</th>
+	                                    <td colspan="3"><div class="feFoFileWrap"><input type="text" title="선택된 파일" class="feFoFileInpTxt" readonly=""><label class="feForm feFoFile fileWrap" for="uploadFile"><input id="uploadFile" name="uploadFile" title="첨부파일" data-fe-label="첨부파일" type="file" accept=".png, .jpg" value="" data-fe-idx="feFoFileIdx1" tabindex="-1" style="opacity: 0;"><button type="button" class="feFoFileBtn">첨부파일</button></label></div><p class="desc">JPG, PNG 파일만 첨부 가능합니다. (5MB 이하) 파일이름은 영문으로 작성해 주시기 바랍니다.</p></td>
+	                                </tr>
+	                               <!--  <tr>
+	                                    <th scope="row" class="verTop"><span class="required">*</span> 자동가입방지</th>
+	                                    <td colspan="3">
+	                                        <div class="autoJoin">
+	                                            <div class="img">
+	                                                <img src="http://www.snuh.org/asset/img/member/img_mem3.png" alt="3">
+	                                                <img src="http://www.snuh.org/asset/img/member/img_mem4.png" alt="4">
+	                                                <img src="http://www.snuh.org/asset/img/member/img_mem2.png" alt="2">
+	                                                <img src="http://www.snuh.org/asset/img/member/img_mem4.png" alt="4">
+	                                                <img src="http://www.snuh.org/asset/img/member/img_mem1.png" alt="1">
+	                                                <img src="http://www.snuh.org/asset/img/member/img_mem6.png" alt="6">
+	                                                <img src="http://www.snuh.org/asset/img/member/img_mem2.png" alt="2">
+	                                                <img src="http://www.snuh.org/asset/img/member/img_mem2.png" alt="2">
+	        
+	                                            </div>
+	                                            <div class="info">
+	                                                <p>
+	                                                    자동가입을 방지하기 위해 보안절차를 거치고 있습니다.<br>
+	                                                    왼쪽 이미지를 보이는 대로 입력해주세요.
+	                                                </p>
+	                                                <input type="text" name="prevent" id="prevent" title="자동가입 방지" maxlength="8">
+	                                            </div>
+	                                        </div>
+	                                    </td>
+	                                </tr> -->
+	                            </tbody>
                         </table>
                     </div>
                     <div class="btnWrap alignC">
                         <button type="button" class="btnType02 btnBig" id="btnPraiseList" onClick="location.href='allThanksView.jsp'">감사합니다 전체보기</button>
-                        <button type="button" class="btnType03 btnBig">확인</button>
+                        <input type="button" class="btnType03 btnBig" value="완료" onclick="send()"/>
                     </div>
                 </fieldset>
             </form>
@@ -366,7 +367,7 @@
                         <ul class="ftMenuList01">
                             <li><a href="//child.snuh.org/main.do" target="_blank">어린이병원</a></li>
                             <li><a href="//cancer.snuh.org/main.do" target="_blank">암병원</a></li>
-                            <li><a href="//www.snubh.org/" target="_blank">분당서울대병원</a></li>
+                            <li><a href="//www.snubh.org/" target="_blank">분당서울병원</a></li>
                             <li><a href="//www.brmh.org/" target="_blank">보라매병원</a></li>
                             <li><a href="//healthcare.snuh.org/" target="_blank">강남센터</a></li>
                             <li><a href="http://medicine.snu.ac.kr" target="_blank">서울대학교의과대학</a></li>
@@ -406,14 +407,14 @@
                     <ul class="awardList">
                         <li class="item05 hideTxt"><a href="/board/B003/view.do?viewType=true&ampbbs_no=5224">전자의무기록시스템</a></li>
                         <li class="item01 hideTxt"><a href="/board/B003/view.do?bbs_no=1509">보건복지부 제 1호</a></li>
-                        <li class="item04 hideTxt" name="ismsTxt"><a href="#ismsTxt" class="ismsTxtBtn">서울대학교병원 정보보호 관리체계(ISMS) 인증
+                        <li class="item04 hideTxt" name="ismsTxt"><a href="#ismsTxt" class="ismsTxtBtn">서울병원 정보보호 관리체계(ISMS) 인증
                             [유효기간] 2021.02.17 ~ 2024.02.16 
                             [인증범위] 의료정보시스템(EMR,OCS),홈페이지 및 모바일 애플리케이션  운영</a></li>
                     </ul>
                 </div>
             </div>
             <div class="ftIsmsTxt">
-                <p>서울대학교병원 정보보호 관리체계(ISMS) 인증<br>
+                <p>서울병원 정보보호 관리체계(ISMS) 인증<br>
                     [유효기간] 2021.02.17 ~ 2024.02.16<br> 
                     [인증범위] 의료정보시스템(EMR,OCS),홈페이지 및 모바일 애플리케이션 운영</p>
             </div>   
@@ -421,6 +422,7 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="asset/js/aside.js"></script>
-<script src="asset/js/thankyouwrite.js"></script>
+<script>var contextPath = "${pageContext.request.contextPath }";</script>
+<script src="${pageContext.request.contextPath }/asset/js/aside.js"></script>
+<script src="${pageContext.request.contextPath }/asset/js/thankyouwrite.js"></script>
 </html>

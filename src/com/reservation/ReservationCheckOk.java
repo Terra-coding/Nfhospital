@@ -1,4 +1,4 @@
-package com.member;
+package com.reservation;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,7 +10,7 @@ import org.json.simple.JSONObject;
 
 import com.member.action.Action;
 import com.member.action.ActionInfo;
-import com.member.domain.dao.ReservationDAO;
+import com.reservation.domain.dao.ReservationDAO;
 
 public class ReservationCheckOk implements Action{
 	@Override
@@ -20,8 +20,8 @@ public class ReservationCheckOk implements Action{
 	      ReservationDAO reservationDAO = new ReservationDAO();
 	      JSONObject resultJSON = new JSONObject(); 
 	      
-	      String reservationId = req.getParameter("reservationId");
-	      resultJSON.put("check", reservationDAO.checkID(reservationId));
+	      /*String reservationId = req.getParameter("reservationId");
+	      resultJSON.put("check", reservationDAO.checkID(reservationId));*/
 		
 	      out.print(resultJSON.toJSONString());
 	      out.close();

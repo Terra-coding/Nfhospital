@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.member.action.ActionInfo;
+import com.reservation.ReservationCheckOk;
+import com.reservation.ReservationOk;
 
 public class MemberFrontController extends HttpServlet {
 
@@ -27,20 +29,39 @@ public class MemberFrontController extends HttpServlet {
 		String command = requestURL.substring(requestURL.lastIndexOf("/") + 1);
 		ActionInfo actionInfo = null;
 
-		if (command.equals("JoinOk.me")) {
+		if (command.equals("JoinOk.me")) { //회원가입
 			actionInfo = new MemberJoinOk().execute(req, resp);
 
 		} else if (command.equals("Join.me")) {
 			actionInfo = new ActionInfo();
 			actionInfo.setRedirect(true);
 			actionInfo.setPath(req.getContextPath() + "/join.jsp");
-		} else if (command.equals("CheckIdOk.me")) {
+			
+		} else if (command.equals("CheckIdOk.me")) { //아이디 중복 체크
 			new CheckIdOk().execute(req, resp);
 
-		} else if(command.equals("MemberLoginOk.me")) { 
+		} else if(command.equals("MemberLoginOk.me")) { //로그인
 			actionInfo = new MemberLoginOk().execute(req, resp);
-		} else if(command.equals("CheckCodeOk.me")) {
+			
+		} else if(command.equals("CheckCodeOk.me")) {// 휴대폰 인증
 			new CheckCodeOk().execute(req, resp);
+		
+		} else if(command.equals("FindIdOk.me")) {
+			new FindIdOk().execute(req, resp);
+		
+		} else if(command.equals("FindPwOk.me")){
+			new FindPwOk().execute(req, resp);
+	
+		} else if(command.equals("LogOutOk.me")) {
+			actionInfo = new LogOutOk().execute(req, resp);
+		
+		} else if(command.equals("MemberLogin.me")) {
+			actionInfo = new MemberLogin().execute(req, resp);
+		
+		}else if(command.equals("ProfileChangeOk.me")) {
+			System.out.println("들어옴");
+			actionInfo = new ProfileChangeOk().execute(req, resp);
+		
 		}else {
 			// 404 일 때 출력할 에러 페이지 경로 작성
 
@@ -48,7 +69,7 @@ public class MemberFrontController extends HttpServlet {
 
 		
 		
-		if (command.equals("ReservationOk.me")) {
+/*		if (command.equals("ReservationOk.me")) {
 			actionInfo = new ReservationOk().execute(req, resp);
 
 		} else if (command.equals("Reservation.me")) {
@@ -60,7 +81,7 @@ public class MemberFrontController extends HttpServlet {
 
 		} else {
 			// 404 일 때 출력할 에러 페이지 경로 작성
-		}
+		}*/
 
 		
 		

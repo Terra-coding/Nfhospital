@@ -1,4 +1,4 @@
-package com.member;
+package com.patient;
 
 import java.io.IOException;
 
@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.member.action.Action;
 import com.member.action.ActionInfo;
-import com.member.domain.dao.PatientListDAO;
-import com.member.domain.dao.ReservationDAO;
-import com.member.domain.vo.PatientListVO;
-import com.member.domain.vo.ReservationVO;
+import com.patient.domain.dao.PatientListDAO;
+import com.patient.domain.vo.PatientListVO;
+import com.reservation.domain.dao.ReservationDAO;
+import com.reservation.domain.vo.ReservationVO;
 
 public class PatientOk implements Action{
 	@Override

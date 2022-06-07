@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
@@ -12,22 +13,152 @@
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
+
 <!-- Then include bootstrap js -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="asset/css/regi2.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="asset/css/KDHfooter.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 
 <body>
-	<jsp:include page="header.jsp" />
+	
 	<div id="wrap">
-
-
+	
+	<header id="header">
+            <div class="innerwrap">
+                <h1><a href="mainpage.jsp">서울 병원</a></h1>
+                <div class="topLeftWrap">
+                    <a href="mainpage.jsp">
+	                	<img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
+                    </a>
+                </div>
+                <div class="topMenuWrap">
+                    <ul class="utilMenu">
+                        <li>
+                            <a style="margin-right: 16px;">원격</a>
+                        </li>
+                    </ul>
+                    <ul class="topMenu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/MemberLogin.me">로그인</a>
+                        </li>
+                        <li>
+                            <a href="mypage.jsp">마이페이지</a>
+                        </li>
+                        <li>
+                            <a>Language</a>
+                        </li>
+                    </ul>
+                </div>
+                <nav id="gnb" class>
+<!--                     <button class="totMenuBtn hideTxt" type="button" aria-controls="totMenu">
+                    </button> -->
+                    <!-- 전체 메뉴 아이콘 집어넣어야함 -->
+                    <button class="totMenuBtn hideTxt" type="button" aria-controls="totMenu">전체 메뉴 열기</button>
+                    <ul class="gnbList clearFix">
+                        <li id="first" class="set">
+                            <a>진료안내</a>
+	                        <div class="subList first" id="information1">
+	                            <div class="strongs top">진료안내</div>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalInfo.jsp">진료예약</a>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalProcess.jsp">외래진료프로세스</a>
+	                            <c:if test="${empty name}">
+	                            <a class="strongs" href="${pageContext.request.contextPath}/MemberLogin.me">인터넷 진료예약</a>
+	                            </c:if>
+	                            <c:if test="${not empty name}">
+	                            <a class="strongs" href="${pageContext.request.contextPath}/reservation.jsp">인터넷 진료예약</a>
+	                            </c:if>
+	                            <div class="strongs">예약확인/취소</div>
+	                             <c:if test="${empty name}">
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/MemberLogin.me">진료예약확인</a>
+	                            </c:if>
+	                            <c:if test="${not empty name}">
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/newreservation.jsp">진료예약확인</a>
+	                       		</c:if>
+	                        </div>
+                        </li>
+                        <li id="second" class="set">
+                            <a>이용안내</a>
+                            <div class="subList more second" id="information2">
+                            <a class="strongs top" href="${pageContext.request.contextPath}/allFAQ.jsp">FAQ(통합)</a>
+                        </div>
+                        </li>
+                        <li id="third" class="set">
+                            <a>고객참여</a>
+                            <div class="subList more third" id="information3">
+                             <div class="strongs top">고객의 소리</div>
+                             <a class="weaks pack" href="${pageContext.request.contextPath}/clientSound.jsp">고객의 소리 등록</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/clientConsultation.jsp">고객상담실 업무안내</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/allThanksView.jsp">감사이야기</a>
+                        </div>
+                        </li>
+                        <li id="fourth" class="set">
+                            <a>병원소개</a>
+                            <div class="subList more fourth" id="information4">
+                            <a class="strongs top" href="${pageContext.request.contextPath}/intro.jsp">병원개요</a>
+                        </div> 
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="contTopBar" style="position: fixed; top: 130px;">
+            <!-- innerWrap -->
+            <div class="innerWrap clearFix">
+                <!-- breadcrumb -->
+                <div class="breadcrumb">
+                    <strong class="hideEl">현재 위치: </strong>
+                    <a href="/" class="bcHomeBtn hideTxt">HOME</a>
+                    <span class="hideEl">&gt;</span>
+                    
+                    <!-- <div class="">
+                        <em>이용안내</em>
+                        <button type="button" class="bcLinkLayerBtn hideTxt">주 메뉴 목록 열기</button>
+                        bcLinkLayer
+                        <ul class="bcLinkLayer" role="region" aria-hidden="true" aria-expanded="false" style="display: none;">
+                                
+                            <li><a href="/reservation/meddept/main.do">진료안내</a></li>
+                            <li><a href="/content/M002001001.do">이용안내</a></li>
+                            <li><a href="/join/client.do">고객참여</a></li>
+                            <li><a href="/content/M005001.do">병원소개</a></li>
+                                
+                        </ul>
+                        //bcLinkLayer
+                    </div> -->
+                    <span class="hideEl">&gt;</span>
+                    <!-- <div class="">
+                        <em>FAQ(통합)</em>
+                        <button type="button" class="bcLinkLayerBtn hideTxt">서브 메뉴 목록 열기</button>
+                        bcLinkLayer
+                        <ul class="bcLinkLayer" role="region" aria-hidden="true" aria-expanded="false" style="display: none;" tabindex="0">
+					
+                            <li><a href="/board/B005/list.do">FAQ(통합)</a></li>
+                            
+                        </ul>
+                        //bcLinkLayer
+                    </div> -->
+                    <span class="hideEl">&gt;</span>
+                </div>
+                <!-- //breadcrumb -->
+                <!-- bcQuickMenu -->
+                <ul class="bcQuickMenu">
+                    <li class=""><a href="reservation.jsp">진료예약</a></li>
+                    <li><a href="newreservation.jsp">예약조회</a></li>
+                </ul>
+                <!-- //bcQuickMenu -->
+            </div>
+            <!-- //innerWrap -->
+        </div>
 
 
 
@@ -49,7 +180,6 @@
 			<input id="join_type" name="join_type" type="hidden" value="TG">
 			<input id="cert_type" name="cert_type" type="hidden" value="J">
 			<input id="pt_no" name="pt_no" type="hidden" value="17804457">
-			<input id="gender" name="gender" type="hidden" value="F"> 
 			<input type="hidden" id="mail" name="mail" value=""> 
 			<inputtype="hidden" id="dupKey" name="dupKey" value=""> 
 				<input type="hidden" id="birthday" name="birthday" value=""> 
@@ -104,7 +234,7 @@
 							<tr>
 								<th scope="row"><span class="required">*</span> 이름</th>
 								<td><input id="name" name="name" style="ime-mode: active;"
-									class="inputText" value="<%=request.getParameter("name") %>" type="text" readonly="readonly"></td> <!-- readonly!!추가해야함 -->
+									class="inputText" value="${param.name }" type="text" readonly="readonly"></td> <!-- readonly!!추가해야함 -->
 							</tr>
 
 
@@ -152,7 +282,7 @@
 							</tr>
 							<tr>
 								
-								<th class="regiTitle">*주소</th>
+								<th class="regiTitle"><span class="required">*</span>주소</th>
 								<td id="add"><input type="text" id="sample4_postcode"
 									placeholder="우편번호"> <input id="postFind" type="button"
 									onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
@@ -167,8 +297,8 @@
 							</tr>
 							<tr>
 								<th scope="row"><span class="required">*</span> 휴대전화</th>
-								<td><input id="hp_no" name="phoneNum1" type="hidden" value="<%=request.getParameter("phone1") %>">
-									<label class="feForm feFoSelect selectSmall" for="hp1"><span>010</span><select
+								<td><input id="hp_no" name="phoneNum1" type="hidden" value="">
+									<label class="feForm feFoSelect selectSmall" for="hp1"><span>${param.phone1}</span><select
 										title="휴대전화 첫번째 자리" id="hp1" name="" class="selectTypeM"
 										data-fe-idx="feFoSelectIdx2" disabled="" style="opacity: 0;"><option
 												value="010">010</option>
@@ -179,10 +309,10 @@
 											<option value="019">019</option></select></label> <span class="txtWrap">-</span>
 									<input type="tel" id="hp2" name="phoneNum2" class="inputTextSmall"
 									title="휴대전화 두번째 자리" maxlength="4" required=""
-									onkeydown="return onlyNumber();" disabled="" value="<%=request.getParameter("phone2") %>" > <span
+									onkeydown="return onlyNumber();" disabled="" value="${param.phone2}" > <span
 									class="txtWrap">-</span> <input type="tel" id="hp3" name="phoneNum3"
 									class="inputTextSmall" title="휴대전화 세번째 자리" maxlength="4"
-									required="" onkeydown="return onlyNumber();" disabled="" value="<%=request.getParameter("phone3") %>">
+									required="" onkeydown="return onlyNumber();" disabled="" value="${param.phone3}">
 									</td>
 							</tr>
 							<tr>
@@ -223,9 +353,10 @@
 							</tr>
 							<tr>
 								<th scope="row"><span class="required">*</span> 생년월일</th>
-								<td><input id="birth" name="residentNum" type="hidden" value="<%=request.getParameter("citizen1") +"-"+ request.getParameter("citizen2")%>">
+								<td><input id="birth" name="birth" type="hidden" value="">
+										<input id="residentNum" name="residentNum" type="hidden" value="${param.citizen1}-${param.citizen2}">
 									<label class="feForm feFoSelect dateYY" for="year"><span></span>
-									<select title="생년월일 연도" id="year" name="year" class="dateYY" data-fe-idx="feFoSelectIdx4" style="opacity: 0;">
+									<select title="생년월일 연도" id="year" name="year" class="dateYY" data-fe-idx="feFoSelectIdx4" style="opacity: 0;" value="">
 											<option value="">연도</option>
 											<option value="2022">2022</option>
 											<option value="2021">2021</option>
@@ -341,9 +472,11 @@
 											<option value="1911">1911</option>
 											<option value="1910">1910</option>
 									</select></label><span class="txtWrap">-</span> <label
-									class="feForm feFoSelect dateMM" for="month"><span><%=request.getParameter("citizen1").substring(2, 4) %></span><select
-										title="생년월일 월" id="month" class="dateMM " required=""
-										data-fe-idx="feFoSelectIdx5" disabled="" style="opacity: 0;" value="<%=request.getParameter("citizen1").substring(2, 4) %>">
+									class="feForm feFoSelect dateMM" for="month">
+									<input type="hidden" id="month" name="month"<c:set var="submonth" value="${fn:substring(param.citizen1, 2, 4)}"/>  value="${submonth}">
+									<span><c:out value="${submonth}"/></span><select
+										title="생년월일 월" class="dateMM " required=""
+										data-fe-idx="feFoSelectIdx5" disabled="" style="opacity: 0;" >
 											<option value="">월</option>
 											<option value="01">01</option>
 											<option value="02">02</option>
@@ -358,10 +491,12 @@
 											<option value="11">11</option>
 											<option value="12">12</option>
 									</select></label><span class="txtWrap">-</span> <label
-									class="feForm feFoSelect dateDD" for="date"><span><%=request.getParameter("citizen1").substring(4) %></span><select
-										title="생년월일 일" id="date" name="date" class="dateDD"
+									class="feForm feFoSelect dateDD" for="date">
+									<input type="hidden" id="date" name="date" <c:set var="subday" value="${fn:substring(param.citizen1, 4, 6)}"/>  value="${subday}">	
+									<span><c:out value="${subday}"/></span><select
+										title="생년월일 일"  class="dateDD"
 										required="" data-fe-idx="feFoSelectIdx6" disabled=""
-										style="opacity: 0;"  value="<%=request.getParameter("citizen1").substring(4) %>">
+										style="opacity: 0;">
 											<option value="">일</option>
 											<option value="01">01</option>
 											<option value="02">02</option>
@@ -945,21 +1080,7 @@
 												alt="1"> <img
 												src="https://www.snuh.org/asset/img/member/img_mem8.png"
 												alt="8">
-											<!--
-https://www.snuh.org/asset/img/member/img_mem0.png		->0
-https://www.snuh.org/asset/img/member/img_mem1.png      ->1
-https://www.snuh.org/asset/img/member/img_mem2.png		->2
-https://www.snuh.org/asset/img/member/img_mem3.png		->3
-https://www.snuh.org/asset/img/member/img_mem4.png
-https://www.snuh.org/asset/img/member/img_mem5.png
-https://www.snuh.org/asset/img/member/img_mem6.png
-https://www.snuh.org/asset/img/member/img_mem7.png
-https://www.snuh.org/asset/img/member/img_mem8.png
-https://www.snuh.org/asset/img/member/img_mem9.png
 
-
-
-  -->
 										</div>
 										<div class="info">
 											<p>
@@ -979,78 +1100,106 @@ https://www.snuh.org/asset/img/member/img_mem9.png
 				<!-- //boardTypeForm -->
 			</fieldset>
 		</form>
-		<div class="btnWrap" style="padding-left: 70%;">
+		<div class="btnWrap" style="padding-left: 999px;">
 			<button type="button" class="btnType03 btnBig" id="nextBtn" >다음단계</button>
 		</div>
 		</main>
+		<footer id="footer">
+            <div class="ftMenuWrap">
+                <div class="footerMenu">
+                    <div class="innerWrap clearFix">
+                        <ul class="ftMenuList01">
+                            <li><a href="//child.snuh.org/main.do" target="_blank">어린이병원</a></li>
+                            <li><a href="//cancer.snuh.org/main.do" target="_blank">암병원</a></li>
+                            <li><a href="//www.snubh.org/" target="_blank">분당서울대병원</a></li>
+                            <li><a href="//www.brmh.org/" target="_blank">보라매병원</a></li>
+                            <li><a href="//healthcare.snuh.org/" target="_blank">강남센터</a></li>
+                            <li><a href="http://medicine.snu.ac.kr" target="_blank">서울대학교의과대학</a></li>
+                        </ul>
+                        <ul class="ftMenuList02">
+                            <li><a href="#ftMenuCol01" class="" title="진료과 메뉴 레이어 열기">진료과</a></li>
+                            <li><a href="#ftMenuCol02" class="" title="주요센터 메뉴 레이어 열기">주요센터</a></li>
+                            <li><a href="#ftMenuCol03" class="" title="주요부서 메뉴 레이어 열기">주요부서</a></li>
+                            <li><a href="#ftMenuCol04" class="" title="주요서비스 메뉴 레이어 열기">주요서비스</a></li>
+                            <li><a href="#ftMenuCol05" class="" title="패밀리사이트 메뉴 레이어 열기">패밀리사이트</a></li>
+                        </ul>
+                        <div class="ftMenuLayer clearFix" role="region" aria-hidden="true" aria-expanded="false" style="display: none; visibility: visible;"></div>
+                    </div>
+                </div>
+            </div>
+            <ul class="innerWrap footerLink">
+                <li><a href="/reservation/unPaid/list.do" class="colorPoint04" target="_blank">비급여진료비용</a></li>
+                <li><a href="/content/M004005.do" target="_blank">환자권리장전</a></li>
+                <li><a href="/footer/service.do" target="_blank">이용약관</a></li>
+                <li><a href="/footer/privacy.do" class="colorPoint04" target="_blank">개인정보 처리방침</a></li>
+                <li><a href="/content/M004006002.do" target="_blank">정보공개</a></li>
+                <li><a href="/" data-layer="layerEmail" class="layerBtn">정보무단수집거부공개</a></li>
+                <li><a href="/" data-layer="layerDown" class="layerBtn">뷰어 다운로드</a></li>
+                <li><a href="//nrefer.snuh.org" target="_blank">진료협력센터</a></li>
+                <li><a href="//funeral.snuh.org/main.do" target="_blank">장례식장</a></li>
+            </ul>
+            <div class="footerInfo">
+                <div class="innerWrap">
+                    <address class="clearfix">
+                        <p>주소 : 03080 서울특별시 종로구 대학로 101(연건동 28)</p>
+                        <p>대표전화 : <a href="tel:1588-5700">1588-5700</a></p>
+                        <p>
+                            <a href="/login.do?retUrl=/content/M005009.do">홈페이지 의견접수</a>
+                        </p>
+                    </address>
+                    <p class="copyright">COPYRIGHT 2010 SEOUL NATIONAL UNIVERSITY HOSPITAL. ALL RIGHTS RESERVED</p>
+                    <ul class="awardList">
+                        <li class="item05 hideTxt"><a href="/board/B003/view.do?viewType=true&ampbbs_no=5224">전자의무기록시스템</a></li>
+                        <li class="item01 hideTxt"><a href="/board/B003/view.do?bbs_no=1509">보건복지부 제 1호</a></li>
+                        <li class="item04 hideTxt" name="ismsTxt"><a href="#ismsTxt" class="ismsTxtBtn">서울대학교병원 정보보호 관리체계(ISMS) 인증
+                            [유효기간] 2021.02.17 ~ 2024.02.16 
+                            [인증범위] 의료정보시스템(EMR,OCS),홈페이지 및 모바일 애플리케이션  운영</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ftIsmsTxt">
+                <p>서울대학교병원 정보보호 관리체계(ISMS) 인증<br>
+                    [유효기간] 2021.02.17 ~ 2024.02.16<br> 
+                    [인증범위] 의료정보시스템(EMR,OCS),홈페이지 및 모바일 애플리케이션 운영</p>
+            </div>   
+        </footer>
+</div>
+</body>
 
-
-		<script>
-$(function(){
-	$(".ismsTxtBtn").mouseover(function(){ $('.ftIsmsTxt').css('display', 'block');});
-	$(".ismsTxtBtn").mouseleave(function(){ $('.ftIsmsTxt').css('display', 'none');});
-});
-
-function clientOpRegProc(){
-	if(validateOp()){
-
-		var tel_cl = $('#tel_cl01 option:selected').val() +'-'+ $('#tel_cl02').val() +'-'+ $('#tel_cl03').val();
-		var email_cl = $.trim($('#email_cl01').val()) +'@'+ $.trim($('#email_cl02').val());
-		var gubun_cl = $('#gubun_cl option:selected').val();
-		var title_cl = $('#title_cl').val();
-		var contents_cl = $('#contents_cl').val();
-
-		 $.ajax({
-			 async: false,
-			 url: "/client/opinion/ajaxClientOpRegProc.do",
-			 type:'post',
-			 data : { 'tel' : tel_cl , 'email' : email_cl, 'gubun' : gubun_cl, 'title' : title_cl, 'contents' : contents_cl},
-			 dataType : 'json',
-			 success: function(res){
-				 if(res == '1'){
-					$('.layerWrap').find('.layerCloseBtn').trigger('click');
-					location.reload();
-					 alert('홈페이지 의견접수가 완료되었습니다.');
-				 }
-	 	  	}
-		 });
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	function validateOp(){
+		var re = /^[0-9]+$/;
+		try {
+	 	if( $('#tel_cl02').val() == '' || $('#tel_cl03').val() == ''  || $('#email_cl01').val() == ''  || $('#email_cl02').val() == ''  || $('#title_cl').val() == ''  || $('#contents_cl').val() == ''){
+				alert('*(필수)항목은 반드시 입력해주세요'); return false;
+			}
+	
+			if(! (re.test($('#tel_cl02').val()) && re.test($('#tel_cl03').val())) ){
+				alert("전화번호는 숫자만 입력가능합니다.");return false;
+			}
+	
+			if(!$('#agree').is(':checked')){
+				alert('개인정보 처리방침에 동의해주세요.'); return false;
+			}
+			return true;
+		}catch (e) {
+			console.log(e);
+			return false;
+		}
 	}
-	return false;
-}
-
-function validateOp(){
-	var re = /^[0-9]+$/;
-	try {
- 	if( $('#tel_cl02').val() == '' || $('#tel_cl03').val() == ''  || $('#email_cl01').val() == ''  || $('#email_cl02').val() == ''  || $('#title_cl').val() == ''  || $('#contents_cl').val() == ''){
-			alert('*(필수)항목은 반드시 입력해주세요'); return false;
-		}
-
-		if(! (re.test($('#tel_cl02').val()) && re.test($('#tel_cl03').val())) ){
-			alert("전화번호는 숫자만 입력가능합니다.");return false;
-		}
-
-		if(!$('#agree').is(':checked')){
-			alert('개인정보 처리방침에 동의해주세요.'); return false;
-		}
-		return true;
-	}catch (e) {
-		console.log(e);
-		return false;
-	}
-}
 
 </script>
 		<!-- <script type="text/javascript" src="/asset/js/www_bs.js"></script> -->
 		<!-- www.snuh.org 본원 홈페이지 -->
 		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async=""
-			src="https://www.googletagmanager.com/gtag/js?id=UA-3227935-1"></script>
-		<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-3227935-1');
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-3227935-1"></script>
+<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'UA-3227935-1');
   
   
   
@@ -1148,7 +1297,12 @@ function validateOp(){
 	})
 	
 	$("#year").on('change', function(){
-		$(this).prev('span').text($("#year option:checked").text())
+		$(this).prev('span').text($("#year option:checked").text());
+		$(this).val($("#year option:checked").text());
+			if($('#year').val() != "" && $('#month').val() != "" && $('#date').val() != "") {
+				let birthday = $('#year').val() + "-" + $('#month').val() + "-" + $('#date').val();
+				$('#birth').val(birthday);
+			}
 	})
 	
 	
@@ -1156,13 +1310,8 @@ function validateOp(){
 	
 	
 </script>
-
-	
-		<jsp:include page="footer.jsp" />
-</div>
-</body>
-		<script type="text/javascript">
-	
+<script type="text/javascript">
+		let contextPath = "${pageContext.request.contextPath}";
 		
 		
 		
@@ -1172,22 +1321,23 @@ function validateOp(){
 		var idNumCheck=/^[0-9]*$/ ;
 		var passCheck=/^(?=.*[0-9])(?=.*[!@#$%^&*(),.;])[a-zA-Z0-9!@#$%^&*(),.;]{9,16}$/;
 		var blankCheck=/[\s]/g;
-
+	
+		
 		//아이디 중복확인 버튼 클릭 
 		//환자번호 사용을 방지하기 위해 숫자만 입력되지 않도록 체크 추가 2017-11-12 SEMI ADD
 		//한글이름 + 숫자는 가능하도록 처리 2017-11-12 SEMI ADD
-							$('#idChkBtn').click(function() {
-								if($('#id').val() == "") {
-									alert("아이디를 입력하신 후 중복체크를 해주세요.");
-									$('#id').focus();
-									return false;
-								} else {
-									var id = $('#id').val();
+			$('#idChkBtn').click(function() {
+				if($('#id').val() == "") {
+					alert("아이디를 입력하신 후 중복체크를 해주세요.");
+					$('#id').focus();
+						return false;
+					} else {
+							var id = $('#id').val();
 									
-									if(blankCheck.test(id)) {
-										alert('아이디에 공백이 입력되어 있습니다. 수정해 주십시오.');
-										$('#id').focus();
-									}
+							if(blankCheck.test(id)) {
+								alert('아이디에 공백이 입력되어 있습니다. 수정해 주십시오.');
+							$('#id').focus();
+						}
 								
 								//idPass = true;
 								if(idKorCheck.test(id)) {
@@ -1214,12 +1364,12 @@ function validateOp(){
 									alert("아이디는 한글, 영문, 숫자만 가능합니다.");
 									$('#id').focus();
 								}
-								
-								
+							
+								/* 아이디 중복검사 */
 										if(idPass){
 										
 										$.ajax({
-										url: "/Nfhospital/CheckIdOk.me",
+										url: contextPath + "/Nfhospital/CheckIdOk.me",
 										type: "get",
 										data: {id: $("input[name='id']").val()},
 										contentType: "application/json; charset=utf-8",
@@ -1228,8 +1378,10 @@ function validateOp(){
 											console.log(result.check);
 											if(result.check){
 												$("span#result").text("중복된 아이디입니다.");
+												$("#result").css("color", "red")
 											}else{
 												$("span#result").text("사용가능한 아이디입니다.");
+												$("#result").css("color", "blue")
 											}
 											
 											
@@ -1372,10 +1524,6 @@ function validateOp(){
 			}
 
 
-			if($('#year').val() != "" && $('#month').val() != "" && $('#date').val() != "") {
-				var birthday = $('#year').val() + "-" + $('#month').val() + "-" + $('#date').val();
-				$('#birth').val(birthday);
-			}
 
 			if($('#prevent').val() == "") {
 				alert("자동가입방지를 입력해주세요.");
@@ -1391,6 +1539,8 @@ function validateOp(){
 			$('#memberVo').submit();
 		});
 
+		
+		
 
 	function addrSearch() {
 		var pop = window.open("./addrPopup.do", "pop","width=570,height=420, scrollbars=yes, resizable=yes");
@@ -1421,6 +1571,166 @@ function validateOp(){
 			window.event.returnValue = false;
 		}
 	}
+	
+	
+	/* 네비게이션 바 JS시작 */
+
+	$(".set").on("mouseover", function(){
+			$(this).addClass('up');
+			$(this).children('a').css("color", "#2263bb");
+			if($(this).attr('id').match('first')){
+				$(".second").removeClass('selected');
+				$(".second").css("visibility", "hidden");
+				$("#second").children('a').css("color", "#000");
+	   		$("#second").removeClass('up')
+	   		$(".second").removeClass('line')
+	   		
+	   		$(".third").removeClass('selected');
+	   		$(".third").css("visibility", "hidden");
+	   		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+	   		$(".third").removeClass('line')
+		    	
+		    	$(".fourth").removeClass('selected');
+	   		$(".fourth").css("visibility", "hidden");
+	   		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+	   		$(".fourth").removeClass('line')
+			
+		    	$(".first").addClass('selected');
+				$(".first").css("visibility", "visible");
+				$(".first").addClass('line');
+				
+			}else if($(this).attr('id').match('second')){
+				$(".first").removeClass('selected');
+				$(".first").css("visibility", "hidden");
+	   		$("#first").children('a').css("color", "#000");
+	   		$("#first").removeClass('up')
+	   		$(".first").removeClass('line')
+	   		
+	   		$(".third").removeClass('selected');
+	   		$(".third").css("visibility", "hidden");
+	   		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+		    	$(".third").removeClass('line')
+		    	
+		    	$(".fourth").removeClass('selected');
+	   		$(".fourth").css("visibility", "hidden");
+	   		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+		    	$(".fourth").removeClass('line')
+				
+		    	$(".second").addClass('selected');
+				$(".second").css("visibility", "visible");
+				$(".second").addClass('line');
+				
+			}else if($(this).attr('id').match('third')){
+				$(".first").removeClass('selected');
+				$(".first").css("visibility", "hidden");
+	   		$("#first").children('a').css("color", "#000");
+	   		$("#first").removeClass('up')
+	   		$(".first").removeClass('line')
+				
+	   		$(".second").removeClass('selected');
+	   		$(".second").css("visibility", "hidden");
+	   		$("#second").children('a').css("color", "#000");
+		    	$("#second").removeClass('up')
+		    	$(".second").removeClass('line')
+				
+		    	$(".fourth").removeClass('selected');
+	   		$(".fourth").css("visibility", "hidden");
+	   		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+		    	$(".fourth").removeClass('line')
+				
+		    	$(".third").addClass('selected');
+				$(".third").css("visibility", "visible");
+				$(".third").addClass('line');
+
+			}else if($(this).attr('id').match('fourth')){
+				$(".first").removeClass('selected');
+				$(".first").css("visibility", "hidden");
+	   		$("#first").children('a').css("color", "#000");
+	   		$("#first").removeClass('up')
+	   		$(".first").removeClass('line')
+				
+				$(".second").removeClass('selected');
+	   		$(".second").css("visibility", "hidden");
+	   		$("#second").children('a').css("color", "#000");
+		    	$("#second").removeClass('up')
+		    	$(".second").removeClass('line')
+		    	
+		    	$(".third").removeClass('selected');
+	   		$(".third").css("visibility", "hidden");
+	   		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+		    	$(".third").removeClass('line')
+				
+		    	$(".fourth").addClass('selected');
+				$(".fourth").css("visibility", "visible");
+				$(".fourth").addClass('line');
+
+			}
+			
+			
+	});
+
+	   $(".subList").mouseleave(function(){
+	   		if($(this).attr('class').match('first')){
+	   			$(".first").removeClass('selected');
+	   			$(".first").css("visibility", "hidden");
+	   			$(".first").removeClass("line")
+		    		$("#first").children('a').css("color", "#000");
+		    		$("#first").removeClass('up')
+	   			
+	   		}else if($(this).attr('class').match('second')){
+	   			$(".second").removeClass('selected');
+	   			$(".second").css("visibility", "hidden");
+	   			$(".second").removeClass("line")
+	   			$("#second").children('a').css("color", "#000");
+		    		$("#second").removeClass('up')
+		    		
+	   		}else if($(this).attr('class').match('third')){
+	   			$(".third").removeClass('selected');
+	   			$(".third").css("visibility", "hidden");
+	   			$(".third").removeClass("line")
+	   			$("#third").children('a').css("color", "#000");
+		    		$("#third").removeClass('up')
+		    		
+	   		}else if($(this).attr('class').match('fourth')){
+	   			$(".fourth").removeClass('selected');
+	   			$(".fourth").css("visibility", "hidden");
+	   			$(".fourth").removeClass("line")
+	   			$("#fourth").children('a').css("color", "#000");
+		    		$("#fourth").removeClass('up')
+	   		}
+	   })  
+	   
+	   $(".weaks").mouseover(function(){
+	   	$(this).css('color', "#2263bb");
+	   })
+
+	   $(".weaks").mouseout(function(){
+	   	$(this).css('color', "#888");
+	   })
+	   
+	   $("a[class='strongs']").mouseover(function(){
+	   	$(this).css('color', "#2263bb");
+	   })
+	   
+	   $("a[class='strongs']").mouseout(function(){
+	   	$(this).css('color', "#000");
+	   })
+	   
+		$("a[class='strongs top']").mouseover(function(){
+	   	$(this).css('color', "#2263bb");
+	   })
+	   
+	   $("a[class='strongs top']").mouseout(function(){
+	   	$(this).css('color', "#000");
+	   })
+	  
+	    /* 네비게이션 바 JS끝 */
 </script>
 </html>
 

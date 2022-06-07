@@ -25,25 +25,25 @@ public class MemberLoginOk implements Action {
 		String id = req.getParameter("id");
 		String password = req.getParameter("password");
 		String name = null;
-		/*password = new String(Base64.getEncoder().encode(password.getBytes())); */
+		password = new String(Base64.getEncoder().encode(password.getBytes())); 
 		
 		memberInfoMap.put("id", id);
 		memberInfoMap.put("password", password);
 		
 		name = memberInfoDAO.login(memberInfoMap);
+		
 		if(name != null) {
 			//로그인 성공
-			System.out.println(name);
 			session.setAttribute("name", name);
-			actionInfo.setRedirect(false);
+			session.setAttribute("id", id);
+			session.setAttribute("list", memberInfoDAO.information(memberInfoMap));
 			actionInfo.setPath("/mainpage.jsp");
 		}else {
 			//로그인 실패
-			session.invalidate();
-			actionInfo.setRedirect(false);
-			actionInfo.setPath("/login.jsp");
+			actionInfo.setPath("/MemberLogin.me");
 		}
 		
+		actionInfo.setRedirect(false);
 		return actionInfo;
 	}
 }

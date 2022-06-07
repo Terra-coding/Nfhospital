@@ -22,7 +22,7 @@
   
   <servlet>
   	<servlet-name>PatientFrontController</servlet-name>
-  	<servlet-class>com.member.PatientFrontController</servlet-class>
+  	<servlet-class>com.patient.PatientFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -32,7 +32,7 @@
   
   <servlet>
   	<servlet-name>ReservationFrontController</servlet-name>
-  	<servlet-class>com.member.ReservationFrontController</servlet-class>
+  	<servlet-class>com.reservation.ReservationFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -42,7 +42,7 @@
   
   <servlet>
   	<servlet-name>WriteFrontController</servlet-name>
-  	<servlet-class>com.member.WriteFrontController</servlet-class>
+  	<servlet-class>com.write.WriteFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>

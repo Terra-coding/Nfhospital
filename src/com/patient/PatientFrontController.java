@@ -1,4 +1,4 @@
-package com.member;
+package com.patient;
 
 import javax.servlet.http.HttpServlet;
 

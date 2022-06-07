@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,12 +35,13 @@
                         </li>
                     </ul>
                     <ul class="topMenu">
-                        <li>
-                            <a>로그아웃</a>
-                        </li>
-                        <li>
-                            <a href="mainpage.jsp">마이페이지</a>
-                        </li>
+                    <c:if test="${empty name}">
+                  		<li><a href="${pageContext.request.contextPath}/MemberLogin.me" style="color: #000;">로그인</a></li>
+              		</c:if>
+               		<c:if test="${not empty name}">
+                  		<li><a href="${pageContext.request.contextPath}/LogOutOk.me" style="color: #000;">로그아웃</a></li>
+               		</c:if>
+                        <li> <a>마이페이지</a> </li>
                         <li>
                             <a>Language</a>
                         </li>
@@ -143,7 +145,10 @@
                     <h3 class="title">
                     	<a href="" style="cursor:poiner">진료예약확인</a>
                     </h3>
-                    <p class="noData">조회 가능한 진료 예약이 없습니다.</p>
+                    <p class="noData">조회 가능한 진료 예약이 없습니다.
+                    	
+                    </p>
+			         	  
                 </div>
                 <div class="item">
                     <h3 class="title">
@@ -177,6 +182,7 @@
                         </button>
                     </div>
                 </div>
+                
                 <div class="item personal">
                     <h3 class="title">로그아웃</h3>
                     <p class="text">
@@ -184,7 +190,7 @@
                     </p>
                     <div class="btnWrap">
                         <button type="button" class="btnType01" onclick="">
-                        로그아웃 하기
+                        	로그아웃 하기
                         </button>
                     </div>
                 </div>
@@ -253,4 +259,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="asset/js/allFAQ.js"></script>
+<script>
+</script>
 </html>

@@ -1,43 +1,41 @@
 package com.member;
 
 import java.io.IOException;
-import java.util.Base64;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.member.action.Action;
 import com.member.action.ActionInfo;
 import com.member.domain.dao.MemberInfoDAO;
 import com.member.domain.vo.MemberInfoVO;
 
-public class MemberJoinOk implements Action{
-	
+public class ProfileChangeOk implements Action{
+
 	@Override
 	public ActionInfo execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		req.setCharacterEncoding("UTF-8");
 		MemberInfoVO memberInfoVO = new MemberInfoVO();
 		MemberInfoDAO memberInfoDAO = new MemberInfoDAO();
+		HashMap<String,String> memberInfoMap = new HashMap<>();
+		HttpSession session = req.getSession();
 		ActionInfo actionInfo = new ActionInfo();
-		memberInfoVO.setId(req.getParameter("id"));
-		memberInfoVO.setPassword(new String(Base64.getEncoder().encode(req.getParameter("password").getBytes())));
-		memberInfoVO.setName(req.getParameter("name"));
-		memberInfoVO.setResidentNum(req.getParameter("residentNum"));
 		memberInfoVO.setEmail(req.getParameter("email1")+ "@" + req.getParameter("email2"));
-		memberInfoVO.setAddress(req.getParameter("address") +" "+ req.getParameter("addressDetail"));
-		memberInfoVO.setPhoneNum(req.getParameter("phoneNum1"));
+		memberInfoVO.setAddress(req.getParameter("address"));
 		memberInfoVO.setAddPhoneNum(req.getParameter("addphone1") + "-" + req.getParameter("addphone2") + "-" + req.getParameter("addphone3"));
-		memberInfoVO.setBirth(req.getParameter("birth"));
-		memberInfoVO.setGender(req.getParameter("gender"));
+		memberInfoVO.setId(req.getParameter("id"));
 		
-		memberInfoDAO.join(memberInfoVO);
 		
-		System.out.println(req.getParameter("name"));
-		req.setAttribute("name", req.getParameter("name"));
+		memberInfoDAO.profileChange(memberInfoVO);
+		
+		memberInfoMap.put("id", memberInfoVO.getId());
+		session.setAttribute("list", memberInfoDAO.information(memberInfoMap)); 
 		
 		actionInfo.setRedirect(false);
-		actionInfo.setPath("/regi3.jsp");
-
+		actionInfo.setPath("LogOutOk.me");
 		return actionInfo;
 	}
+
 }

@@ -1,7 +1,866 @@
 @charset "UTF-8";
+<style>
+* {
+	font-family: 'Noto Sans KR Regular', 'Noto Sans CJK KR', 'Noto Sans KR',
+		'맑은 고딕', sans-serif;
+}
+
+#wrap {
+	overflow: hidden;
+	position: relative;
+	min-width: 1120px;
+	background-color: #fff;
+}
+.hideTxt{
+    overflow: hidden;
+    color: transparent;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+
+a{
+	cursor: pointer;
+}
+#header {
+	left: 0;
+	z-index: 105;
+	width: 100%;
+	height: 129px;
+	border-bottom: 1px solid #fff;
+	background-color: #fff;
+	position: fixed;
+	top: 0px;
+}
+
+#header:before, #header>.b {
+	content: '';
+	position: absolute;
+	top: 59px;
+	right: 0;
+	left: 0;
+	height: 1px;
+	background-color: #ebebeb;
+}
+
+#header h1 {
+	display: block;
+	position: relative;
+	top: 18px;
+	width: 239px;
+	height: 25px;
+	margin: auto;
+}
+
+.innerwrap {
+	padding: 0 10px;
+	position: relative;
+	width: 1100px;
+	margin: auto;
+}
+
+#header .topLeftWrap {
+	position: absolute;
+	top: 18px;
+	left: 9px;
+	z-index: 100;
+}
+
+#header .topLeftWrap a {
+	display: block;
+	position: relative;
+	width: 160px;
+	height: 25px;
+	margin: auto;
+}
+
+.topMenuWrap {
+	position: absolute;
+	top: 18px;
+	right: 9px;
+	z-index: 100;
+}
+
+.topMenuWrap ul, .topMenuWrap li {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+.utilMenu {
+	margin: 2px 20px 0 0;
+}
+
+.utilMenu a, .utilMenu label {
+	color: #000;
+	font-size: 14px;
+}
+
+.topMenuWrap li {
+	list-style: none;
+}
+
+.topMenu li {
+	margin-right: 13px;
+}
+
+#gnb {
+	position: relative;
+	width: 1100px;
+	margin: auto;
+}
+
+.gnbList {
+	height: 70px;
+	margin: 0 100px;
+	text-align: center;
+	top: 20px;
+	position: absolute;
+	left: 28px;
+}
+
+.gnbList>li {
+	display: inline-block;
+	margin: 10px 25px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+}
+
+.gnbList * {
+	text-align: left;
+}
+
+.gnbList>li>a {
+	display: inline-block;
+	padding: 10px;
+	font-size: 20px;
+	transition: .2s color;
+}
+
+.breadcrumb {
+	float: left;
+}
+
+.contUtilMenuWrap {
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+	width: 800px;
+	height: 30px;
+	margin: 264px auto 0;
+}
+
+#content {
+	min-height: 800px;
+	word-spacing: 0;
+	letter-spacing: -.5px;
+	/* width: 1090px; */
+	margin: auto;
+}
+
+#content.replaceUtilMenu {
+	margin-top: -48px;
+	padding-top: 0;
+}
+
+.contHeadingWrap {
+	overflow: hidden;
+	margin: -12px 0 9px;
+	top: 248px;
+}
+
+.contHeadingWrap>:first-child {
+	float: left;
+	font-size: 40px;
+	letter-spacing: -2px;
+}
+
+/* footer */
+#footer {
+	margin-top: 100px;
+	background-color: #31354e;
+	font-weight: 700;
+}
+
+.footerLink {
+	position: relative;
+	left: -18px;
+	height: 59px;
+	margin: auto;
+}
+
+.innerWrap {
+	padding: 0 10px;
+	position: relative;
+	width: 1100px;
+	margin: auto;
+}
+
+#footer .colorPoint04 {
+	color: #a4e1ff !important;
+}
+
+
+
+.footerInfo {
+	padding: 64px 0 60px;
+	border-top: 1px solid #22263b;
+}
+
+.footerInfo address {
+	display: block;
+}
+
+.footerInfo address p {
+	float: left;
+}
+
+.footerInfo address p {
+	color: #999;
+	font-size: 14px;
+}
+
+.footerInfo address p+p {
+	margin: 0 0 0 15px;
+}
+
+.footerInfo address a {
+	color: #999;
+}
+
+.copyright {
+	margin-top: 6px;
+	letter-spacing: 0;
+}
+
+.copyright {
+	color: #999;
+	font-size: 14px;
+}
+
+.awardList {
+	position: absolute;
+	top: 4px;
+	right: 10px;
+}
+
+#footer li {
+	float: left;
+	list-style: none;
+}
+
+.awardList .item05 a {
+	width: 144px;
+	background-position: -124px -176px;
+}
+
+.awardList a {
+	display: block;
+	width: 133px;
+	height: 32px;
+}
+
+.awardList li+li {
+	margin-left: 30px;
+}
+
+.awardList .item04 a {
+	width: 129px;
+	background-position: -337px -160px;
+}
+
+.awardList a {
+	display: block;
+	height: 32px;
+}
+
+/* 중간 */
+.mainContent #content {
+	width: 100%;
+	margin-top: 140px;
+	padding: 0;
+}
+
+#content {
+	word-spacing: 0;
+	letter-spacing: -.5px;
+	min-height: 800px;
+	margin: auto;
+}
+
+.hideEl, .pagination [class*=Btn] span {
+	overflow: hidden;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	border: none;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+.bgColor00 {
+	background-color: #f3f3f3;
+	margin-top: 74px;
+}
+
+.mainVisualWrap {
+	position: relative;
+	min-height: 40px;
+}
+
+.mainVisual {
+	position: relative;
+	height: 410px;
+	padding-bottom: 50px;
+}
+
+.mainVisual .feSlNavi {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 1100px;
+	margin-left: -550px;
+}
+
+.mainVisual .feSlNavi .btnPrev {
+	left: 0;
+	background-position: 0 0;
+}
+
+.mainVisual .feSlNavi [class*=btn] {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	width: 20px;
+	height: 39px;
+	margin-top: -20px;
+	color: transparent;
+	font-size: 1px;
+	background-image: url(/asset/img/main/spr_slideVisualBtn.png);
+	background-repeat: no-repeat;
+}
+
+.mainVisual button {
+	text-indent: 100%;
+	white-space: nowrap;
+	vertical-align: top;
+}
+
+.mainRow:first-child {
+	margin-top: 0;
+}
+
+.mainRow {
+	overflow: hidden;
+}
+
+[class*=mainCol]:first-child {
+	margin-left: 0;
+}
+
+.bgColor01 {
+	background-color: #008ace;
+}
+
+.mainCol01 {
+	width: 200px;
+}
+
+[class*=mainCol] {
+	float: left;
+	position: relative;
+	height: 205px;
+	margin-left: 20px;
+	padding: 25px 30px 30px;
+	background-color: #fff;
+}
+
+[class*=mainCol] h3 {
+	margin-bottom: 27px;
+	font-size: 20px;
+}
+
+p {
+	color: #333;
+	word-break: keep-all;
+	line-height: 1.63;
+}
+
+[class*=mainCol][class*=bgColor] * {
+	color: #fff;
+}
+
+[class*=mainCol] .btnWrap {
+	overflow: hidden;
+	position: absolute;
+	bottom: 30px;
+	left: 30px;
+	width: 200px;
+	margin: 0;
+}
+
+[class*=mainCol] .btnWrap.col02 a {
+	width: 49%;
+	padding: 0;
+}
+
+[class*=mainCol] .btnWrap a {
+	float: left;
+	height: 38px;
+	margin-right: -1px;
+	border: 1px solid #fff;
+	font-size: 14px;
+	text-align: center;
+	line-height: 38px;
+}
+
+.bgColor02 {
+	background-color: #2763ba;
+}
+
+.mainCol01 {
+	width: 200px;
+}
+
+p {
+	word-break: keep-all;
+	line-height: 1.63;
+}
+
+.bgColor03 {
+	background-color: #2ca48f;
+}
+
+[class*=mainCol] p strong {
+	margin-left: 5px;
+	font-size: 20px;
+}
+
+[class*=mainCol] .btnWrap.col02 a {
+	width: 49%;
+	padding: 0;
+}
+
+[class*=mainCol] {
+	float: left;
+	position: relative;
+	margin-left: 20px;
+	padding: 25px 30px 30px;
+}
+
+.mainTab {
+	overflow: hidden;
+	margin-bottom: 16px;
+	list-style: none;
+	padding: 0;
+	margin-top: 0;
+}
+
+.mainTab li:first-child {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.mainTab li {
+	float: left;
+	position: relative;
+}
+
+.mainTab .current a {
+	color: #000;
+}
+
+.mainTab a {
+	font-family: 'Noto Sans KR Bold', 'Noto Sans CJK KR', 'Noto Sans KR',
+		'맑은 고딕', sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.mainLoginWrap .feTabCont {
+	position: relative;
+	height: 119px;
+	padding-bottom: 40px;
+}
+
+[class*=mainCol] h3 {
+	margin-bottom: 27px;
+	font-size: 20px;
+}
+
+a img, fieldset, img {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.mainLoginWrap input[type=text], .mainLoginWrap input[type=password] {
+	width: 175px;
+}
+
+.mdBrowser input[type=tel], .mdBrowser input[type=text], .mdBrowser input[type=email],
+	.mdBrowser input[type=number], .mdBrowser input[type=password] {
+	line-height: inherit;
+}
+
+input[type=tel], input[type=text], input[type=email], input[type=number],
+	input[type=password] {
+	height: 38px;
+	padding-right: 10px;
+	padding-left: 10px;
+	border: 1px solid #ccc;
+	color: #666;
+	font-size: 16px;
+	line-height: 38px;
+}
+
+.mainLoginWrap .phTxt, .mainLoginWrap input[title=비밀번호], .mainLoginWrap input[type=password]
+	{
+	margin-top: -1px;
+}
+
+.mainLoginWrap input[type=text], .mainLoginWrap input[type=password] {
+	width: 175px;
+}
+
+.mainLoginWrap .user {
+	overflow: hidden;
+	margin-top: 6px;
+}
+
+.mainLoginWrap .btnType03 {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 198px;
+	background-color: #2763ba;
+	color: white;
+}
+.mainLoginWrap #otherBtn {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 198px;
+	background-color: #2ca48f;
+	color: white;
+	height: 40px;
+	font-size: 16px;
+}
+
+a[class*=btnType] {
+	height: 38px;
+}
+
+a:link, a:visited, a:hover, a:active {
+	text-decoration: none;
+}
+
+.btnType03 {
+	border: 1px solid #2263bb;
+	color: #fff;
+	background-color: #2263bb;
+}
+#otherBtn {
+	border: 1px solid #2ca48f;
+	color: #fff;
+	background-color: #2ca48f;
+	cursor: pointer;
+}
+
+[class*=btnType] {
+	overflow: visible;
+	vertical-align: top;
+	height: 40px;
+	padding: 0 20px;
+	color: #000;
+	font-size: 16px;
+	text-align: center;
+	line-height: 38px;
+	background-color: #fff;
+	cursor: pointer;
+}
+
+.mainHealth {
+	text-align: center;
+}
+
+.mainInner {
+	width: 1100px;
+	margin: 0 auto;
+	padding: 50px 0;
+}
+
+.mainInner>h3 {
+	margin: -10px 0 18px;
+}
+
+.mainInner>h3, .mainInner>p {
+	text-align: center;
+}
+
+.mainInner>h3+p {
+	font-size: 18px;
+}
+
+.mainInner>h3, .mainInner>p {
+	text-align: center;
+}
+
+.mainHealth .mainRow {
+	margin-top: 45px;
+}
+
+.mainRow {
+	overflow: hidden;
+}
+
+.mainHealth [class*=mainCol] {
+	height: 295px;
+	text-align: center;
+}
+
+[class*=mainCol]:first-child {
+	margin-left: 0;
+}
+
+.mainHealth [class*=mainCol] strong {
+	display: block;
+	position: relative;
+	margin: 18px 0 14px;
+	padding-bottom: 18px;
+	font-size: 20px;
+}
+
+.mainHealth [class*=mainCol] strong {
+	color: #fff;
+	position: absolute;
+}
+
+.mainHealth [class*=mainCol] p {
+	color: #fff;
+	position: absolute;
+}
+
+.mainHealth [class*=mainCol] strong:before, .mainHealth [class*=mainCol] strong>.b
+	{
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 30px;
+	height: 2px;
+	margin-left: -15px;
+	background-color: #fff;
+}
+
+.mainHealth [class*=mainCol] .btnWrap {
+	overflow: visible;
+}
+
+[class*=mainCol] .btnWrap {
+	overflow: hidden;
+	position: absolute;
+	bottom: 30px;
+	left: 30px;
+	width: 200px;
+	margin: 0;
+}
+
+.mainHealth .mainRow>div a {
+	display: block;
+	float: none;
+	margin-top: -1px;
+	color: #fff;
+}
+
+[class*=mainCol] .btnWrap a {
+	float: left;
+	height: 38px;
+	margin-right: -1px;
+	padding: 0 12px;
+	border: 1px solid #fff;
+	font-size: 14px;
+	text-align: center;
+	line-height: 38px;
+}
+
+.bgColor00 {
+	background-color: #f3f3f3;
+}
+
+.mainInner {
+	width: 1100px;
+	margin: 0 auto;
+	padding: 50px 0;
+}
+
+.mainInner>h3 {
+	margin: -10px 0 18px;
+	font-size: 30px;
+}
+
+.mainInner>h3 {
+	margin: -10px 0 18px;
+	font-size: 30px;
+}
+
+.mainInner>h3+p {
+	font-size: 18px;
+}
+
+.mainInner>h3, .mainInner>p {
+	text-align: center;
+}
+
+.mainWay {
+	overflow: hidden;
+	width: 760px;
+	margin: 45px auto 35px;
+}
+
+.mainWay li:first-child {
+	margin-left: 0;
+}
+
+.mainWay li {
+	float: left;
+	width: 115px;
+	margin-left: 94px;
+	text-align: center;
+}
+
+.mainWay a {
+	display: inline-block;
+	font-size: 20px;
+}
+
+.bgColor01 {
+	background-color: #008ace;
+}
+
+.mainLoginWrap {
+	width: 198px;
+	height: 203px;
+	border: 1px solid #2763ba;
+}
+
+.bgColor05 {
+	background-color: #627ad0;
+}
+
+.bgColor04 {
+	background-color: #3298b7;
+}
+
+[class*=mainCol] .btnWrap {
+	overflow: hidden;
+	position: absolute;
+	bottom: 30px;
+	left: 30px;
+	width: 200px;
+	margin: 0;
+}
+
+section.container {
+    margin: 0 auto;
+    width: 1550px;
+    overflow: hidden;
+    height: 450px;
+    position: relative;
+}
+
+div.banner {
+    width: 450vw;
+    /* transform: translate(-90vw); */
+    transition: transform 0.5s;
+}
+
+div.img {
+    width: 90vw;
+    float: left;
+}
+
+div.img img {
+    width: 100%;
+    display: block;
+}
+
+div.arrow {
+    position: absolute;
+    font-size: 2rem;
+    z-index: 1;
+    width: 35px;
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+    line-height: 40vh;
+    color: #00000070;
+    background-color: #00000021;
+    padding-top: 2vh;
+}
+
+div.next {
+    right: 0;
+}
+
+ul.btns {
+    overflow: hidden;
+    position: absolute;
+    bottom: 26px;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+}
+
+
+.btns li{
+	display: inline-block;
+    vertical-align: middle;
+    height: 16px;
+    margin: 0 5px;
+}
+
+
+
+
+.mainLoginWrap .userName{
+	display: block;
+	margin-bottom: 19px;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.mainLoginWrap p strong{
+	font-size: 20px;
+}
+
+.mainLoginWrap p{
+	line-height: 1.4;
+}
+
+.mainLoginWrap [class*=btnWrap] [class*=btnType]{
+	margin-left: 0;
+	border-color: #2763ba;
+}
+
+.mainLoginWrap .logout{
+	position: absolute;
+	top: 25px;
+	right: 30px;
+	color: #000;
+}
+
 
 * {
-    font-family: 'Noto Sans KR Regular','Noto Sans CJK KR','Noto Sans KR','맑은 고딕',sans-serif;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    text-size-adjust: none;
+    list-style: none;
+    font-weight: 400;
+    font-family: 'Noto Sans KR', sans-serif;
+    outline: 0!important;
+}
 }
 
 #wrap {
@@ -10,6 +869,8 @@
     min-width: 1120px;
     background-color: #fff;
 }
+
+/* header시작 */
 
 #header {
     left: 0;
@@ -45,7 +906,20 @@
     padding: 0 10px;
     position: relative;
     width: 1100px;
+    height: 130px;
     margin: auto;
+}
+
+#header h1 a{
+    display: block;
+    position: relative;
+    top: -12px;
+    right: -10px;
+    width: 239px;
+    height: 25px;
+    margin: auto;
+     font-weight: 700;
+    color: #2763ba;
 }
 
 #header .topLeftWrap {
@@ -54,6 +928,8 @@
     left: 9px;
     z-index: 100;
 }
+
+
 
 #header .topLeftWrap a {
     display: block;
@@ -99,13 +975,28 @@
     margin: auto;
 }
 
+#gnb > button[class*=tot]{
+    position: absolute;
+    top: 70px;
+    border: 0;
+    background-color: transparent;
+}
+
+.totMenuBtn{
+    left: 0;
+    width: 30px;
+    height: 22px;
+    margin-top: -11px;
+    background: url("http://www.snuh.org/asset/img/common/spr_common.png") no-repeat 0 -27px;
+}
+
 .gnbList {
     height: 70px;
-    margin: 0 100px;
+    margin: 0px 292px;
     text-align: center;
-    top: 58px;
+    top: 35px;
     position: absolute;
-    left: 28px;
+    left: -80px;
 }
 
 
@@ -125,7 +1016,17 @@
     padding: 10px;
     font-size: 20px;
     transition: .2s color;
+    font-weight: 700;
 }
+
+#header .topLeftWrap a {
+    display: block;
+    position: relative;
+    width: 160px;
+    height: 25px;
+    margin: auto;
+}
+/* hearder끝 */
 
 .breadcrumb {
     float: left;
@@ -188,14 +1089,6 @@
 
 #footer .colorPoint04 {
     color: #a4e1ff!important;
-}
-
-.footerLink a {
-    display: block;
-    padding: 18px 9px 9px 14px;
-    white-space: nowrap;
-    text-decoration: none;
-    color: #ccc;
 }
 
 .footerInfo {
@@ -523,7 +1416,7 @@ input[type=tel], input[type=text], input[type=email], input[type=number], input[
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 156px;
+    width: 198px;
     background-color: #2763ba;
     color: white;
 }
@@ -735,3 +1628,182 @@ a:link, a:visited, a:hover, a:active {
     width: 200px;
     margin: 0;
 }
+
+#header h1 a{
+    display: block!important;
+    position: relative!important;
+    top: -12px!important;
+    right: -10px!important;
+    width: 239px!important;
+    height: 25px!important;
+    margin: auto!important;
+     font-weight: 700!important;
+    color: #2763ba!important;
+}
+
+button.btn{
+		border: none;
+	    list-style-type: none;
+    display: block;
+    overflow: hidden;
+    width: 12px;
+    height: 12px;
+    margin-top: 1px;
+    text-indent: 100%;
+    white-space: nowrap;
+    background: url(https://www.snuh.org/asset/img/main/spr_slideVisualBtn.png) no-repeat -59px 0;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+}
+
+#content {
+    width: 100%;
+    margin-top: 155px;
+    padding: 0;
+}
+
+#header:after{
+	content: '';
+    position: absolute;
+    top: 129px;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background-color: #ccc;
+}
+ul, address{
+	margin-bottom: 0px!important;
+}
+
+p{
+	margin: 0px!important;
+}
+
+.footerLink a {
+    display: block;
+    padding: 7px!important;
+    color: #ccc;
+    white-space: nowrap;
+}
+
+fieldset{
+	    margin-top: 10px;
+}
+
+li.other{
+	float: left;
+    position: relative;
+    margin-left: 14px;
+    padding-left: 14px;
+}
+
+
+.mainTab li.other::before{
+	content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 1px;
+    height: 15px;
+    background-color: #ccc;
+}
+
+form.otherlogin fieldset input[type="text"]{
+	position: absolute;
+    top: 38px;
+}
+
+form.otherlogin fieldset #otherBtn{
+	    bottom: 25px;
+}
+
+form#otherloginForm{
+	visibility: hidden;
+}
+
+/* 네비게이션바 시작 */
+div.subList{
+	position: absolute;
+    top: 69px;
+    background-color: #fff;
+    left: -3px;
+    margin: 0;
+    width: 143px;
+    height: 257px;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    margin-right: 3px;
+    margin-left: 3px;
+    float: left;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+
+ div.subList a{
+	padding: 0px;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+div.subList .strongs{
+	font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+div.subList .weaks{
+	font-size: 16px;
+	font-weight: 100;
+	color: #888;
+}
+
+.pack, .strongs{
+	margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+ .top{
+	margin-top: 22px;
+} 
+
+/* #information3{
+	top: -78px!important;
+} */
+
+#information2, #information4{
+	height: 80px;
+} 
+
+#information2{
+	left: 145px;
+}
+
+#information3{
+	height: 200px;
+	left: 292px;
+}
+
+#information4{
+	left: 439px;
+}
+
+.selected{
+	border-bottom: 4px solid #2263bb!important;
+}
+
+.line::before{
+	    content: ' ';
+    position: absolute;
+    visibility: visible;
+    width: 73.609px;
+    top: -5px;
+    left: 34px;
+    height: 4px;
+    background-color: #2263bb;
+    pointer-events: none;
+}
+/* 네비게이션바 끝 */

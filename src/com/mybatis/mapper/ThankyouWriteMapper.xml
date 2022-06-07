@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ThankyouWrite">
+
+	<!-- 감사합니다 게시글 전체 목록 -->
+	<select id="thankyouWriteList" resultType="thankyouWriteVO">		
+		select write_num, title, content, id, time
+		from thank_you_write order by write_num desc						
+	</select>
+	
+	<!-- 감사합니다 게시글 선택 출력 -->
+	<select id="thankyouWriteChoose" resultType="thankyouWriteVO">		
+		select title, content, id, time
+		from thank_you_write		
+	</select>
+	
+	<!--감사합니다 글 작성 -->
+   <insert id="thankyouWrite" parameterType="thankyouWriteVO">
+      insert into tbl_thank_you_write
+      (title, content, id, `time`, name, phone_num)
+      values(#{title}, #{content}, #{id}, #{time}, #{name}, #{phoneNum})
+   </insert>
+   
+   <!--감사합니다 글 수정 -->
+   <update id="thankyouWriteUpdate" parameterType="thankyouWriteVO">
+      update tbl_write
+      set title = #{title}, content = #{content}, time = now()}
+      where id = #{id}
+   </update>
+   
+   <!--감사합니다 글 삭제 -->
+   <delete id="thankyouWriteDelete" parameterType="thankyouWriteVO">
+      delete from tbl_write
+      where where id = #{id}
+   </delete>
+   
+</mapper>
