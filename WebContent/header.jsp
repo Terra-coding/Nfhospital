@@ -198,7 +198,6 @@
 					<ul class="gnbList clearFix">
 						<li><a href="">진료안내</a></li>
 						<li><a href="">이용안내</a></li>
-						<li><a href="">건강정보</a></li>
 						<li><a href="">고객참여</a></li>
 						<li><a href="">병원소개</a></li>
 					</ul>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>서울병원</title>
+<title>회원 가입</title>
 <link rel="stylesheet" href="asset/css/regi1.css">
 <link rel="stylesheet" href="asset/css/KDHfooter.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1909,7 +1909,7 @@
 			return false;
 		}
 		
-	    if(!check){
+		    if(!check){
 			alert("휴대폰번호 인증을 해주세요.")
 			submitCheck = false;
 			return false;
@@ -1957,17 +1957,7 @@
 				return;
 			}
 			
-			if(!idNumCheck.test($(this).closest('form').find('[id=citizen1]').val())) {
-				alert("주민등록번호 앞자리는 숫자를 입력해주세요");
-				$(this).closest('form').find('[id=citizen1]').focus();
-				return;
-			}
 			
-			if(!idNumCheck.test($(this).closest('form').find('[id=citizen2]').val())) {
-				alert("주민등록번호 뒷자리는 숫자를 입력해주세요");
-				$(this).closest('form').find('[id=citizen2]').focus();
-				return;
-			}
 			
 		hForm.submit();
 		

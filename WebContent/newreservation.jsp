@@ -59,10 +59,7 @@
                         <li>
                             <a href="allFAQ.jsp">이용안내</a>
                         </li>
-                        <li>
-                            <a href="">건강정보</a>
-                        </li>
-                        <li>
+                       <li>
                             <a href="clientSound.jsp">고객참여</a>
                         </li>
                         <li>
