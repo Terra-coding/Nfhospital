@@ -212,7 +212,7 @@
 	                                    <th scope="row">환자성함</th>
 	                                    <td><input id="ptname" name="name" title="환자성함" type="text" class="inputText validate-require" maxlength="16"></td>
 	                                    <th scope="row">환자등록정보</th>
-	                                    <td><input id="ptcd" name="nameCheck" title="환자등록정보 성함" type="text" class="inputText validate-require" maxlength="8"></td>
+	                                    <td><input id="ptcd" name="nameCheck" title="환자등록정보" type="text" class="inputText validate-require" maxlength="8"></td>
 	                                </tr>
 	        
 	        

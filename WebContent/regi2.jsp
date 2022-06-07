@@ -1370,7 +1370,7 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 										if(idPass){
 										
 										$.ajax({
-										url: contextPath + "/Nfhospital/CheckIdOk.me",
+										url: contextPath + "/NfHospital/CheckIdOk.me",
 										type: "get",
 										data: {id: $("input[name='id']").val()},
 										contentType: "application/json; charset=utf-8",
