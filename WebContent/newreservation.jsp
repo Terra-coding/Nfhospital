@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,9 +35,12 @@
                         </li>
                     </ul>
                     <ul class="topMenu">
-                        <li>
-                            <a>로그아웃</a>
-                        </li>
+                        <c:if test="${empty name}">
+                  <li><a href="${pageContext.request.contextPath}/MemberLogin.me" style="color: #000;">로그인</a></li>
+               </c:if>
+               <c:if test="${not empty name}">
+                  <li><a href="${pageContext.request.contextPath}/LogOutOk.me" style="color: #000;">로그아웃</a></li>
+               </c:if>
                         <li>
                             <a href="mainpage.html">마이페이지</a>
                         </li>
@@ -145,22 +149,22 @@
                             <div class="resConfirm">
                                 <span>인터넷예약</span>
                                 &nbsp;
-                                <em  style="font-style: normal;">신청일</em>
-                                : 2022-05-19
+                                <!-- <em  style="font-style: normal;">신청일</em>
+                                : 2022-05-19 -->
                             </div>
                             <div>
                                 <strong>
-                                    <span class="colorPoint">[알레르기내과]</span>
+                                    <span class="colorPoint"><%=request.getParameter("medicalDept")%></span>
                                     <span>
-                                        <a>강혜련</a>
+                                        <a><%=request.getParameter("doctor")%></a>
                                     </span>
                                 </strong>
                             </div>
                             <div>
                                 <p>
                                     <em style="font-style: normal;">진료일정</em>
-                                    2022-07-29
-                                    <span>10:30</span>
+                                    <%=request.getParameter("scheduleDate")%>
+                                    <%-- <span><%=request.getParameter("scheduleDate")%></span> --%>
                                 </p>
                                 <p>
                                     <em style="font-style: normal;">위치</em>
