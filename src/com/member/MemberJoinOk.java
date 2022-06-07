@@ -36,7 +36,7 @@ public class MemberJoinOk implements Action{
 		req.setAttribute("name", req.getParameter("name"));
 		
 		actionInfo.setRedirect(false);
-		actionInfo.setPath("/regi3.jsp");
+		actionInfo.setPath("/Regi3.me");
 
 		return actionInfo;
 	}

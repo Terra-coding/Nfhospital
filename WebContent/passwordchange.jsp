@@ -132,28 +132,29 @@
                     </div>
                 </div>
                 <div>
-                    <form id="memberVo" action="./changePasswordProc.do" method="post">
+                    <form id="memberVo" name="change" action="${pageContext.request.contextPath}/PasswordChangeOk.me" method="post">
                         <fieldset style="padding-top: 47px;">
                             <legend>비밀번호 변경</legend>
                             <div class="msgBox iconType01">
                                 <em style="font-style: normal;">비밀번호 변경</em>
                                 <p>
-                                    <span class="colorPoint">이순신</span>
+                                    <span class="colorPoint">${name}</span>
                                     회원님의 소중한 개인정보의 보호를 위하여 비밀번호를 변경해 주시기 바랍니다.
                                 </p>
                             </div>
                             <div class="signin">
                                 <div>
+                                    <input type="hidden" name="id" value="${sessionScope.list.getId()}">
                                     <label for="curPass">현재 비밀번호</label>
-                                    <input type="password" id="curPass" name="curPass" class="inputText">
+                                    <input type="password" id="curPass" name="password" class="inputText">
                                 </div>
                                 <div>
                                     <label for="newPass">새 비밀번호</label>
-                                    <input type="password" id="newPass" name="newPass" class="inputText" aria-autocomplete="list">
+                                    <input type="password" id="newPass" name="newpassword" class="inputText" aria-autocomplete="list">
                                 </div>
                                 <div>
                                     <label for="newPassConfirm">새 비밀번호</label>
-                                    <input type="password" id="newPassConfirm" name="newPassConfirm" class="inputText">
+                                    <input type="password" id="newPassConfirm" name="newpasswordConfirm" class="inputText">
                                 </div>
                             </div>
                             <div class="boxTypeGray boxVtical">
@@ -169,7 +170,7 @@
                                 </div>
                             </div>
                             <div class="btnWrap02 alignC" style="padding-left: 473px;">
-                                <a href="aaa.html" id="confirmBtn" role="button" class="btnType03">확인</a>
+                                <a id="confirmBtn" role="button" class="btnType03">확인</a>
                             </div>
                         </fieldset>
                     </form>
@@ -239,4 +240,43 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="asset/js/allFAQ.js"></script>
+<script>
+	let Depassword = atob("${sessionScope.list.getPassword()}");
+	console.log(Depassword);
+	var passCheck=/^(?=.*[0-9])(?=.*[!@#$%^&*(),.;])[a-zA-Z0-9!@#$%^&*(),.;]{9,16}$/;
+	
+	$(".btnType03").click(function(){
+		let password = $("#curPass").val();
+		let newpassword = $("#newPass").val();
+		let checkpassword = $("#newPassConfirm").val();
+	
+		if(password != Depassword){
+			alert("기존 비밀번호가 일치하지 않습니다.")
+			return;
+		}
+		
+		if(newpassword == Depassword){
+			alert("기존 비밀번호와 다른 비밀번호로 변경할 수 있습니다.")
+			return;
+		}
+		
+		if(newpassword != checkpassword){
+			alert("변경할 비밀번호가 일치하지 않습니다.")
+			return;
+		}
+		
+		if(newpassword != "" && newpassword.length > 0) {
+			if(!passCheck.test(newpassword)){
+				alert("비밀번호 규칙을 확인해주시기 바랍니다.\n*영문, 숫자, 특수문자(!@#$%^&*(),.;) 3가지 이상 조합 9 ~ 16자 이내");
+				$('#pass').focus();
+				return false;
+			}
+		}
+		
+		alert("비밀번호 변경이 완료되었습니다.")
+		change.submit();
+	})
+	
+	
+</script>
 </html>
