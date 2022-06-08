@@ -34,7 +34,38 @@ public class WriteFrontController extends HttpServlet {
 			actionInfo = new ActionInfo();
 			actionInfo.setRedirect(true);
 			actionInfo.setPath(req.getContextPath() + "/thankyouwrite.jsp");
-		} else {
+		
+		}else if (command.equals("ClientSound.wr")) {
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(true);
+			actionInfo.setPath("/clientSound.jsp");
+		
+		}else if (command.equals("MyWrite.wr")) {
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(true);
+			actionInfo.setPath("/myWrite.jsp");
+			
+		} else if (command.equals("Suggestions.wr")) {
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(true);
+			actionInfo.setPath("/suggestions.jsp");
+			
+		}else if (command.equals("ClientConsultation.wr")) {
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(true);
+			actionInfo.setPath("/clientConsultation.jsp");
+			
+		}else if (command.equals("Intro.wr")) {
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(true);
+			actionInfo.setPath("/intro.jsp");
+			
+		}else if (command.equals("AllThanksView.wr")) {
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(true);
+			actionInfo.setPath("/allThanksView.jsp");
+			
+		}else {
 			// 404 일 때 출력할 에러 페이지 경로 작성
 		}
 

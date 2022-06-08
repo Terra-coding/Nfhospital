@@ -104,6 +104,26 @@ public class MemberFrontController extends HttpServlet {
 			actionInfo.setRedirect(false);
 			actionInfo.setPath("/passwordchange.jsp");
 			
+		}else if(command.equals("Mypage.me")) { //mypage.jsp
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(false);
+			actionInfo.setPath("/mypage.jsp");
+			
+		}else if(command.equals("AllFAQ.me")) { //allFAQ.jsp
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(false);
+			actionInfo.setPath("/allFAQ.jsp");
+			
+		}else if(command.equals("medicalInfo.me")) { //medicalInfo.jsp
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(false);
+			actionInfo.setPath("/medicalInfo.jsp");
+			
+		}else if(command.equals("medicalProcess.me")) { //medicalProcess.jsp
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(false);
+			actionInfo.setPath("/medicalProcess.jsp");
+			
 		}else {
 			// 404 일 때 출력할 에러 페이지 경로 작성
 

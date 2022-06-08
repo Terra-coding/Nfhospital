@@ -22,9 +22,9 @@
         <a href="#content" class="skipToContent">본문으로 바로가기</a>
         <header id="header">
             <div class="innerwrap">
-                <h1><a href="mainpage.jsp">서울병원</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/MainPage.me">서울병원</a></h1>
                 <div class="topLeftWrap">
-                     <a href="mainpage.jsp">
+                     <a href="${pageContext.request.contextPath}/MainPage.me">
                         <img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
                     </a> 
                 </div>
@@ -74,7 +74,7 @@
                 <!-- breadcrumb -->
                 <div class="breadcrumb">
                     <strong class="hideEl">현재 위치: </strong>
-                    <a href="mainpage.jsp" class="bcHomeBtn hideTxt">HOME</a>
+                    <a href="${pageContext.request.contextPath}/MainPage.me" class="bcHomeBtn hideTxt">HOME</a>
                     <span class="hideEl">&gt;</span>
                     
                     <div class="">
@@ -83,7 +83,7 @@
                         <!-- bcLinkLayer -->
                         <ul class="bcLinkLayer" role="region" aria-hidden="true" aria-expanded="false" style="display: none;">
                                 
-                            <li><a href="mypage.jsp">마이페이지</a></li>
+                            <li><a href="${pageContext.request.contextPath}/Mypage.me">마이페이지</a></li>
                             
                                 
                         </ul>
@@ -96,10 +96,10 @@
                         <!-- bcLinkLayer -->
                         <ul class="bcLinkLayer" role="region" aria-hidden="true" aria-expanded="false" style="display: none;" tabindex="0">
 					
-                            <li><a href="mypage.jsp">마이페이지</a></li>
-                            <li><a href="allFAQ.jsp">예약확인/취소</a></li>
-                            <li><a href="clientSound.jsp">개인정보수정</a></li>
-                            <li><a href="intro.jsp">회원탈퇴</a></li>
+                            <li><a href="${pageContext.request.contextPath}/Mypage.me">마이페이지</a></li>
+                            <li><a href="${pageContext.request.contextPath}/NewReservation.re">예약확인/취소</a></li>
+                            <li><a href="${pageContext.request.contextPath}/ProfileChange.me">개인정보수정</a></li>
+                            <li><a href="Intro.wr">회원탈퇴</a></li>
                             
                         </ul>
                         <!-- //bcLinkLayer -->
@@ -109,8 +109,8 @@
                 <!-- //breadcrumb -->
                 <!-- bcQuickMenu -->
                 <ul class="bcQuickMenu">
-                    <li class=""><a href="reservation.jsp">진료예약</a></li>
-                    <li><a href="newreservation.jsp">예약조회</a></li>
+                    <li class=""><a href="${pageContext.request.contextPath}/Reservation.re">진료예약</a></li>
+                    <li><a href="${pageContext.request.contextPath}/NewReservation.re">예약조회</a></li>
                 </ul>
             </div>
         </div>
@@ -125,13 +125,13 @@
             <div>
                 <ul class="tab_ul_section03">
                     <li id="info_tab1" class="on">
-                        <a href="newreservation.jsp">진료예약현황</a>
+                        <a href="${pageContext.request.contextPath}/NewReservation.re">진료예약현황</a>
                     </li>
                     <li id="info_tab1" >
-                        <a href="prereservation.jsp" style="color: #495164;">이전진료기록</a>
+                        <a href="${pageContext.request.contextPath}/PreReservation.re" style="color: #495164;">이전진료기록</a>
                     </li>
                     <li id="info_tab1">
-                        <a href="scription.jsp" style="color: #495164;">처방전발급현황</a>
+                        <a href="${pageContext.request.contextPath}/Scription.re" style="color: #495164;">처방전발급현황</a>
                     </li>
                 </ul>
                 <div id="info_areal" style="position:relative;">

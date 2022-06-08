@@ -37,7 +37,7 @@
 					<c:if test="${not empty name}">
 						<li><a href="${pageContext.request.contextPath}/LogOutOk.me" style="color: #000;">로그아웃</a></li>
 					</c:if>
-						<li><a href="">마이페이지</a></li>
+						<li><a href="${pageContext.request.contextPath}/Mypage.me">마이페이지</a></li>
 						<li><a>Language</a></li>
 					</ul>
 				</div>
@@ -50,42 +50,42 @@
                             <a>진료안내</a>
 	                        <div class="subList first" id="information1">
 	                            <div class="strongs top">진료안내</div>
-			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalInfo.jsp">진료예약</a>
-			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalProcess.jsp">외래진료프로세스</a>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalInfo.me">진료예약</a>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalProcess.me">외래진료프로세스</a>
 	                            <c:if test="${empty name}">
 	                            <a class="strongs" href="${pageContext.request.contextPath}/MemberLogin.me">인터넷 진료예약</a>
 	                            </c:if>
 	                            <c:if test="${not empty name}">
-	                            <a class="strongs" href="${pageContext.request.contextPath}/reservation.jsp">인터넷 진료예약</a>
+	                            <a class="strongs" href="${pageContext.request.contextPath}/Reservation.re">인터넷 진료예약</a>
 	                            </c:if>
 	                            <div class="strongs">예약확인/취소</div>
 	                             <c:if test="${empty name}">
-	                            <a class="weaks pack" href="${pageContext.request.contextPath}/MemberLogin.me">진료예약확인</a>
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/NewReservation.re">진료예약확인</a>
 	                            </c:if>
 	                            <c:if test="${not empty name}">
-	                            <a class="weaks pack" href="${pageContext.request.contextPath}/newreservation.jsp">진료예약확인</a>
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/NewReservation.re">진료예약확인</a>
 	                       		</c:if>
 	                        </div>
                         </li>
                         <li id="second" class="set">
                             <a>이용안내</a>
                             <div class="subList more second" id="information2">
-                            <a class="strongs top" href="${pageContext.request.contextPath}/allFAQ.jsp">FAQ(통합)</a>
+                            <a class="strongs top" href="${pageContext.request.contextPath}/AllFAQ.me">FAQ(통합)</a>
                         </div>
                         </li>
                         <li id="third" class="set">
                             <a>고객참여</a>
                             <div class="subList more third" id="information3">
                              <div class="strongs top">고객의 소리</div>
-                             <a class="weaks pack" href="${pageContext.request.contextPath}/clientSound.jsp">고객의 소리 등록</a>
-			                 <a class="weaks pack" href="${pageContext.request.contextPath}/clientConsultation.jsp">고객상담실 업무안내</a>
-			                 <a class="weaks pack" href="${pageContext.request.contextPath}/allThanksView.jsp">감사이야기</a>
+                             <a class="weaks pack" href="${pageContext.request.contextPath}/ClientSound.wr">고객의 소리 등록</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/ClientConsultation.wr">고객상담실 업무안내</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/AllThanksView.wr">감사이야기</a>
                         </div>
                         </li>
                         <li id="fourth" class="set">
                             <a>병원소개</a>
                             <div class="subList more fourth" id="information4">
-                            <a class="strongs top" href="${pageContext.request.contextPath}/intro.jsp">병원개요</a>
+                            <a class="strongs top" href="${pageContext.request.contextPath}/Intro.wr">병원개요</a>
                         </div> 
                         </li>
                     </ul>
@@ -151,8 +151,8 @@
 						</a>
 						<div class="btnWrap col02">
 							<c:if test="${not empty name}">
-							<a href="${pageContext.request.contextPath}/reservation.jsp" role="button">진료예약</a>
-							<a href="${pageContext.request.contextPath}/newreservation.jsp" role="button" >예약확인</a>
+							<a href="${pageContext.request.contextPath}/Reservation.re" role="button">진료예약</a>
+							<a href="${pageContext.request.contextPath}/NewReservation.re" role="button" >예약확인</a>
 							</c:if>
 							<c:if test="${empty name}">
 							<a href="${pageContext.request.contextPath}/MemberLogin.me" role="button">진료예약</a>
@@ -166,8 +166,8 @@
 							대표전화 <strong>1588-5700</strong>
 						</p>
 						<div class="btnWrap col02">
-							<a href="${pageContext.request.contextPath}/medicalInfo.jsp" role="button">진료예약안내</a>
-							<a href="${pageContext.request.contextPath}/medicalProcess.jsp" role="button" >진료프로세스</a>
+							<a href="${pageContext.request.contextPath}/medicalInfo.me" role="button">진료예약안내</a>
+							<a href="${pageContext.request.contextPath}/medicalProcess.me" role="button" >진료프로세스</a>
 						</div>
 					</div>
 					<div class="mainCol01 bgColor02">
@@ -178,8 +178,8 @@
 							</p>
 						</a>
 						<div class="btnWrap col02">
-						<a href="${pageContext.request.contextPath}/allFAQ.jsp" role="button" >자주묻는 질문</a>
-						<a href="${pageContext.request.contextPath}/clientConsultation.jsp" role="button" >고객상담실</a>
+						<a href="${pageContext.request.contextPath}/AllFAQ.me" role="button" >자주묻는 질문</a>
+						<a href="${pageContext.request.contextPath}/ClientConsultation.wr" role="button" >고객상담실</a>
 						</div>
 					</div>
 						 <!-- 로그인 안한 상태 -->
@@ -226,9 +226,9 @@
 									<strong>건강을 기원</strong>합니다.
 								</p>
 								<div class="btnWrap col02">
-								<a href="newreservation.jsp" role="button" class="btnType04">예약확인/취소</a>
+								<a href="NewReservation.re" role="button" class="btnType04">예약확인/취소</a>
 								
-								<a href="prereservation.jsp" role="button" class="btnType04">진료이력조회</a>
+								<a href="PreReservation.re" role="button" class="btnType04">진료이력조회</a>
 								
 								</div>
 								<a href="${pageContext.request.contextPath}/LogOutOk.me" class="logout">로그아웃</a>
