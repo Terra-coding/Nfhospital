@@ -16,9 +16,9 @@
 <div id="wrap">
 	<header id="header">
             <div class="innerwrap">
-                <h1><a href="mainpage.jsp">서울 병원</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/MainPage.me">서울 병원</a></h1>
                 <div class="topLeftWrap">
-                    <a href="mainpage.jsp">
+                    <a href="${pageContext.request.contextPath}/MainPage.me">
 	                	<img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
                     </a>
                 </div>
@@ -33,7 +33,7 @@
                             <a href="${pageContext.request.contextPath}/MemberLogin.me">로그인</a>
                         </li>
                         <li>
-                            <a href="mypage.jsp">마이페이지</a>
+                            <a href="">마이페이지</a>
                         </li>
                         <li>
                             <a>Language</a>
@@ -1671,7 +1671,7 @@
 				<input type="hidden" name="retUrl" value="23https://www.snuh.org/member/ipinAuthResponse.do?authKind=join&amp;join_type=TG">
 				<input type="hidden" name="addpara1" value="TG">
 			</form>
-			<form id="hForm" name="hForm" action="regi2.jsp" method="post">
+			<form id="hForm" name="hForm" action="${pageContext.request.contextPath}/Regi2.me" method="post">
 			<input id="join_type" name="join_type" type="hidden" value="TG">
 			<input id="cert_type" name="cert_type" value="H" type="hidden">
 			<input type="hidden" name="birthday" id="birthday">
@@ -1908,12 +1908,12 @@
 			submitCheck = false;
 			return false;
 		}
-		
+
 		    if(!check){
 			alert("휴대폰번호 인증을 해주세요.")
 			submitCheck = false;
 			return false;
-		}   
+
 		
 		if(!$("#ptnm").val()){
 			alert("이름을 입력해주세요.")
@@ -1957,7 +1957,19 @@
 				return;
 			}
 			
+
+			/* if(!idNumCheck.test($(this).closest('form').find('[id=citizen1]').val())) {
+				alert("주민등록번호 앞자리는 숫자를 입력해주세요");
+				$(this).closest('form').find('[id=citizen1]').focus();
+				return;
+			}
 			
+			if(!idNumCheck.test($(this).closest('form').find('[id=citizen2]').val())) {
+				alert("주민등록번호 뒷자리는 숫자를 입력해주세요");
+				$(this).closest('form').find('[id=citizen2]').focus();
+				return;
+			}  */
+
 			
 		hForm.submit();
 		

@@ -57,7 +57,7 @@ public class MemberInfoDAO {
 	
 	//회원정보 수정
 	public void profileChange(MemberInfoVO memberInfoVO) {
-		sqlSession.insert("Member.profileChange" ,memberInfoVO);
+		sqlSession.update("Member.profileChange" ,memberInfoVO);
 	}
 
 	public String information(Object attribute) {
@@ -65,5 +65,9 @@ public class MemberInfoDAO {
 		return null;
 	}
 	
+	//비밀번호 변경
+	public void changePassword(HashMap<String, String> memberInfoMap) {
+		sqlSession.update("Member.passwordChange", memberInfoMap);
+	}
 	
 }
