@@ -23,9 +23,9 @@
 	<div class="wrap">
 		<header id="header">
             <div class="innerwrap">
-                <h1><a href="mainpage.jsp">서울 병원</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/MainPage.me">서울 병원</a></h1>
                 <div class="topLeftWrap">
-                    <a href="mainpage.jsp">
+                    <a href="${pageContext.request.contextPath}/MainPage.me">
 	                	<img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
                     </a>
                 </div>
@@ -102,7 +102,7 @@
                 <!-- breadcrumb -->
                 <div class="breadcrumb">
                     <strong class="hideEl">현재 위치: </strong>
-                    <a href="/" class="bcHomeBtn hideTxt">HOME</a>
+                    <a href="${pageContext.request.contextPath}/MainPage.me" class="bcHomeBtn hideTxt">HOME</a>
                     <span class="hideEl">&gt;</span>
                     
                     <!-- <div class="">
@@ -165,7 +165,7 @@
 					</form>
 					<div class="telBox">
 						<div class="Box1">
-							<a href="regi1.jsp">회원가입</a> <a href="findid.jsp" id="find">아이디/비밀번호 찾기</a>
+							<a href="${pageContext.request.contextPath}/Regi1.me">회원가입</a> <a href="${pageContext.request.contextPath}/FindId.me" id="find">아이디/비밀번호 찾기</a>
 						</div>
 					</div>
 				</div>
