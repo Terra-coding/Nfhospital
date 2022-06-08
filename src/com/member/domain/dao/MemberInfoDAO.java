@@ -60,11 +60,6 @@ public class MemberInfoDAO {
 		sqlSession.update("Member.profileChange" ,memberInfoVO);
 	}
 
-	public String information(Object attribute) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	//비밀번호 변경
 	public void changePassword(HashMap<String, String> memberInfoMap) {
 		sqlSession.update("Member.passwordChange", memberInfoMap);

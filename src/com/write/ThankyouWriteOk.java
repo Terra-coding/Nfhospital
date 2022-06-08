@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.member.action.Action;
 import com.member.action.ActionInfo;
 import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.write.domain.dao.WriteDAO;
-import com.write.domain.vo.ThankyouWriteVO;
+import com.write.domain.vo.ThankyouWriteDTO;
 
 public class ThankyouWriteOk implements Action {
 
@@ -21,21 +20,28 @@ public class ThankyouWriteOk implements Action {
 		HashMap<String, Integer> writeMap = new HashMap<>();
 		ActionInfo actionInfo = new ActionInfo();
 		WriteDAO writeDAO = new WriteDAO();
-		ThankyouWriteVO thankyouWriteVO = new ThankyouWriteVO();
+		ThankyouWriteDTO thankyouWriteDTO = new ThankyouWriteDTO();
 		
-		MultipartRequest multipartRequest = new MultipartRequest(req, "UTF-8");
-
-		thankyouWriteVO.setTitle(multipartRequest.getParameter("Title"));
-		thankyouWriteVO.setContent(multipartRequest.getParameter("Content"));
-		//세션은 req로 받아야 한다.
-		thankyouWriteVO.setId(req.getSession().getAttribute("id"));
+		
+		
+		thankyouWriteDTO.setTitle(req.getParameter("title"));
+		System.out.println(req.getParameter("title"));
+		thankyouWriteDTO.setContent(req.getParameter("content"));
+		System.out.println(req.getParameter("content"));
+		thankyouWriteDTO.setId(req.getParameter("id"));
+		System.out.println(req.getParameter("id"));
+		thankyouWriteDTO.setPhoneNum(req.getParameter("tel1")+"-"+req.getParameter("tel2")+"-"+req.getParameter("tel3"));
+		System.out.println(req.getParameter("tel1"));
+		System.out.println(req.getParameter("tel2"));
+		System.out.println(req.getParameter("tel3"));
+		
 		
 		//게시글 추가
-		writeDAO.thankyouInsert(thankyouWriteVO);
+		writeDAO.thankyouInsert(thankyouWriteDTO);
 		
 		
 		actionInfo.setRedirect(true);
-		actionInfo.setPath(req.getContextPath() + "/write/WriteListOk.wr");
+		actionInfo.setPath(req.getContextPath() + "/myWrite.jsp");
 		
 		return actionInfo;
 		
