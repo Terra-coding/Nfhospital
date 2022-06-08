@@ -32,7 +32,7 @@ public class ReservationOk implements Action{
 		
 		
 		actionInfo.setRedirect(false);
-		actionInfo.setPath("/newreservation.jsp");
+		actionInfo.setPath("/confirmreservation.jsp");
 		
 		return actionInfo;
 	}

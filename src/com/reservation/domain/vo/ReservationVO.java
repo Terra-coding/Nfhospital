@@ -1,6 +1,7 @@
 package com.reservation.domain.vo;
 
 public class ReservationVO {
+	private int reservationNum;
 	private String id;
 	private String name;
 	private String phoneNum;
@@ -10,6 +11,17 @@ public class ReservationVO {
 	private String medicalDate;
 	
 	public ReservationVO() {;}
+
+	public int getReservationNum() {
+		return reservationNum;
+	}
+
+
+	public void setReservationNum(int reservationNum) {
+		this.reservationNum = reservationNum;
+	}
+
+
 
 	public String getId() {
 		return id;

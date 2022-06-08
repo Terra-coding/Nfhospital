@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="asset/css/newreservation.css">
+    <link rel="stylesheet" href="asset/css/confirmreservation.css">
     <link rel="stylesheet" href="asset/css/KDHfooter.css">
     <title>진료기록현황</title>
 </head>
@@ -59,7 +59,10 @@
                         <li>
                             <a href="allFAQ.jsp">이용안내</a>
                         </li>
-                       <li>
+                        <li>
+                            <a href="">건강정보</a>
+                        </li>
+                        <li>
                             <a href="clientSound.jsp">고객참여</a>
                         </li>
                         <li>
@@ -120,78 +123,63 @@
         </div>
         <main id="content" class="myPage replaceUtilMenu"> 
             <div class="contHeadingWrap">
-                <h2>진료예약현황</h2>
+                <h2>진료예약</h2>
             </div>
-            <div>
-                <ul class="tab_ul_section03">
-                    <li id="info_tab1" class="on">
-                        <a href="newreservation.jsp">진료예약현황</a>
-                    </li>
-                    <li id="info_tab1" >
-                        <a href="prereservation.jsp" style="color: #495164;">이전진료기록</a>
-                    </li>
-                    <li id="info_tab1">
-                        <a href="scription.jsp" style="color: #495164;">처방전발급현황</a>
-                    </li>
-                </ul>
-                <div id="info_areal" style="position:relative;">
-                    <h5 class="tit_h5">진료예약현황</h5>
-                    <!-- <span class="bh_btn_blue_yk1">
-                        <a href="m_reservation/reservation.html">추가진료예약</a>
-                    </span> -->
-                    <ul class="resConfirmList">
-                        <li>
-                            <!-- <a></a> -->
-                            <img alt="강혜련" src="	https://www.snuh.org/upload/med/dr/1029516_01017_01.jpg">
-                            <div class="resConfirm">
-                                <span>인터넷예약</span>
-                                &nbsp;
-                                <!-- <em  style="font-style: normal;">신청일</em>
-                                : 2022-05-19 -->
-                            </div>
-                            <div>
-                                <strong>
-                                    <span class="colorPoint">${reservation.getmedicalDept()}</span>
-                                    <span>
-                                        <a>${reservation.getdoctor()}</a>
-                                    </span>
-                                </strong>
-                            </div>
-                            <div>
-                                <p>
-                                    <em style="font-style: normal;">진료일정</em>
-                                    ${reservation.getscheduleDate()}
-                                    <%-- <span><%=request.getParameter("scheduleDate")%></span> --%>
-                                </p>
-                                <p>
-                                    <em style="font-style: normal;">위치</em>
-                                   		 외래 2층
-                                </p>
-                            </div>
-                            <div class="btnWrap">
-                                <button type="button" class="btnType02" onclick="location.href = '${pageContext.request.contextPath}/ReservationDeleteOk.re'">예약취소</button>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="boxTypeGray boxVtical">
-                        <div style="margin-bottom: 13px; font-size: 25px;">
-                            <strong class="boxTit">주의</strong>
-                        </div>
-                        <div class="txtWrap">
-                            <p>
-                                진료예약취소는
-                                <span class="colorPoint">진료일 이전(자정)</span>
-                                까지 가능합니다. (수납기록 및 검사예약이 없는 진료만 변경/취소가 가능)
-                            </p>
-                            <p>특정 진료과(방사선종양학과, 영상의학과, 마취통증의학과)의 예약이 조회되지 않을 수 있습니다.</p>
-                            <p>
-                                예약이 조회되지 않을 경우에는
-                                <span class="colorPoint">예약센터</span>
-                                나 해당 진료과로 문의해 주십시오.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="rsvConfirmWrao">
+            	<div class="rsvConfirm">
+            		<h3>예약완료 및 확인</h3>
+            		<p class="confirmWrap">진료예약 접수가 완료되었습니다</p>
+            		<div class="contTextWrap">
+            			<h4>회원정보 및 예약 정보</h4>
+            		</div>
+            		<div class="boardTypeForm">
+            			<table>
+            				<caption>회원정보 및 예약 정보</caption>
+            				<colgroup>
+            					<col style="width:140px;"> 
+            					<col style="width:380px;"> 
+            					<col style="width:140px;"> 
+            					<col style="width:auto;"> 
+            				</colgroup>
+            				<tbody>
+            					<tr>
+            						<th scope="row">예약자</th>
+            						<td><c:out value="${sessionScope.list.getId()}"/></td>
+            					</tr>
+            					<tr>
+            						<th scope="row">연락처</th>
+            						<td colspan="3"><c:out value="${sessionScope.list.getphoneNum()}"/></td>
+            					</tr>
+            					<tr>
+            						<th scope="row">진료과</th>
+            						<td><%=request.getParameter("medicalDept")%></td>
+            						<th scope="row">의료진</th>
+            						<td><%=request.getParameter("doctor")%></td>
+            					</tr>
+            					<tr>
+            						<th scope="row">이메일주소</th>
+            						<td><c:out value="${sessionScope.list.getEmail()}"/></td>
+            						<th scope="row">예약일</th>
+            						<td><%=request.getParameter("scheduleDate")%></td>
+            					</tr>
+            				</tbody>
+            			</table>
+            		</div>
+            		<form action="LookUpReservation.re" name="reservationForm" method="post">
+            		<div class="btnWrap">
+            			<div class="left">
+            				<a onclick="send()" role="button" class="btnType03">예약현황조회</a>
+            				<button type="button" onclick="" class="btnType05" style="border: 1px solid #777;
+						    color: #fff;
+						    background-color: #777;
+						    margin-left: 967px;
+						    margin-top: 20px;"  onclick="location.href = '${pageContext.request.contextPath}/ReservationDeleteOk.re'">
+						    	예약취소
+						    </button>
+            			</div>
+            		</div>
+            		</form>
+            	</div>
             </div>
         </main>
     </div>
@@ -257,4 +245,9 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="asset/js/allFAQ.js"></script>
+<script>
+function send(){	   
+	   reservationForm.submit();
+}
+</script>
 </html>
