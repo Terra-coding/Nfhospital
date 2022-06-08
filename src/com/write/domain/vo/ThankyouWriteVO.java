@@ -49,6 +49,14 @@ public class ThankyouWriteVO {
 	public void setTime(String time) {
 		this.time = time;
 	}
+
+	public void setId(Object attribute) {
+		// TODO Auto-generated method stub
+		
+	}
+
+			
+	
 	
 		
 }

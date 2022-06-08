@@ -23,21 +23,36 @@ public class WriteFrontController extends HttpServlet {
 	}
 
 	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String requestURL = req.getRequestURI();
-		String command = requestURL.substring(req.getContextPath().length());
+		String requestURI = req.getRequestURI();
+		String contextPath = req.getContextPath();
+		String command = requestURI.substring(contextPath.length());
 		ActionInfo actionInfo = null;
 
-		if (command.equals("/write/ThankyouWriteOk.wr")) {
+		switch(command) {
+		case "/write/WriteListOk.wr":
+			actionInfo = new WriteListOk().execute(req, resp);
+			break;
+		case "/write/WriteDetailOk.wr":
+			actionInfo = new WriteDetailOk().execute(req, resp);
+			break;
+		case "/write/ThankyouWrite.wr":
+			actionInfo = new ThankyouWrite().execute(req, resp);
+			break;
+		case "/write/ThankyouWriteOk.wr":
 			actionInfo = new ThankyouWriteOk().execute(req, resp);
-
-		} else if (command.equals("/write/ThankyouWrite.wr")) {
-			actionInfo = new ActionInfo();
-			actionInfo.setRedirect(true);
-			actionInfo.setPath(req.getContextPath() + "/thankyouwrite.jsp");
-		} else {
-			// 404 일 때 출력할 에러 페이지 경로 작성
+			break;
+		case "/write/ThankyouDeleteOk.wr":
+			actionInfo = new ThankyouDeleteOk().execute(req, resp);
+			break;
+		case "/write/ThankyouUpdate.wr":
+			actionInfo = new ThankyouUpdate().execute(req, resp);
+			break;
+		case "/write/ThankyouUpdateOk.wr":
+			actionInfo = new ThankyouUpdateOk().execute(req, resp);
+			break;
 		}
-
+		
+		
 		if (actionInfo != null) {
 			if (actionInfo.isRedirect()) {
 				resp.sendRedirect(actionInfo.getPath());

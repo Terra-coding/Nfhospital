@@ -1,4 +1,4 @@
-package com.member;
+package com.patient;
 
 import java.io.IOException;
 

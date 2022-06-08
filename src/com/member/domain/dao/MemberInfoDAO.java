@@ -59,6 +59,11 @@ public class MemberInfoDAO {
 	public void profileChange(MemberInfoVO memberInfoVO) {
 		sqlSession.insert("Member.profileChange" ,memberInfoVO);
 	}
+
+	public String information(Object attribute) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

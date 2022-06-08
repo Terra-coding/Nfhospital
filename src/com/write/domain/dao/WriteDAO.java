@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.mybatis.config.MyBatisConfig;
 import com.write.domain.vo.SuggestionsWriteVO;
+import com.write.domain.vo.ThankyouWriteDTO;
 import com.write.domain.vo.ThankyouWriteVO;
 
 public class WriteDAO {
@@ -19,7 +20,7 @@ public class WriteDAO {
 	}
 	
 	//감사합니다 게시글 전체 목록
-	public List<ThankyouWriteVO> thankyouWriteList(Map<String, Integer> writeMap) {
+	public List<ThankyouWriteDTO> thankyouWriteList(Map<String, Integer> writeMap) {
 		return sqlSession.selectList("ThankyouWrite.thankyouWriteList", writeMap);
 	}
 	
@@ -39,28 +40,28 @@ public class WriteDAO {
 	}
 	
 	//내가 작성한 글 목록
-	public List<ThankyouWriteVO> myWriteList(Map<String, Integer> writeMap){
+	public List<ThankyouWriteDTO> myWriteList(Map<String, Integer> writeMap){
 		return sqlSession.selectList("ThankyouWrite.myWriteList");				
 	}
 		
 	//내가 작성한 게시글 상세보기
-	public ThankyouWriteVO myThankyouWriteSelect(int writeNum){
+	public ThankyouWriteDTO myWriteSelect(int writeNum){
 		return sqlSession.selectOne("ThankyouWrite.myThankyouWriteSelect", writeNum);				
 	}
 		
 	//감사합니다 글 작성
-	public void ThankyouInsert(ThankyouWriteVO thankyouWrite) {
-		sqlSession.insert("ThankyouWrite.ThankyouInsert", thankyouWrite);
+	public void thankyouInsert(ThankyouWriteVO thankyouWrite) {
+		sqlSession.insert("ThankyouWrite.thankyouInsert", thankyouWrite);
 	}
 	
 	//감사합니다 글 수정
-	public void ThankyouUpdate(ThankyouWriteVO thankyouWrite) {
-		sqlSession.update("ThankyouWrite.ThankyouUpdate", thankyouWrite);
+	public void thankyouUpdate(ThankyouWriteVO thankyouWrite) {
+		sqlSession.update("ThankyouWrite.thankyouUpdate", thankyouWrite);
 	}
 		
 	//감사합니다 글 삭제
-	public void ThankyouDelete(int writeNum) {
-		sqlSession.delete("ThankyouWrite.ThankyouDelete", writeNum);
+	public void thankyouDelete(int writeNum) {
+		sqlSession.delete("ThankyouWrite.thankyouDelete", writeNum);
 	}
 	
 	

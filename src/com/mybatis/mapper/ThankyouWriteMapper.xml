@@ -29,16 +29,16 @@
 	</select>
 	
 	<!-- 내가 작성한 게시글 목록 -->
-	<select id="myWriteList" parameterType="map" resultType="thankyouWriteVO">		
-		select write_num, title, content, id, time
+	<select id="myWriteList" parameterType="map" resultType="thankyouWriteDTO">		
+		select write_num, title, content, id, time, name, phone_num
 		from TBL_thank_you_write t join TBL_member_info m 
 		on t.id = m.id
 		order by 1 desc limit #{startRow}, #{rowCount}						
 	</select>
 	
 	<!-- 내가 작성한 게시글 상세보기 -->
-	<select id="myThankyouWriteSelect" parameterType="_int" resultType="thankyouWriteVO">		
-		select write_num, title, content, t.id, time
+	<select id="myWriteSelect" parameterType="_int" resultType="thankyouWriteDTO">		
+		select write_num, title, content, t.id, time, name, phone_num
 		from TBL_thank_you_write t join TBL_member_info m 	
 		on t.id = m.id and write_num = #{writeNum}	
 	</select>

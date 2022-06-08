@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +17,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
 <body>
+		<c:set var="thankyouList" value="${thankyouList}"/>
+		<c:set var="page" value="${page}"/>
+		<c:set var="startPage" value="${startPage}"/>
+		<c:set var="endPage" value="${endPage}"/>
+		<c:set var="realEndPage" value="${realEndPage}"/>
+		<c:set var="total" value="${total}"/>
+		
     <div id="wrap">
         <a href="#content" class="skipToContent">본문으로 바로가기</a>
         <header id="header">
@@ -162,7 +170,7 @@
             </div>
             <div class="boardTypeTbl">
                 <table>
-                    <caption>내가 작성한 글(번호, 유형, 제목, 등록일, 처리과정)</caption>
+                    <caption>내가 작성한 글(번호, 유형, 제목, 등록일)</caption>
                     <colgroup>
                         <col style="width: 65px;">
                         <col style="width: 110px;">
@@ -173,10 +181,8 @@
                     <thead>
                         <tr>
                             <th scope="col">번호</th>
-                            <th scope="col">유형</th>
                             <th scope="col">제목</th>
                             <th scope="col">등록일</th>
-                            <th scope="col">처리과정</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -186,11 +192,9 @@
 									<tr>
 										<td>${write.getWriteNum()}</td>
 										<td>
-											<a href="${pageContext.request.contextPath }ThankyouWriteOK.wr?writeNum=${write.getWriteNum()}&page=${page}">${write.getTitle()}</a>
+											<a href="${pageContext.request.contextPath }/write/ThankyouWriteOk.wr?writeNum=${write.getWriteNum()}&page=${page}">${write.getTitle()}</a>
 										</td>
-										<td>${write.getId()}</td>
 										<td class="web-view">${write.getTime()}</td>
-										<td class="web-view">${write.getReadCount()}</td>
 									</tr>
 								</c:forEach>
 							</c:when>
