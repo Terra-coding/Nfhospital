@@ -1,4 +1,4 @@
-package com.member.domain.dao;
+package com.patient.domain.dao;
 
 import java.util.List;
 

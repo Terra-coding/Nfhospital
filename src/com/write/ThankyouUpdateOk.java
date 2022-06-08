@@ -1,5 +1,6 @@
 package com.write;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -13,35 +14,37 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.write.domain.dao.WriteDAO;
 import com.write.domain.vo.ThankyouWriteVO;
 
-public class ThankyouWriteOk implements Action {
+public class ThankyouUpdateOk implements Action {
 
 	@Override
 	public ActionInfo execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		req.setCharacterEncoding("UTF-8");
-		HashMap<String, Integer> writeMap = new HashMap<>();
-		ActionInfo actionInfo = new ActionInfo();
-		WriteDAO writeDAO = new WriteDAO();
+		
 		ThankyouWriteVO thankyouWriteVO = new ThankyouWriteVO();
+		WriteDAO writeDAO = new WriteDAO();
+		ActionInfo actionInfo = new ActionInfo();
+		
+		int writeNumber = 0, page = 0;
 		
 		MultipartRequest multipartRequest = new MultipartRequest(req, "UTF-8");
-
+		
+		page = Integer.parseInt(multipartRequest.getParameter("page"));
+		writeNumber = Integer.parseInt(multipartRequest.getParameter("writeNumber"));
 		thankyouWriteVO.setTitle(multipartRequest.getParameter("Title"));
 		thankyouWriteVO.setContent(multipartRequest.getParameter("Content"));
-		//세션은 req로 받아야 한다.
-		thankyouWriteVO.setId(req.getSession().getAttribute("id"));
+		thankyouWriteVO.setWriteNum(writeNumber);
 		
-		//게시글 추가
-		writeDAO.thankyouInsert(thankyouWriteVO);
-		
+		writeDAO.thankyouUpdate(thankyouWriteVO);
 		
 		actionInfo.setRedirect(true);
-		actionInfo.setPath(req.getContextPath() + "/write/WriteListOk.wr");
+		
+		//목록보기(페이지 기억)
+		actionInfo.setPath(req.getContextPath() + "/write/WriteListOk.wr?page=" + page);
 		
 		return actionInfo;
-		
-		
-		
 	}
-	
-	
+		
 }
+	
+	
+

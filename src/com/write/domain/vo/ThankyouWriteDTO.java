@@ -7,17 +7,28 @@ public class ThankyouWriteDTO {
 	private String content;
 	private String id;
 	private String time;
-		
+	private String name;
+	private String phoneNum;
+	
 	public ThankyouWriteDTO() {;}
 	
+	public ThankyouWriteDTO(ThankyouWriteVO thankyouWriteVO ) {
+		super();
+		this.writeNum = thankyouWriteVO.getWriteNum();
+		this.title = thankyouWriteVO.getTitle();
+		this.content = thankyouWriteVO.getContent();
+		this.id = thankyouWriteVO.getId();
+		this.time = thankyouWriteVO.getTime();
+	}
+
 	public int getWriteNum() {
 		return writeNum;
 	}
-	
+
 	public void setWriteNum(int writeNum) {
 		this.writeNum = writeNum;
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}
@@ -49,6 +60,23 @@ public class ThankyouWriteDTO {
 	public void setTime(String time) {
 		this.time = time;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhoneNum() {
+		return phoneNum;
+	}
+
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
+	
 	
 	
 }
