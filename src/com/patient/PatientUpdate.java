@@ -9,8 +9,8 @@ import org.json.simple.JSONObject;
 
 import com.member.action.Action;
 import com.member.action.ActionInfo;
-import com.member.domain.dao.PatientListDAO;
-import com.member.domain.vo.PatientListVO;
+import com.patient.domain.dao.PatientListDAO;
+import com.patient.domain.vo.PatientListVO;
 
 public class PatientUpdate implements Action {
 

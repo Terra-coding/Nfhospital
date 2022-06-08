@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.member.action.Action;
 import com.member.action.ActionInfo;
-import com.member.domain.dao.PatientListDAO;
-import com.member.domain.vo.PatientListVO;
+import com.patient.domain.dao.PatientListDAO;
 
 public class PatientDetailDelete implements Action {
 

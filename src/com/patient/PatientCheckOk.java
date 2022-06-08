@@ -1,17 +1,14 @@
 package com.patient;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
-
 import com.member.action.Action;
 import com.member.action.ActionInfo;
-import com.member.domain.dao.PatientListDAO;
-import com.member.domain.vo.PatientListVO;
+import com.patient.domain.dao.PatientListDAO;
+import com.patient.domain.vo.PatientListVO;
 
 public class PatientCheckOk implements Action{
 	@Override
