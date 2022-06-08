@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.member.action.ActionInfo;
-public class ReservationController extends HttpServlet{
+public class ReservationFrontController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,9 +35,9 @@ public class ReservationController extends HttpServlet{
 			actionInfo = new ActionInfo();
 			actionInfo.setRedirect(true);
 			actionInfo.setPath(req.getContextPath() + "/reservation.jsp");
-		} else if (command.equals("ReservationCheckOk.re")) {
+		} /*else if (command.equals("ReservationCheckOk.re")) {
 			new ReservationCheckOk().execute(req, resp);
-		} else {
+		}*/ else {
 			// 404 일 때 출력할 에러 페이지 경로 작성
 		}
 		if(actionInfo != null) {

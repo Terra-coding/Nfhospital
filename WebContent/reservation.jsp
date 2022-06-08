@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,11 +35,14 @@
                         </li>
                     </ul>
                     <ul class="topMenu">
+                    <c:if test="${empty name}">
+                  		<li><a href="${pageContext.request.contextPath}/MemberLogin.me" style="color: #000;">로그인</a></li>
+               		</c:if>
+               		<c:if test="${not empty name}">
+                  		<li><a href="${pageContext.request.contextPath}/LogOutOk.me" style="color: #000;">로그아웃</a></li>
+               		</c:if>
                         <li>
-                            <a>로그아웃</a>
-                        </li>
-                        <li>
-                            <a href="mainpage.html">마이페이지</a>
+                            <a href="mypage.jsp">마이페이지</a>
                         </li>
                         <li>
                             <a>Language</a>
@@ -54,9 +58,6 @@
                         </li>
                         <li>
                             <a href="allFAQ.jsp">이용안내</a>
-                        </li>
-                        <li>
-                            <a href="">건강정보</a>
                         </li>
                         <li>
                             <a href="clientSound.jsp">고객참여</a>
@@ -244,21 +245,22 @@
             							<input type="radio" name="clinic" value="AN" onclick="viewInformation('DP','1','AN', '','Y');" title="마취통증의학과" id="feFoRadioIdx25" data-fe-idx="feFoRadioIdx25" style="opacity:0;">
             							<span>마취통증의학과</span>
             						</label>
-            						<label class="feForm feFoRadio" for="feFoRadioIdx26">
-            							<input type="radio" name="clinic" value="TR" onclick="viewInformation('DP','1','TR', '','Y');" title="방사선종양학과" id="feFoRadioIdx26" data-fe-idx="feFoRadioIdx26" style="opacity:0;">
-            							<span>마취통증의학과</span>
-            						</label>
+            						
             					</div>
             				</div>
             			</div>
             		</div>
             	</div>
+            	
             	<div class="rsvInfoWrap" style="margin-left: 10px;">
+            	<form action="${pageContext.request.contextPath }/ReservationOk.re" name="reservationForm" method="post" style="color:white; margin-left:22px;">
             		<div class="user">
             			<h3>예약하실 정보확인</h3>
             			<dl>
-            				<dt>환자명 :</dt>
-            				<dd>이순신 (00000000)</dd>
+            				<input type="hidden" id="name" name="name" value="">
+            				<dt>환자명 :<c:out value="${sessionScope.list.getName()}"/></dt>
+            				<!-- 여기는 로그인된 이름값 가져오기 -->
+            				<dd></dd>
             			</dl>
             			<div class="btnWrap">
             				<button type="button" class="btnType01 layerBtn" data-layer="layerInfoCheck">환자정보확인</button>
@@ -269,24 +271,38 @@
             			<ul style="padding: 0; margin: 0;">
             				<li>
             					병원/진료과
+            					<input type="hidden" id="medicalDept" name="medicalDept" value=""> 
             					<i style="font-style: normal;"> : </i>
-            					<em style="display: inline;">호흡기내과</em>
+            					<em class="select1"></em>
             				</li>
             				<li>
             					의료진
+            					<input type="hidden" id="doctor" name="doctor" value="">
             					<i style="font-style: normal;"> : </i>
-            					<em style="display: none;"></em>
-            					&nbsp;&nbsp;
-            					<span style="display: none">선택진료</span>
+            					<em class="select2"></em>
+            					<!-- &nbsp;&nbsp;
+            					<span style="display: none">선택진료</span> -->
             				</li>
             				<li>
             					진료일시
             					<i style="font-style: normal;"> : </i>
-            					<em style="display: none;"></em>
+            					<input type="date" name="scheduleDate"  style="border: none; background-color: #2763ba; color: white; font-size: 16px;" ><br>
+            					
+            				</li>
+            				<li>
+            					진료시간 
+            					<i style="font-style: normal;"> : </i>
+            					<input type="time" name="scheduleDate" min="09:00" max="17:00" step="900" required style="border: none; background-color: #2763ba; color: white; font-size: 16px;" >
+            				</li>
+            				<li>
+            					<input type="button" id="confirmBtn" value="예약 확정" class="btnType03" onclick="send()"
+            			style="border: 1px solid #2263bb; color: #fff; background-color: #2263bb; padding: 5px 103px 15px 78px; text-align: center; font-size: 19px; cursor: pointer;">
             				</li>
             			</ul>
             		</div>
+            		</form>
             	</div>
+            	
             	<div class="rsvDoctorWrap current">
             		<div class="contTitleWrap">
             			<h3>
@@ -301,7 +317,14 @@
             			</div>
             		</div>
             		<div class="rsvDoctorList">
-            			<ul id="doctorList" style="display: block">
+            			<p class="noResult">
+            				위에서
+    						<strong>진료과 선택</strong>
+    						또는 질병병 /
+    						<strong>의료진명 검색</strong>
+    						을 먼저해주세요.
+            			</p>
+            			<ul id="doctorList">
             				<li style="list-style: none;">
             					<div class="rsvDoctorInfo">
 									<div class="thumb">
@@ -317,7 +340,7 @@
 											천식, 만성기침, 알레르기, 알레르기비염, 면역성폐질환, 기타알레르기질환, 면역치료
 										</p>
 									</div> 
-									<button type="button" onclick="setDoctor">선택</button>						
+									<button id="doctorbutton1" type="button" onclick="setDoctor">선택</button>						
             					</div>
             				</li>
             				<li style="list-style: none;">
@@ -335,7 +358,7 @@
 											천식, 약물 알레르기, 만성기침, 두드러기, 혈관부종, 아나필락시스, 탈감작치료, 알레르기비염
 										</p>
 									</div> 
-									<button type="button" data-docid="01017" onclick="setDoctor(this, 'IMA', '01017', '강혜련', 'N', '알레르기내과');">선택</button>						
+									<button id="doctorbutton2" type="button" data-docid="01017" onclick="setDoctor(this, 'IMA', '01017', '강혜련', 'N', '알레르기내과');">선택</button>						
             					</div>
             				</li>
             				<li style="list-style: none;">
@@ -353,7 +376,7 @@
 											알레르기, 알레르기비염, 천식, 만성기침, 두드러기
 										</p>
 									</div> 
-									<button type="button" data-docid="01136" onclick="setDoctor(this, 'IMA', '01136', '박흥우', 'N', '알레르기내과');">선택</button>						
+									<button id="doctorbutton3" type="button" data-docid="01136" onclick="setDoctor(this, 'IMA', '01136', '박흥우', 'N', '알레르기내과');">선택</button>						
             					</div>
             				</li>
             				<li style="list-style: none;">
@@ -371,7 +394,7 @@
 											천식, 만성기침, 두드러기, 비염, 면역치료, 아니필락시스, 음식물알레르기, 약물알레르기, 아토피피부염, 면역치료
 										</p>
 									</div> 
-									<button type="button" data-docid="65870" onclick="setDoctor(this, 'IMA', '65870', '이서영', 'N', '알레르기내과');">선택</button>						
+									<button id="doctorbutton4" type="button" data-docid="65870" onclick="setDoctor(this, 'IMA', '65870', '이서영', 'N', '알레르기내과');">선택</button>						
             					</div>
             				</li>
             				<li style="list-style: none;">
@@ -389,41 +412,13 @@
 											천식, 알레르기, 알레르기비염, 약물 알레르기, 음식물알레르기, 피부 알레르기, 두드러기, 아토피 피부염
 										</p>
 									</div> 
-									<button type="button" data-docid="83485" onclick="setDoctor(this, 'IMA', '83485', '서장호', 'N', '알레르기내과');">선택</button>						
+									<button id="doctorbutton5" type="button" data-docid="83485" onclick="setDoctor(this, 'IMA', '83485', '서장호', 'N', '알레르기내과');">선택</button>						
             					</div>
             				</li>
-            				<li style="list-style: none;">
-            					<div class="rsvDoctorInfo">
-									<div class="thumb">
-										<img src="	https://www.snuh.org/upload/med/dr/b4ee6599263c4094b5e4a3f2e5a7a6b6.jpg" alt="서장호">
-									</div>           
-									<div class="info">
-										<em class="name">
-											서장호
-										</em>
-										<em>알레르기내과</em>
-										<p>
-											<span>세부전공 :</span>
-											천식, 알레르기, 알레르기비염, 약물 알레르기, 음식물알레르기, 피부 알레르기, 두드러기, 아토피 피부염
-										</p>
-									</div> 
-									<button type="button" data-docid="83485" onclick="setDoctor(this, 'IMA', '83485', '서장호', 'N', '알레르기내과');">선택</button>						
-            					</div>
-            				</li>
+            				
             			</ul>
             		</div>
-            		<div class="rsvScheduleWrap">
-            			<div>
-            				<h4>진료일정</h4>
-            				<p class="result" style="display: none;">
-            					의료진을 선택하시면
-            					<br>
-            					진료일정을 확인 하실 수
-            					<br>
-            					있습니다
-            				</p>
-            			</div>
-            		</div>
+            		
             	</div>
             </div>
         </main>
@@ -490,4 +485,71 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="asset/js/allFAQ.js"></script>
+<script src="asset/js/reservation.js"></script>
+<script>
+function reservation(){
+	reservationForm.submit();
+}
+
+$(document).ready(function() {
+	$('.noResult').show(); //페이지를 로드할 때 표시할 요소
+	$('.rsvDoctorInfo').hide(); //페이지를 로드할 때 숨길 요소
+	$('.feForm').click(function(){
+	$ ('.noResult').hide(); //클릭 시 첫 번째 요소 숨김
+	$ ('.rsvDoctorInfo').show(); //클릭 시 두 번째 요소 표시
+	return false;
+	});
+	});
+	
+   $(document).ready(function(){
+	  $(".feForm").click(function(){
+		  $("#medicalDept").val($(".select1").text());
+	  $(".select1").text("알레르기내과");
+	  $("#medicalDept").val($(".select1").text());
+	  });
+	  
+	});
+   
+   $(document).ready(function(){
+	  $("#doctorbutton1").click(function(){
+	  $(".select2").text("조상현");
+	  $("#doctor").val($(".select2").text()); 
+	  });
+	});
+
+   $(document).ready(function(){
+	  $("#doctorbutton2").click(function(){
+	  $(".select2").text("강혜련");
+	  $("#doctor").val($(".select2").text()); 
+	  });
+	});
+
+   $(document).ready(function(){
+	  $("#doctorbutton3").click(function(){
+	  $(".select2").text("박흥우");
+	  $("#doctor").val($(".select2").text()); 
+	  });
+	});
+   
+   $(document).ready(function(){
+	  $("#doctorbutton4").click(function(){
+	  $(".select2").text("이서영");
+	  $("#doctor").val($(".select2").text()); 
+	  });
+	});
+   
+   $(document).ready(function(){
+	  $("#doctorbutton5").click(function(){
+	  $(".select2").text("서장호");
+	  $("#doctor").val($(".select2").text()); 
+	  });
+	  
+	});
+   
+   $("#name").val($("#named").text());
+   
+   function send(){	   
+	   reservationForm.submit();
+   }
+</script>
 </html>

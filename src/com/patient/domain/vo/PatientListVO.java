@@ -1,4 +1,4 @@
-package com.patient.domain.vo;
+package com.member.domain.vo;
 
 public class PatientListVO {
 	private int patientNum;
@@ -9,12 +9,30 @@ public class PatientListVO {
 	private int age;
 	private String hospitalRoom;
 	private String hospitalDate;
-	private String medication;
-	private String disease;
-	private String symptom;
+	private String medication;//약물복용
+	private String disease;//기저질환
+	private String symptom;//현재증상
 	private double temperature;
 	private String bloodPressure;
+	private String taking;
+	private String birth;
 	
+	public String getTaking() {
+		return taking;
+	}
+
+	public void setTaking(String taking) {
+		this.taking = taking;
+	}
+
+	public String getBirth() {
+		return birth;
+	}
+
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+
 	public PatientListVO() {;}
 
 	public int getPatientNum() {

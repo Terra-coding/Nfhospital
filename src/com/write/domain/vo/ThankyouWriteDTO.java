@@ -1,14 +1,14 @@
 package com.write.domain.vo;
 
-public class ThankyouWriteVO {
-
+public class ThankyouWriteDTO {
+	
 	private int writeNum;
 	private String title;
 	private String content;
 	private String id;
 	private String time;
 		
-	public ThankyouWriteVO() {;}
+	public ThankyouWriteDTO() {;}
 	
 	public int getWriteNum() {
 		return writeNum;
@@ -50,5 +50,5 @@ public class ThankyouWriteVO {
 		this.time = time;
 	}
 	
-		
+	
 }

@@ -1,0 +1,30 @@
+package com.member;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.member.action.Action;
+import com.member.action.ActionInfo;
+import com.member.domain.dao.PatientListDAO;
+import com.member.domain.vo.PatientListVO;
+
+public class PatientDetailDelete implements Action {
+
+	@Override
+	public ActionInfo execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		req.setCharacterEncoding("UTF-8");
+		ActionInfo actionInfo = new ActionInfo();
+		
+		new PatientListDAO().delete(Integer.parseInt(req.getParameter("patientNum")));
+		
+		
+		actionInfo.setRedirect(false);
+		actionInfo.setPath("/PatientOk.do");
+		
+		
+		return actionInfo;
+	}
+
+}

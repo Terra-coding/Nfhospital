@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 가입</title>
 
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -1369,7 +1369,7 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 										if(idPass){
 										
 										$.ajax({
-										url: contextPath + "/Nfhospital/CheckIdOk.me",
+										url: contextPath + "/NfHospital/CheckIdOk.me",
 										type: "get",
 										data: {id: $("input[name='id']").val()},
 										contentType: "application/json; charset=utf-8",

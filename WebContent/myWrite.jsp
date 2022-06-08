@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>내가 작성한 글 | 서울대학교병원</title>
+    <title>내가 작성한 글 | 서울 병원</title>
     <link rel="stylesheet" href="asset/css/myWrite.css">
     <link rel="stylesheet" href="asset/css/KDHfooter.css">
     <link rel="stylesheet" href="asset/css/aside.css">
@@ -54,9 +55,6 @@
                         </li>
                         <li>
                             <a>이용안내</a>
-                        </li>
-                        <li>
-                            <a>건강정보</a>
                         </li>
                         <li>
                             <a>고객참여</a>
@@ -182,10 +180,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
-                            <tr><td colspan="5" style="text-align: center;">작성한 글이 없습니다.</td></tr>
-                        
-                    </tbody>
+						<c:choose>
+							<c:when test="${myWrite != null and fn:length(myWrite) > 0}">
+								<c:forEach var="write" items="${myWrite}">
+									<tr>
+										<td>${write.getWriteNum()}</td>
+										<td>
+											<a href="${pageContext.request.contextPath }ThankyouWriteOK.wr?writeNum=${write.getWriteNum()}&page=${page}">${write.getTitle()}</a>
+										</td>
+										<td>${write.getId()}</td>
+										<td class="web-view">${write.getTime()}</td>
+										<td class="web-view">${write.getReadCount()}</td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
                 </table>
             </div>
             <div class="pagination">

@@ -90,6 +90,11 @@
                             <div class="subList more fourth" id="information4">
                             <a class="strongs top" href="${pageContext.request.contextPath}/intro.jsp">병원개요</a>
                         </div> 
+                        <li>
+                            <a href="clientSound.jsp">고객참여</a>
+                        </li>
+                        <li>
+                            <a href="intro.jsp">병원소개</a>
                         </li>
                     </ul>
                 </nav>

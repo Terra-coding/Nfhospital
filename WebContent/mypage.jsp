@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,12 +35,13 @@
                         </li>
                     </ul>
                     <ul class="topMenu">
-                        <li>
-                            <a>로그아웃</a>
-                        </li>
-                        <li>
-                            <a href="mainpage.jsp">마이페이지</a>
-                        </li>
+                    <c:if test="${empty name}">
+                  		<li><a href="${pageContext.request.contextPath}/MemberLogin.me" style="color: #000;">로그인</a></li>
+              		</c:if>
+               		<c:if test="${not empty name}">
+                  		<li><a href="${pageContext.request.contextPath}/LogOutOk.me" style="color: #000;">로그아웃</a></li>
+               		</c:if>
+                        <li> <a>마이페이지</a> </li>
                         <li>
                             <a>Language</a>
                         </li>
@@ -57,9 +58,6 @@
                         </li>
                         <li>
                             <a href="allFAQ.jsp">이용안내</a>
-                        </li>
-                        <li>
-                            <a href="">건강정보</a>
                         </li>
                         <li>
                             <a href="clientSound.jsp">고객참여</a>
@@ -189,7 +187,7 @@
                     </p>
                     <div class="btnWrap">
                         <button type="button" class="btnType01" onclick="">
-                        로그아웃 하기
+                        	로그아웃 하기
                         </button>
                     </div>
                 </div>
