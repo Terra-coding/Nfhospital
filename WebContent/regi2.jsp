@@ -118,7 +118,7 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
                 <!-- breadcrumb -->
                 <div class="breadcrumb">
                     <strong class="hideEl">현재 위치: </strong>
-                    <a href="/" class="bcHomeBtn hideTxt">HOME</a>
+                    <a href="${pageContext.request.contextPath}/MainPage.me" class="bcHomeBtn hideTxt">HOME</a>
                     <span class="hideEl">&gt;</span>
                     
                     <!-- <div class="">

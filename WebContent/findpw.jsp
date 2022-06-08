@@ -32,9 +32,9 @@
 <div id="wrap">
 	<header id="header">
             <div class="innerwrap">
-                <h1><a href="mainpage.jsp">서울 병원</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/MainPage.me">서울 병원</a></h1>
                 <div class="topLeftWrap">
-                    <a href="mainpage.jsp">
+                    <a href="${pageContext.request.contextPath}/MainPage.me">
 	                	<img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
                     </a>
                 </div>
@@ -114,7 +114,7 @@
                 <!-- breadcrumb -->
                 <div class="breadcrumb">
                     <strong class="hideEl">현재 위치: </strong>
-                    <a href="/" class="bcHomeBtn hideTxt">HOME</a>
+                    <a href="${pageContext.request.contextPath}/MainPage.me" class="bcHomeBtn hideTxt">HOME</a>
                     <span class="hideEl">&gt;</span>
                     
                     <!-- <div class="">
@@ -163,7 +163,7 @@
 		<!-- tabType -->
 		<div class="tabTypeCol2">
 			<ul class="clearFix">
-				<li style="width: 50%;float:left;background-color: white;"><a href="findid.jsp">아이디 찾기</a></li>
+				<li style="width: 50%;float:left;background-color: white;"><a href="${pageContext.request.contextPath}/FindId.me">아이디 찾기</a></li>
 				<li class="current"><a href="#">비밀번호 찾기</a></li>
 			</ul>
 		</div>
@@ -223,7 +223,7 @@
 				</form>
 				<div class="btnWrap alignC">
 					<button type="button" class="btnType03" id="confirmMailBtn">확인하기</button>
-					<button class="logInBtn"  onclick="location.href='passwordchange.jsp' ">비밀번호 변경</button>
+					<button class="logInBtn"  onclick="location.href='${pageContext.request.contextPath}/MemberLogin.me' ">로그인 하기</button>
 				</div>
 			</div>
 	
@@ -278,7 +278,7 @@
 				</form>
 				<div class="btnWrap alignC">
 					<button type="button" class="btnType03" id="confirmHpBtn">확인하기</button>
-					<button class="logInBtn" onclick="location.href='passwordchange.jsp' ">비밀번호 변경</button>
+					<button class="logInBtn" onclick="location.href='${pageContext.request.contextPath}/MemberLogin.me' ">로그인 하기</button>
 				</div>
 			</div>
 			
@@ -388,10 +388,7 @@ let contextPath = "${pageContext.request.contextPath}";
 						
 					},
 					error: function(request, status, error){
-						console.log("실패..");
-						console.log(request);
-						console.log(status);
-						console.log(error);
+						alert("가입되어 있지 않습니다.")
 					}
 				});
 			}
@@ -440,10 +437,7 @@ let contextPath = "${pageContext.request.contextPath}";
 						
 					},
 					error: function(request, status, error){
-						console.log("실패..");
-						console.log(request);
-						console.log(status);
-						console.log(error);
+						alert("가입되어 있지 않습니다.")
 					}
 				});
 			}
