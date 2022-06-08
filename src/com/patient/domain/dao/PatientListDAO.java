@@ -1,12 +1,12 @@
-package com.member.domain.dao;
+package com.patient.domain.dao;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.member.domain.vo.PatientListVO;
 import com.mybatis.config.MyBatisConfig;
+import com.patient.domain.vo.PatientListVO;
 
 
 public class PatientListDAO {
