@@ -12,6 +12,9 @@
 
 </head>
 <body>
+	<c:set var="search_name" value="${name}" />
+	<c:set var="files" value="${files}" />
+
 	<div id="wrap">
 		<aside>
 			<div class="list">
@@ -68,75 +71,118 @@
 					</div>
 					<div class="body_wrap_table1">
 						<div>
-							<form method="post" action="#">
-							<table class="table1" >
-								<tr>
-									<th class="table1_th">환자상태</th>
-									<td><select name="patient_state" id="state">
-											<option value="all">전체</option>
-											<option value="normal">-</option>
-									</select></td>
-									<th class="table1_th">환자명</th>
-									<td><input type="text" name="name" placeholder="환자명"
-										id="pati_name"></td>
-								</tr>
-								<tr>
-									<th class="table1_th">입원일자</th>
-									<td><input type="date" value="2022-05-01" name="date"
-										id="date"></td>
-									<td colspan="2">
-									
-									<input id="btn_Search" type="button" class="search" value="검색"  style="margin-right: 20px; width: 60px" onclick="view()"/>
-									
-									
-								</tr>
-							</table>
+							<form method="post" action="PatientOk.do">
+								<table class="table1">
+									<tr>
+										<th class="table1_th">환자상태</th>
+										<td><select name="patient_state" id="state">
+												<option value="all">전체</option>
+												<option value="normal">-</option>
+										</select></td>
+										<th class="table1_th">환자명</th>
+										<td><input type="text" name="name" placeholder="환자명"
+											id="name"></td>
+									</tr>
+									<tr>
+										<th class="table1_th">입원일자</th>
+										<td><input type="date" value="2022-05-01"
+											name="hospitalDate" id="hospitalDate"></td>
+										
+									</tr>
+								</table>
 							</form>
-							<button class="newPatient" onclick="location.href='Patientadd.do'" style="margin-right: 20px; width: 100px">신규 환자 추가</button></td>
-							
+							<input id="btn_Search" type="button" class="search" value="검색"
+								style="margin-left: 20px; width: 60px" onclick="view()" />
+							<button class="search"
+								onclick="location.href='Patientadd.do'"
+								style="margin-left: 20px; width: 100px">신규 환자 추가</button>
+							<%-- <c:choose>
+								<c:when test="${name}" >
+									<table class="table2">
+										<tr>
+											<th>환자번호</th>
+											<th>환자명</th>
+											<th>성별</th>
+											<th>나이</th>
+											<th>호실</th>
+											<th>입원일자</th>
+											<th>상태</th>
+											<th>관리</th>
+										</tr>
+										<c:forEach var="patient" items="${d}">
+											<tr>
+												<td><c:out value="${patient.getPatientNum()}" /></td>
+
+												<td><c:out value="${patient.getName()}" /></td>
+
+												<td><c:out value="${patient.getGender()}" /></td>
+
+												<td><c:out value="${patient.getAge()}" /></td>
+
+												<td><c:out value="${patient.getHospitalRoom()}" /></td>
+
+												<td><c:out value="${patient.getHospitalDate()}" /></td>
+
+												<td><c:out value="${patient.getSymptom()}" /></td>
+
+												<td><button type="button"
+														onclick="location.href='PatientDetail.do';">관리</button></td>
+
+											</tr>
+										</c:forEach>
+									</table>
+								</c:when>
+								<c:otherwise>
+									
+								</c:otherwise>
+							</c:choose> --%>
 						</div>
 					</div>
 				</div>
 				<div class="body_wrap_table2">
-					<div>전체 : 29</div>
+					<div></div>
 					<div>
-						
-						
-						
-						<table class="table2">
-							<tr>
-								<th>환자번호</th>
-								<th>환자명</th>
-								<th>성별</th>
-								<th>나이</th>
-								<th>호실</th>
-								<th>입원일자</th>
-								<th>상태</th>
-								<th>관리</th>
-							</tr>
-							<c:forEach var="patient" items="${patientList}">
+
+
+						<form action="PatientDetail.do" method="post">
+							<table class="table2">
 								<tr>
-									<td><c:out value="${patient.getPatientNum()}" /></td>
-
-									<td><c:out value="${patient.getName()}" /></td>
-									
-									<td><c:out value="${patient.getGender()}" /></td>
-
-									<td><c:out value="${patient.getAge()}" /></td>
-
-									<td><c:out value="${patient.getHospitalRoom()}" /></td>
-
-									<td><c:out value="${patient.getHospitalDate()}" /></td>
-
-									<td><c:out value="${patient.getSymptom()}" /></td>
-
-									<td><button type="button"
-											onclick="location.href='PatientDetail.do';">관리</button></td>
-
+									<th>환자번호</th>
+									<th>환자명</th>
+									<th>성별</th>
+									<th>나이</th>
+									<th>호실</th>
+									<th>입원일자</th>
+									<th>상태</th>
+									<th>관리</th>
 								</tr>
-							</c:forEach>
-						</table>
 
+								<c:forEach var="patient" items="${patientList}">
+									<tr>
+										<td name="patientNum"><c:out
+												value="${patient.getPatientNum()}" /></td>
+
+										<td><c:out value="${patient.getName()}" /></td>
+
+										<td><c:out value="${patient.getGender()}" /></td>
+
+										<td><c:out value="${patient.getAge()}" /></td>
+
+										<td><c:out value="${patient.getHospitalRoom()}" /></td>
+
+										<td><c:out value="${patient.getHospitalDate()}" /></td>
+
+										<td><c:out value="${patient.getSymptom()}" /></td>
+
+
+										<td><button type="submit"
+												onclick="location.href='PatientDetail.do';">관리</button></td>
+
+									</tr>
+								</c:forEach>
+
+							</table>
+						</form>
 					</div>
 
 				</div>
@@ -150,8 +196,9 @@
 
 <script src="jquery-3.4.1.min.js"></script>
 <script>
-	//let patientNum="${PatientNum}"
-	
+	let patientNum = "${patient.getPatientNum()}";
+	let name = "${patient.getName()}";
+	let hospitalDate = "${patient.getHospitalDate()}";
 </script>
 <script src="/asset/js/patient.js"></script>
 </html>
