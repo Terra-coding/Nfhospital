@@ -44,7 +44,7 @@
                         </li>
                     </ul>
                 </div>
-                <nav id="gnb" class>
+                <nav id="gnb" >
 <!--                     <button class="totMenuBtn hideTxt" type="button" aria-controls="totMenu">
                     </button> -->
                     <!-- 전체 메뉴 아이콘 집어넣어야함 -->
@@ -168,7 +168,7 @@
                     </p>
                 </div>
             </div>
-            <form id="joinClientVo" name="writeForm" action="${pageContext.request.contextPath }/write/ThankyouWriteOk.wr" method="post" enctype="multipart/form-data">
+            <form id="joinClientVo" name="writeForm" action="${pageContext.request.contextPath }/write/ThankyouWriteOk.wr" method="post" >
                 <fieldset>
                     <legend>감사합니다 등록</legend>
                     <div class="persInforWrap">
@@ -203,24 +203,11 @@
                                 <col style="width: 140px;">
                                 <col style="width: auto;">
                             </colgroup>
-                            
 	                            <tbody>
+                				<input id="id" name="id" type="hidden" value="${sessionScope.list.getId()}">
 									<tr>
 	                                    <th scope="row">환자성함</th>
-	                                    <td><input id="ptname" name="name" title="환자성함" type="text" class="inputText validate-require" maxlength="16"></td>
-	                                    <th scope="row">환자등록정보</th>
-	                                    <td><input id="ptcd" name="nameCheck" title="환자등록정보" type="text" class="inputText validate-require" maxlength="8"></td>
-	                                </tr>
-	        
-	        
-	                                <tr>
-	                                    <th scope="row">작성자 성함</th>
-	                                    <td colspan="3">
-	                                        <input id="wrtname" name="wrtname" title="작성자 성함" type="text" class="inputText validate-require" maxlength="16">
-	                                        <span class="txtWrap">
-	                                            <label class="feForm feFoCheck" for="checkbox01"><input id="checkbox01" type="checkbox" title="글 작성자와 환자가 동일" data-fe-idx="feFoCheckIdx2" style="opacity: 0;"></label><label for="checkbox01">글 작성자와 환자가 동일</label>
-	                                        </span>
-	                                    </td>
+	                                    <td><input id="name" name="name" value ="${sessionScope.list.getName()}" readonly="readonly" title="환자성함" type="text" class="inputText validate-require" maxlength="16"></td>
 	                                </tr>
 	                                <tr>
 	                                    <th scope="row" class="verTop">휴대폰번호</th>
@@ -234,27 +221,6 @@
 	                                    </td>
 	                                </tr>
 	                                <tr>
-	                                    <th scope="row">환자와의 관계</th>
-	                                    <td colspan="3">
-	                                <span class="txtWrap">환자의</span>
-	                                        <label class="feForm feFoRadio" for="radio01"><input type="radio" id="radio01" name="ptrelation" value="1" data-fe-idx="feFoRadioIdx1" style="opacity: 0;"></label>
-	                                        <label for="radio01" class="lblTxt">본인</label>
-	                                        <label class="feForm feFoRadio" for="radio02"><input type="radio" id="radio02" name="ptrelation" value="2" data-fe-idx="feFoRadioIdx2" style="opacity: 0;"></label>
-	                                        <label for="radio02" class="lblTxt">배우자</label>
-	                                        <label class="feForm feFoRadio" for="radio03"><input type="radio" id="radio03" name="ptrelation" value="3" data-fe-idx="feFoRadioIdx3" style="opacity: 0;"></label>
-	                                        <label for="radio03" class="lblTxt">부모</label>
-	                                        <label class="feForm feFoRadio" for="radio04"><input type="radio" id="radio04" name="ptrelation" value="4" data-fe-idx="feFoRadioIdx4" style="opacity: 0;"></label>
-	                                        <label for="radio04" class="lblTxt">자녀</label>
-	                                        <label class="feForm feFoRadio" for="radio05"><input type="radio" id="radio05" name="ptrelation" value="5" data-fe-idx="feFoRadioIdx5" style="opacity: 0;"></label>
-	                                        <label for="radio05" class="lblTxt">친척</label>
-	                                        <label class="feForm feFoRadio" for="radio06"><input type="radio" id="radio06" name="ptrelation" value="6" data-fe-idx="feFoRadioIdx6" style="opacity: 0;"></label>
-	                                        <label for="radio06" class="lblTxt">지인</label><br><br>
-	                                        <label class="feForm feFoRadio checked0" for="radio07"><input type="radio" id="radio07" name="ptrelation" value="7" checked="checked" data-fe-idx="feFoRadioIdx7" style="opacity: 0;"></label>
-	                                        <label for="radio07" class="lblTxt">기타</label>
-	                                        <input id="ptrelationetc" name="ptrelationetc" title="기타" type="text" class="inputTextSmall" value="" maxlength="10">
-	                                    </td>
-	                                </tr>
-	                                <tr>
 	                                    <th scope="row">제목</th>
 	                                    <td colspan="3">
 	                                        <input id="title" name="title" title="제목" style="width:475px;" type="text" class="inputTextLarge validate-require" wrap="hard" value="" maxlength="50">
@@ -265,10 +231,6 @@
 	                                    <td colspan="3">
 	                                        <textarea id="txtContent" name="content" title="내용" placeholder="한글 4000자 입력 가능합니다." rows="50" cols="20"></textarea>
 	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <th scope="row" class="verTop">첨부파일</th>
-	                                    <td colspan="3"><div class="feFoFileWrap"><input type="text" title="선택된 파일" class="feFoFileInpTxt" readonly=""><label class="feForm feFoFile fileWrap" for="uploadFile"><input id="uploadFile" name="uploadFile" title="첨부파일" data-fe-label="첨부파일" type="file" accept=".png, .jpg" value="" data-fe-idx="feFoFileIdx1" tabindex="-1" style="opacity: 0;"><button type="button" class="feFoFileBtn">첨부파일</button></label></div><p class="desc">JPG, PNG 파일만 첨부 가능합니다. (5MB 이하) 파일이름은 영문으로 작성해 주시기 바랍니다.</p></td>
 	                                </tr>
 	                               <!--  <tr>
 	                                    <th scope="row" class="verTop"><span class="required">*</span> 자동가입방지</th>
@@ -300,7 +262,7 @@
                     </div>
                     <div class="btnWrap alignC">
                         <button type="button" class="btnType02 btnBig" id="btnPraiseList" onClick="location.href='allThanksView.jsp'">감사합니다 전체보기</button>
-                        <input type="button" class="btnType03 btnBig" value="완료" onclick="send()"/>
+                        <input type="button" class="btnType03 btnBig" value="완료" />
                     </div>
                 </fieldset>
             </form>

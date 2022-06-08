@@ -59,7 +59,7 @@ public class MemberInfoDAO {
 	public void profileChange(MemberInfoVO memberInfoVO) {
 		sqlSession.update("Member.profileChange" ,memberInfoVO);
 	}
-	
+
 	//비밀번호 변경
 	public void changePassword(HashMap<String, String> memberInfoMap) {
 		sqlSession.update("Member.passwordChange", memberInfoMap);

@@ -283,16 +283,16 @@
             					<!-- &nbsp;&nbsp;
             					<span style="display: none">선택진료</span> -->
             				</li>
-            				<li>
+            				<!-- <li>
             					진료일시
             					<i style="font-style: normal;"> : </i>
             					<input type="date" name="scheduleDate"  style="border: none; background-color: #2763ba; color: white; font-size: 16px;" ><br>
             					
-            				</li>
+            				</li> -->
             				<li>
-            					진료시간 
-            					<i style="font-style: normal;"> : </i>
-            					<input type="time" name="scheduleDate" min="09:00" max="17:00" step="900" required style="border: none; background-color: #2763ba; color: white; font-size: 16px;" >
+            					진료일시 및 시간
+            					<i style="font-style: normal;"> : </i><br>
+            					<input type="datetime-local" id="date" name="scheduleDate" min="09:00" max="17:00" step="900" required style="border: none; background-color: #2763ba; color: white; font-size: 16px;" >
             				</li>
             				<li>
             					<input type="button" id="confirmBtn" value="예약 확정" class="btnType03" onclick="send()"
@@ -552,4 +552,6 @@ $(document).ready(function() {
 	   reservationForm.submit();
    }
 </script>
+  
+   
 </html>

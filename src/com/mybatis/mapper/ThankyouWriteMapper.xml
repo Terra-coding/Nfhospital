@@ -29,36 +29,36 @@
 	</select>
 	
 	<!-- 내가 작성한 게시글 목록 -->
-	<select id="myWriteList" parameterType="map" resultType="thankyouWriteVO">		
-		select write_num, title, content, id, time
+	<select id="myWriteList" parameterType="map" resultType="thankyouWriteDTO">		
+		select write_num, title, content, id, time, name, phone_num
 		from TBL_thank_you_write t join TBL_member_info m 
 		on t.id = m.id
 		order by 1 desc limit #{startRow}, #{rowCount}						
 	</select>
 	
 	<!-- 내가 작성한 게시글 상세보기 -->
-	<select id="myThankyouWriteSelect" parameterType="_int" resultType="thankyouWriteVO">		
-		select write_num, title, content, t.id, time
+	<select id="myWriteSelect" parameterType="_int" resultType="thankyouWriteDTO">		
+		select write_num, title, content, t.id, time, name, phone_num
 		from TBL_thank_you_write t join TBL_member_info m 	
 		on t.id = m.id and write_num = #{writeNum}	
 	</select>
 		
 	<!--감사합니다 글 작성 -->
-   <insert id="ThankyouInsert" parameterType="thankyouWriteVO">
+   <insert id="thankyouInsert" parameterType="thankyouWriteDTO">
       insert into TBL_thank_you_write
       (title, content, id, `time`)
       values(#{title}, #{content}, #{id}, now())
    </insert>
    
    <!--감사합니다 글 수정 -->
-   <update id="ThankyouUpdate" parameterType="thankyouWriteVO">
+   <update id="thankyouUpdate" parameterType="thankyouWriteDTO">
       update TBL_thank_you_write
       set title = #{title}, content = #{content}
       where write_num = #{write_num}
    </update>
    
    <!--감사합니다 글 삭제 -->
-   <delete id="ThankyouDelete" parameterType="_int">
+   <delete id="thankyouDelete" parameterType="_int">
       delete from TBL_thank_you_write
       where write_num = #{write_num}
    </delete>

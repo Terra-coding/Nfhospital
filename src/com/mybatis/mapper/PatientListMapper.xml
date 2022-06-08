@@ -1,17 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="PatientList">
+
+
+	<!-- <select id="checkNumber" parameterType="string" resultType="int">
+      select count(patient_num) from tbl_patient_list where patient_num = #{patientNum}
+   </select> -->
+
+	<!-- employee01의 관리 단추 -> detail page의 환자번호로 이동 -->
+	<select id="selectOne" parameterType="_int" resultType="patientListVO">
+      select  name, phone_num, add_phone_num, gender, age, hospital_room, hospital_date, symptom
+      from tbl_patient_list where patient_num = #{patientNum}
+   </select>
+
    <!-- 환자 추가 -->
-   <insert id="add" parameterType="patientListVO">
-      insert into patient_list
-      (patientNum, name, phoneNum, addPhoneNum, gender, age, hospitalRoom, hospitalDate, medication, disease, symptom, temperature, bloodPressure)
-      values(#{patientNum}, #{name}, #{phoneNum}, #{addPhoneNum}, #{gender}, #{age}, #{hospitalRoom}, #{hospitalDate}, #{medication}, #{disease}, #{symptom}, #{temperature}, #{bloodPressure})
+   <insert id="add" parameterType="patientListVO" >
+      insert into tbl_patient_list
+      ( name, phone_num, add_phone_num, gender, age, hospital_room, hospital_date, medication, disease, symptom, temperature, blood_pressure,taking,birth)
+      values( #{name}, #{phoneNum}, #{addPhoneNum}, #{gender}, #{age}, #{hospitalRoom}, #{hospitalDate}, #{medication}, #{disease}, #{symptom}, #{temperature}, #{bloodPressure},#{taking},#{birth})
    </insert>
    
-   <!-- 환자 조회 -->
-   <select id="view" parameterType="patientListVO">
-      select patientNum, name, phoneNum, addPhoneNum, gender, age, hospitalRoom, hospitalDate, medication, disease, symptom, temperature, bloodPressure
-      from patient_list where patientNum = #{patientNum}
+   <!-- 환자detail 수정 -->
+   <update id="update" parameterType="patientListVO">
+      update tbl_patient_list set
+      ( name, phone_num, add_phone_num, gender, hospital_room, hospital_date, medication, disease, symptom, temperature, blood_pressure,taking,birth)
+      values( #{name}, #{phoneNum}, #{addPhoneNum}, #{gender},  #{hospitalRoom}, #{hospitalDate}, #{medication}, #{disease}, #{symptom}, #{temperature}, #{bloodPressure},#{taking},#{birth})
+      where  patient_num = #{patientNum}
+   </update>
+   
+   
+   <!-- 환자전체목록 -->
+   <select id="selectPatients" resultType="patientListVO">
+      select patient_num, name, phone_num, add_phone_num, gender, age, hospital_room, hospital_date, symptom
+      from tbl_patient_list order by name
    </select>
+   
+   
+   <!-- 환자 조회 -->
+   <select id="view" resultType="patientListVO">
+      select patient_num, name, gender, age, hospital_room, hospital_date, medication, disease, symptom, temperature, blood_pressure
+      from tbl_patient_list where patient_num = #{patientNum} || hospital_date=#{hospitalDate} order by name
+   </select>
+   
+    <!-- 환자 삭제 -->
+   <delete id="delete" parameterType="_int">
+      delete from tbl_patient_list where patient_num = #{patientNum}
+   </delete>
+   
+  
+  
+   
+   
    
 </mapper>

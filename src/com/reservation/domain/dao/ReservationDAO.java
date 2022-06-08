@@ -29,8 +29,8 @@ public class ReservationDAO {
 	}
 		
 	//예약조회
-	public List<ReservationVO> selectReservations(){
-		return sqlSession.selectList("Reservation.selectReservations");
+	public List<ReservationVO> selectReservations(int reservationNum){
+		return sqlSession.selectList("Reservation.selectReservations", reservationNum);
 	}
 	
 	//예약삭제
