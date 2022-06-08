@@ -40,6 +40,9 @@ public class PatientFrontController extends HttpServlet {
 		if (command.equals("Patientcheck.do")) {
 			actionInfo = new PatientaddOk().execute(req, resp);
 		}
+		if (command.equals("PatientUpdate.do")) {
+			actionInfo = new PatientaddOk().execute(req, resp);
+		}
 
 		if (command.equals("PatientDetail.do")) {
 			actionInfo = new PatientDetail().execute(req, resp);
