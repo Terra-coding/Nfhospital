@@ -22,9 +22,9 @@
         <a href="#content" class="skipToContent">본문으로 바로가기</a>
         <header id="header">
             <div class="innerwrap">
-                <h1><a href="mainpage.jsp">서울병원</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/MainPage.me">서울병원</a></h1>
                 <div class="topLeftWrap">
-                     <a href="mainpage.jsp">
+                     <a href="${pageContext.request.contextPath}/MainPage.me">
                         <img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
                     </a> 
                 </div>
@@ -42,7 +42,7 @@
                   		<li><a href="${pageContext.request.contextPath}/LogOutOk.me" style="color: #000;">로그아웃</a></li>
                		</c:if>
                         <li>
-                            <a href="mypage.jsp">마이페이지</a>
+                            <a href="${pageContext.request.contextPath}/Mypage.me">마이페이지</a>
                         </li>
                         <li>
                             <a>Language</a>
@@ -101,8 +101,8 @@
                         <ul class="bcLinkLayer" role="region" aria-hidden="true" aria-expanded="false" style="display: none;" tabindex="0">
 					
                             <li><a href="">진료과/의료진</a></li>
-                            <li><a href="reservation.jsp">인터넷진료예약</a></li>
-                            <li><a href="newreservation.jsp">예약확인/취소</a></li>
+                            <li><a href="${pageContext.request.contextPath}/Reservation.re">인터넷진료예약</a></li>
+                            <li><a href="${pageContext.request.contextPath}/NewReservation.re">예약확인/취소</a></li>
                             <li><a href="">외래진료안내</a></li>
                             <li><a href="">입/퇴원안내</a></li>
                             <li><a href="">가정간호 안내</a></li>
@@ -118,8 +118,8 @@
                 <!-- //breadcrumb -->
                 <!-- bcQuickMenu -->
                 <ul class="bcQuickMenu">
-                    <li class=""><a href="reservation.jsp">진료예약</a></li>
-                    <li><a href="newreservation.jsp">예약조회</a></li>
+                    <li class=""><a href="${pageContext.request.contextPath}/Reservation.re">진료예약</a></li>
+                    <li><a href="${pageContext.request.contextPath}/NewReservation.re">예약조회</a></li>
                 </ul>
             </div>
         </div>

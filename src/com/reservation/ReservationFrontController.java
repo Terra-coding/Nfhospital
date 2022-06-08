@@ -33,13 +33,38 @@ public class ReservationFrontController extends HttpServlet{
 			actionInfo = new ActionInfo();
 			actionInfo.setRedirect(true);
 			actionInfo.setPath(req.getContextPath() + "/reservation.jsp");
+
+		
+		} else if (command.equals("NewReservation.re")) {
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(true);
+			actionInfo.setPath("/newreservation.jsp");
+		
+		} else if (command.equals("PreReservation.re")) {
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(true);
+			actionInfo.setPath("/prereservation.jsp");
+		
+		} else if (command.equals("Scription.re")) {
+			actionInfo = new ActionInfo();
+			actionInfo.setRedirect(true);
+			actionInfo.setPath("/scription.jsp");
+		
+		}  /*else if (command.equals("ReservationCheckOk.re")) {
+			new ReservationCheckOk().execute(req, resp);
+		}*/ else {
+
 		} else if (command.equals("LookUpReservationOk.re")) {
 			actionInfo = new LookUpReservationOk().execute(req, resp);
 		} else if (command.equals("ReservationDeleteOk.re")) {
 			actionInfo = new LookUpReservationOk().execute(req, resp);
 		} else {
+
 			// 404 일 때 출력할 에러 페이지 경로 작성
 		}
+		
+		
+		
 		if(actionInfo != null) {
 			if(actionInfo.isRedirect()) {
 				resp.sendRedirect(actionInfo.getPath());
