@@ -27,9 +27,9 @@
 <div id="wrap">
 	<header id="header">
             <div class="innerwrap">
-                <h1><a href="mainpage.jsp">서울 병원</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/MainPage.me">서울 병원</a></h1>
                 <div class="topLeftWrap">
-                    <a href="mainpage.jsp">
+                    <a href="${pageContext.request.contextPath}/MainPage.me">
 	                	<img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
                     </a>
                 </div>
@@ -109,7 +109,7 @@
                 <!-- breadcrumb -->
                 <div class="breadcrumb">
                     <strong class="hideEl">현재 위치: </strong>
-                    <a href="/" class="bcHomeBtn hideTxt">HOME</a>
+                    <a href="${pageContext.request.contextPath}/MainPage.me" class="bcHomeBtn hideTxt">HOME</a>
                     <span class="hideEl">&gt;</span>
                     
                     <!-- <div class="">
@@ -159,7 +159,7 @@
 		<div class="tabTypeCol2">
 			<ul class="clearFix">
 				<li class="current" style="float:left; width:50%;"><a href="#">아이디 찾기</a></li>
-				<li><a href="findpw.jsp">비밀번호 찾기</a></li>
+				<li><a href="${pageContext.request.contextPath}/FindPw.me">비밀번호 찾기</a></li>
 			</ul>
 		</div>
 		<!-- //tabType -->
@@ -223,7 +223,7 @@
 				</form>
 				<div class="btnWrap alignC">
 					<button type="button" class="btnType03" id="confirmMailBtn">확인하기</button>
-					<button class="logInBtn"  onclick="location.href='login.jsp' ">로그인하기</button>
+					<button class="logInBtn"  onclick="location.href='${pageContext.request.contextPath}/MemberLogin.me' ">로그인하기</button>
 				</div>
 			</div>
 			<!-- //layerContent -->
@@ -276,7 +276,7 @@
 				</form>
 				<div class="btnWrap alignC">
 					<button type="button" class="btnType03" id="confirmHpBtn">확인하기</button>
-					<button class="logInBtn" onclick="location.href='login.jsp' ">로그인하기</button>
+					<button class="logInBtn" onclick="location.href='${pageContext.request.contextPath}/MemberLogin.me' ">로그인하기</button>
 				</div>
 			</div>
 			<!-- //layerContent -->

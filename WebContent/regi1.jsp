@@ -96,7 +96,7 @@
                 <!-- breadcrumb -->
                 <div class="breadcrumb">
                     <strong class="hideEl">현재 위치: </strong>
-                    <a href="/" class="bcHomeBtn hideTxt">HOME</a>
+                    <a href="${pageContext.request.contextPath}/MainPage.me" class="bcHomeBtn hideTxt">HOME</a>
                     <span class="hideEl">&gt;</span>
                     
                     <!-- <div class="">
@@ -1908,12 +1908,12 @@
 			submitCheck = false;
 			return false;
 		}
-		/* 
+	
 		    if(!check){
 			alert("휴대폰번호 인증을 해주세요.")
 			submitCheck = false;
 			return false;
-		}    */
+		}    
 		
 		if(!$("#ptnm").val()){
 			alert("이름을 입력해주세요.")
@@ -1957,17 +1957,6 @@
 				return;
 			}
 			
-			/* if(!idNumCheck.test($(this).closest('form').find('[id=citizen1]').val())) {
-				alert("주민등록번호 앞자리는 숫자를 입력해주세요");
-				$(this).closest('form').find('[id=citizen1]').focus();
-				return;
-			}
-			
-			if(!idNumCheck.test($(this).closest('form').find('[id=citizen2]').val())) {
-				alert("주민등록번호 뒷자리는 숫자를 입력해주세요");
-				$(this).closest('form').find('[id=citizen2]').focus();
-				return;
-			}  */
 			
 		hForm.submit();
 		

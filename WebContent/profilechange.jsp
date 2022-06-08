@@ -157,10 +157,10 @@
                 <div class="tabTypeCol2">
                     <ul class="clearFix">
                         <li style=" list-style:none; left: 17px;">
-                            <a href="passwordchange.jsp" style="text-decoration-line: none;">비밀번호 변경</a>
+                            <a href="${pageContext.request.contextPath}/PasswordChange.me" style="text-decoration-line: none;">비밀번호 변경</a>
                         </li>
                         <li class="current" style=" list-style:none;  right: 50px;">
-                            <a href="profilechange.jsp" style="text-decoration-line: none;">기본정보 변경</a>
+                            <a href="${pageContext.request.contextPath}/ProfileChange.me" style="text-decoration-line: none;">기본정보 변경</a>
                         </li>
                     </ul>
                 </div>

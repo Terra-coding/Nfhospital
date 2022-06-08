@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +23,9 @@
         <a href="#content" class="skipToContent">본문으로 바로가기</a>
         <header id="header">
             <div class="innerwrap">
-                <h1><a href="mainpage.jsp" >서울 병원</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/MainPage.me" >서울 병원</a></h1>
                 <div class="topLeftWrap">
-                    <a href="mainpage.jsp">
+                    <a href="${pageContext.request.contextPath}/MainPage.me">
                         <img src="./asset/img/hospital_logo.png" style="width: 30px; height: 30px;">
                     </a>
                 </div>
@@ -34,9 +36,7 @@
                         </li>
                     </ul>
                     <ul class="topMenu">
-                        <li>
-                            <a>로그아웃</a>
-                        </li>
+                        <li><a href="${pageContext.request.contextPath}/LogOutOk.me" style="color: #000;">로그아웃</a></li>
                         <li>
                             <a href="mainpage.html">마이페이지</a>
                         </li>
@@ -49,20 +49,47 @@
 
                     <button class="totMenuBtn hideTxt" type="button" aria-controls="totMenu">전체 메뉴 열기</button>
                     <ul class="gnbList clearFix">
-                        <li>
-                            <a href="medicalInfo.jsp">진료안내</a>
+                        <li id="first" class="set">
+                            <a>진료안내</a>
+	                        <div class="subList first" id="information1">
+	                            <div class="strongs top">진료안내</div>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalInfo.jsp">진료예약</a>
+			                    <a class="weaks pack" href="${pageContext.request.contextPath}/medicalProcess.jsp">외래진료프로세스</a>
+	                            <c:if test="${empty name}">
+	                            <a class="strongs" href="${pageContext.request.contextPath}/MemberLogin.me">인터넷 진료예약</a>
+	                            </c:if>
+	                            <c:if test="${not empty name}">
+	                            <a class="strongs" href="${pageContext.request.contextPath}/reservation.jsp">인터넷 진료예약</a>
+	                            </c:if>
+	                            <div class="strongs">예약확인/취소</div>
+	                             <c:if test="${empty name}">
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/MemberLogin.me">진료예약확인</a>
+	                            </c:if>
+	                            <c:if test="${not empty name}">
+	                            <a class="weaks pack" href="${pageContext.request.contextPath}/newreservation.jsp">진료예약확인</a>
+	                       		</c:if>
+	                        </div>
                         </li>
-                        <li>
-                            <a href="allFAQ.jsp">이용안내</a>
+                        <li id="second" class="set">
+                            <a>이용안내</a>
+                            <div class="subList more second" id="information2">
+                            <a class="strongs top" href="${pageContext.request.contextPath}/allFAQ.jsp">FAQ(통합)</a>
+                        </div>
                         </li>
-                        <li>
-                            <a href="">건강정보</a>
+                        <li id="third" class="set">
+                            <a>고객참여</a>
+                            <div class="subList more third" id="information3">
+                             <div class="strongs top">고객의 소리</div>
+                             <a class="weaks pack" href="${pageContext.request.contextPath}/clientSound.jsp">고객의 소리 등록</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/clientConsultation.jsp">고객상담실 업무안내</a>
+			                 <a class="weaks pack" href="${pageContext.request.contextPath}/allThanksView.jsp">감사이야기</a>
+                        </div>
                         </li>
-                        <li>
-                            <a href="clientSound.jsp">고객참여</a>
-                        </li>
-                        <li>
-                            <a href="intro.jsp">병원소개</a>
+                        <li id="fourth" class="set">
+                            <a>병원소개</a>
+                            <div class="subList more fourth" id="information4">
+                            <a class="strongs top" href="${pageContext.request.contextPath}/intro.jsp">병원개요</a>
+                        </div> 
                         </li>
                     </ul>
                 </nav>
@@ -73,7 +100,7 @@
                 <!-- breadcrumb -->
                 <div class="breadcrumb">
                     <strong class="hideEl">현재 위치: </strong>
-                    <a href="mainpage.jsp" class="bcHomeBtn hideTxt">HOME</a>
+                    <a href="${pageContext.request.contextPath}/MainPage.me" class="bcHomeBtn hideTxt">HOME</a>
                     <span class="hideEl">&gt;</span>
                     
                     <div class="">
@@ -128,7 +155,7 @@
                             <li class="current" style=" list-style:none; left: 17px;">
                                 <a href="passwordchange.jsp" style="text-decoration-line: none;">비밀번호 변경</a>
                             </li>
-                            <li style=" list-style:none;  right: 50px;">
+                            <li style=" list-style:none;  right: 47px;">
                                 <a href="profilechange.jsp" style="text-decoration-line: none;">기본정보 변경</a>
                             </li>
                         </ul>
@@ -280,6 +307,164 @@
 		change.submit();
 	})
 	
+	 /* 네비게이션 바 jquery시작 */
+   
+     $(".set").on("mouseover", function(){
+    		$(this).addClass('up');
+    		$(this).children('a').css("color", "#2263bb");
+    		if($(this).attr('id').match('first')){
+    			$(".second").removeClass('selected');
+    			$(".second").css("visibility", "hidden");
+    			$("#second").children('a').css("color", "#000");
+	    		$("#second").removeClass('up')
+	    		$(".second").removeClass('line')
+	    		
+	    		$(".third").removeClass('selected');
+	    		$(".third").css("visibility", "hidden");
+	    		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+	    		$(".third").removeClass('line')
+		    	
+		    	$(".fourth").removeClass('selected');
+	    		$(".fourth").css("visibility", "hidden");
+	    		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+	    		$(".fourth").removeClass('line')
+    		
+		    	$(".first").addClass('selected');
+    			$(".first").css("visibility", "visible");
+    			$(".first").addClass('line');
+    			
+    		}else if($(this).attr('id').match('second')){
+    			$(".first").removeClass('selected');
+    			$(".first").css("visibility", "hidden");
+	    		$("#first").children('a').css("color", "#000");
+	    		$("#first").removeClass('up')
+	    		$(".first").removeClass('line')
+	    		
+	    		$(".third").removeClass('selected');
+	    		$(".third").css("visibility", "hidden");
+	    		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+		    	$(".third").removeClass('line')
+		    	
+		    	$(".fourth").removeClass('selected');
+	    		$(".fourth").css("visibility", "hidden");
+	    		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+		    	$(".fourth").removeClass('line')
+    			
+		    	$(".second").addClass('selected');
+    			$(".second").css("visibility", "visible");
+    			$(".second").addClass('line');
+    			
+    		}else if($(this).attr('id').match('third')){
+    			$(".first").removeClass('selected');
+    			$(".first").css("visibility", "hidden");
+	    		$("#first").children('a').css("color", "#000");
+	    		$("#first").removeClass('up')
+	    		$(".first").removeClass('line')
+    			
+	    		$(".second").removeClass('selected');
+	    		$(".second").css("visibility", "hidden");
+	    		$("#second").children('a').css("color", "#000");
+		    	$("#second").removeClass('up')
+		    	$(".second").removeClass('line')
+    			
+		    	$(".fourth").removeClass('selected');
+	    		$(".fourth").css("visibility", "hidden");
+	    		$("#fourth").children('a').css("color", "#000");
+		    	$("#fourth").removeClass('up')
+		    	$(".fourth").removeClass('line')
+    			
+		    	$(".third").addClass('selected');
+    			$(".third").css("visibility", "visible");
+    			$(".third").addClass('line');
+
+    		}else if($(this).attr('id').match('fourth')){
+    			$(".first").removeClass('selected');
+    			$(".first").css("visibility", "hidden");
+	    		$("#first").children('a').css("color", "#000");
+	    		$("#first").removeClass('up')
+	    		$(".first").removeClass('line')
+    			
+    			$(".second").removeClass('selected');
+	    		$(".second").css("visibility", "hidden");
+	    		$("#second").children('a').css("color", "#000");
+		    	$("#second").removeClass('up')
+		    	$(".second").removeClass('line')
+		    	
+		    	$(".third").removeClass('selected');
+	    		$(".third").css("visibility", "hidden");
+	    		$("#third").children('a').css("color", "#000");
+		    	$("#third").removeClass('up')
+		    	$(".third").removeClass('line')
+    			
+		    	$(".fourth").addClass('selected');
+    			$(".fourth").css("visibility", "visible");
+    			$(".fourth").addClass('line');
+
+    		}
+    		
+    		
+    });
+    
+	    $(".subList").mouseleave(function(){
+	    		if($(this).attr('class').match('first')){
+	    			$(".first").removeClass('selected');
+	    			$(".first").css("visibility", "hidden");
+	    			$(".first").removeClass("line")
+		    		$("#first").children('a').css("color", "#000");
+		    		$("#first").removeClass('up')
+	    			
+	    		}else if($(this).attr('class').match('second')){
+	    			$(".second").removeClass('selected');
+	    			$(".second").css("visibility", "hidden");
+	    			$(".second").removeClass("line")
+	    			$("#second").children('a').css("color", "#000");
+		    		$("#second").removeClass('up')
+		    		
+	    		}else if($(this).attr('class').match('third')){
+	    			$(".third").removeClass('selected');
+	    			$(".third").css("visibility", "hidden");
+	    			$(".third").removeClass("line")
+	    			$("#third").children('a').css("color", "#000");
+		    		$("#third").removeClass('up')
+		    		
+	    		}else if($(this).attr('class').match('fourth')){
+	    			$(".fourth").removeClass('selected');
+	    			$(".fourth").css("visibility", "hidden");
+	    			$(".fourth").removeClass("line")
+	    			$("#fourth").children('a').css("color", "#000");
+		    		$("#fourth").removeClass('up')
+	    		}
+	    })  
+	    
+	    $(".weaks").mouseover(function(){
+	    	$(this).css('color', "#2263bb");
+	    })
+
+	    $(".weaks").mouseout(function(){
+	    	$(this).css('color', "#888");
+	    })
+	    
+	    $("a[class='strongs']").mouseover(function(){
+	    	$(this).css('color', "#2263bb");
+	    })
+	    
+	    $("a[class='strongs']").mouseout(function(){
+	    	$(this).css('color', "#000");
+	    })
+	    
+		$("a[class='strongs top']").mouseover(function(){
+	    	$(this).css('color', "#2263bb");
+	    })
+	    
+	    $("a[class='strongs top']").mouseout(function(){
+	    	$(this).css('color', "#000");
+	    })
+	   
+	     /* 네비게이션 바 jquery끝 */ 
 	
 </script>
 </html>
