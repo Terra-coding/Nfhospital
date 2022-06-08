@@ -168,7 +168,7 @@
                     </p>
                 </div>
             </div>
-            <form id="joinClientVo" name="writeForm" action="${pageContext.request.contextPath }/write/ThankyouWriteOk.wr" method="post" enctype="multipart/form-data">
+            <form id="joinClientVo" name="writeForm" action="${pageContext.request.contextPath }/write/ThankyouWriteOk.wr" method="post" >
                 <fieldset>
                     <legend>감사합니다 등록</legend>
                     <div class="persInforWrap">
@@ -203,14 +203,12 @@
                                 <col style="width: 140px;">
                                 <col style="width: auto;">
                             </colgroup>
-                            
 	                            <tbody>
+                				<input id="id" name="id" type="hidden" value="${sessionScope.list.getId()}">
 									<tr>
 	                                    <th scope="row">환자성함</th>
-	                                    <td><input id="ptname" name="name" title="환자성함" type="text" class="inputText validate-require" maxlength="16"></td>
+	                                    <td><input id="name" name="name" value ="${sessionScope.list.getName()}" readonly="readonly" title="환자성함" type="text" class="inputText validate-require" maxlength="16"></td>
 	                                </tr>
-	        
-	        
 	                                <tr>
 	                                    <th scope="row" class="verTop">휴대폰번호</th>
 	                                    <td colspan="3">
@@ -264,7 +262,7 @@
                     </div>
                     <div class="btnWrap alignC">
                         <button type="button" class="btnType02 btnBig" id="btnPraiseList" onClick="location.href='allThanksView.jsp'">감사합니다 전체보기</button>
-                        <input type="button" class="btnType03 btnBig" value="완료" onclick="send()"/>
+                        <input type="button" class="btnType03 btnBig" value="완료" />
                     </div>
                 </fieldset>
             </form>

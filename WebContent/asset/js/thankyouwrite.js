@@ -5,9 +5,11 @@ let $wrtname = $("#wrtname").val();/* 작성자 성함 */
 let $etc = $("#ptrelationetc").val();
 let $title = $("#title").val();
 let $prevent = $("#prevent").val();
+let $tel1 = $("#tel1").val();
 let $tel2 = $("#tel2").val();
 let $tel3 = $("#tel3").val();
 let check = false;
+let $content = $("#txtContent").val();
 function append(){
     alert("관심컨텐츠로 등록되었습니다.");
 }
@@ -41,17 +43,17 @@ $("#ptname").on('keyup', function(){
     $ptname = $(this).val();
 })
 
-$("#ptcd").on('keyup', function(){
+/*$("#ptcd").on('keyup', function(){
     $ptcd = $(this).val();
-})
+})*/
 
-$("#wrtname").on('keyup', function(){
+/*$("#wrtname").on('keyup', function(){
     $wrtname = $(this).val();
-})
+})*/
 
-$("#ptrelationetc").on('keyup', function(){
+/*$("#ptrelationetc").on('keyup', function(){
     $etc = $(this).val();
-})
+})*/
 
 $("#title").on('keyup', function(){
     $title = $(this).val();
@@ -70,7 +72,7 @@ $("#tel3").on('keyup', function(){
 })
 
 /* 글작성자와 환자가 동일 버튼 클릭 시 */
-$("span[class='txtWrap']>.feFoCheck").on('click', function(){
+/*$("span[class='txtWrap']>.feFoCheck").on('click', function(){
     if(!$(this).attr('class').match('checked')){
         $(".checked0").removeClass('checked0');
         $("label[for='radio07']").addClass('checked0');
@@ -81,16 +83,16 @@ $("span[class='txtWrap']>.feFoCheck").on('click', function(){
         $("label[for='radio01']").addClass('checked0');
         $("#wrtname").val($ptname);
     }
-})
+})*/
 
 /* 라디오버튼 동작 */
-$("input[type='radio']").on('click', function(){
+/*$("input[type='radio']").on('click', function(){
     $id = $(this).attr('id');
     if(!$("label[for="+ $id +"]").attr('class').match('checked0')){
         $(".checked0").removeClass('checked0');
         $("label[for="+ $id +"]").addClass('checked0');
     }
-})
+})*/
 
 /* 전화번호 앞자리 선택 */
 $("#tel1").on('click', function(){
@@ -101,7 +103,7 @@ $("#tel1").on('click', function(){
 /* 자동가입방지문자 */
 
 
-$(".bcLinkLayerBtn").on('click', function(){
+/*$(".bcLinkLayerBtn").on('click', function(){
     if(!$(this).attr('class').match('active')){
         $(this).addClass('active');
         $(this).next('ul').attr('aria-hidden', 'false');
@@ -131,20 +133,20 @@ $button.on('click', function(){
         return;
     }
 
-    if(!$ptname){
+   /* if(!$ptname){
         alert("[환자성함] 입력하신 정보를 다시 확인 해 주시기 바랍니다.");
         return;
-    }
+    }*/
 
-    if(!$ptcd){
+    /*if(!$ptcd){
         alert("[환자등록정보 성함] 입력하신 정보를 다시 확인 해 주시기 바랍니다.")
         return;
-    }
+    }*/
 
-    if(!$wrtname){
+    /*if(!$wrtname){
         alert("[작성자 성함] 입력하신 정보를 다시 확인 해 주시기 바랍니다.")
         return;
-    }
+    }*/
 
     if(!$tel2){
         alert("[휴대전화 두번째 자리] 입력하신 정보를 다시 확인 해 주시기 바랍니다.")
@@ -156,20 +158,24 @@ $button.on('click', function(){
         return;
     }
 
-    if($("label[for='radio07']").attr('class').match('checked0') && !$etc){
+  /*  if($("label[for='radio07']").attr('class').match('checked0') && !$etc){
         alert("[환자와의 관계 > 기타] 입력하신 정보를 다시 확인 해 주시기 바랍니다.");
         return;
-    }
+    }*/
 
     if(!$title){
         alert("[제목] 입력하신 정보를 다시 확인 해 주시기 바랍니다.");
         return;
     }
-    
+  /*  console.log($title);
+    console.log($("#txtContent").val());
+    console.log($tel1);
+    console.log($tel2);
+    console.log($tel3);
+    */
 //확인버튼 클릭 시
-    function send(){
-    	writeForm.submit();
-    }
+   writeForm.submit();
+    
 
 })
 

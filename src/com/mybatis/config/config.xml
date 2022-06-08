@@ -9,6 +9,7 @@
 		<typeAlias type="com.patient.domain.vo.PatientListVO" alias="patientListVO"/>
 		<typeAlias type="com.reservation.domain.vo.ReservationVO" alias="reservationVO"/>
 		<typeAlias type="com.write.domain.vo.ThankyouWriteVO" alias="thankyouWriteVO"/>
+		<typeAlias type="com.write.domain.vo.ThankyouWriteDTO" alias="thankyouWriteDTO"/>
 		<typeAlias type="com.write.domain.vo.SuggestionsWriteVO" alias="suggestionsWriteVO"/>
 	</typeAliases>
 

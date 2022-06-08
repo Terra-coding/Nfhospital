@@ -50,13 +50,13 @@ public class WriteDAO {
 	}
 		
 	//감사합니다 글 작성
-	public void thankyouInsert(ThankyouWriteVO thankyouWrite) {
-		sqlSession.insert("ThankyouWrite.thankyouInsert", thankyouWrite);
+	public void thankyouInsert(ThankyouWriteDTO thankyouWriteDTO) {
+		sqlSession.insert("ThankyouWrite.thankyouInsert", thankyouWriteDTO);
 	}
 	
 	//감사합니다 글 수정
-	public void thankyouUpdate(ThankyouWriteVO thankyouWrite) {
-		sqlSession.update("ThankyouWrite.thankyouUpdate", thankyouWrite);
+	public void thankyouUpdate(ThankyouWriteDTO thankyouWriteDTO) {
+		sqlSession.update("ThankyouWrite.thankyouUpdate", thankyouWriteDTO);
 	}
 		
 	//감사합니다 글 삭제

@@ -35,7 +35,7 @@
    <!-- 휴대폰번호로 아이디 찾기 -->
    <select id="phoneNumFindId" parameterType="map" resultType="string">
    		select id from tbl_member_info
-   		where phoneNum = #{phoneNum} and name = #{name} and birth = #{birth}
+   		where phone_num = #{phoneNum} and name = #{name} and birth = #{birth}
    </select>
    
    <!-- 이메일로 비밀번호 찾기 -->

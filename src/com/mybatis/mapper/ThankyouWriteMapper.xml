@@ -44,21 +44,21 @@
 	</select>
 		
 	<!--감사합니다 글 작성 -->
-   <insert id="ThankyouInsert" parameterType="thankyouWriteVO">
+   <insert id="thankyouInsert" parameterType="thankyouWriteDTO">
       insert into TBL_thank_you_write
       (title, content, id, `time`)
       values(#{title}, #{content}, #{id}, now())
    </insert>
    
    <!--감사합니다 글 수정 -->
-   <update id="ThankyouUpdate" parameterType="thankyouWriteVO">
+   <update id="thankyouUpdate" parameterType="thankyouWriteDTO">
       update TBL_thank_you_write
       set title = #{title}, content = #{content}
       where write_num = #{write_num}
    </update>
    
    <!--감사합니다 글 삭제 -->
-   <delete id="ThankyouDelete" parameterType="_int">
+   <delete id="thankyouDelete" parameterType="_int">
       delete from TBL_thank_you_write
       where write_num = #{write_num}
    </delete>
