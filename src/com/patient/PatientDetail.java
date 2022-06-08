@@ -20,28 +20,9 @@ public class PatientDetail implements Action {
 		ActionInfo actionInfo = new ActionInfo();
 		
 		
-
-		/*patientListVO.setPatientNum(Integer.parseInt(req.getParameter("patientNum")));
-		patientListVO.setName(req.getParameter("name"));
-		patientListVO.setPhoneNum(req.getParameter("phoneNum"));
-		patientListVO.setAddPhoneNum(req.getParameter("addPhoneNum"));
-		patientListVO.setGender(req.getParameter("gender"));
-		patientListVO.setHospitalRoom(req.getParameter("hospitalRoom"));		
-		patientListVO.setHospitalDate(req.getParameter("hospitalDate"));
-		patientListVO.setMedication(req.getParameter("medication"));
-		patientListVO.setDisease(req.getParameter("disease"));
-		patientListVO.setSymptom(req.getParameter("symptom"));
-		patientListVO.setTemperature(Double.parseDouble((req.getParameter("temperature"))));
-		patientListVO.setBloodPressure(req.getParameter("bloodPressure"));
 		
-		int num=req.getParameter("patientNum");
-		int num=Integer.parseInt(req.getParameter("patientNum")); 
-		System.out.println(num);
-		req.setAttribute("patientList",patientListDAO.selectOne(num));
-			
-		int Num =Integer.parseInt(patientListVO.getPatientNum(patientNum));
+	
 		req.setAttribute("patientNum",patientListVO.getPatientNum());
-		
 		req.setAttribute("name",patientListVO.getName());
 		req.setAttribute("phoneNum",patientListVO.getPhoneNum());
 		req.setAttribute("addPhoneNum",patientListVO.getAddPhoneNum());
@@ -55,10 +36,7 @@ public class PatientDetail implements Action {
 		req.setAttribute("medication",patientListVO.getMedication());
 		
 		req.setAttribute("patientList",patientListDAO.selectPatients());
-		int num=Integer.parseInt(req.getParameter("patientNum"));
-		req.setAttribute("patientOne",patientListDAO.selectOne(num));
-		*/           
-		req.setAttribute("patientList",patientListDAO.selectPatients());
+		
 		actionInfo.setRedirect(false);
 		actionInfo.setPath("/patient_detail.jsp");
 		return actionInfo;
